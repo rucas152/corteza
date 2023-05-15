@@ -48,6 +48,7 @@
   </b-container>
 </template>
 <script>
+import { isEqual, cloneDeep } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CWorkflowEditorInfo from 'corteza-webapp-admin/src/components/Workflow/CWorkflowEditorInfo'
 import CWorkflowEditorTriggers from 'corteza-webapp-admin/src/components/Workflow/CWorkflowEditorTriggers'
@@ -79,6 +80,7 @@ export default {
   data () {
     return {
       workflow: undefined,
+      initialWorkflowState: undefined,
       triggers: [],
 
       info: {
@@ -113,6 +115,14 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
   watch: {
     workflowID: {
       immediate: true,
@@ -129,6 +139,7 @@ export default {
               name: '',
             },
           }
+          this.initialWorkflowState = cloneDeep(this.workflow)
         }
       },
     },
@@ -218,6 +229,15 @@ export default {
 
     prepare (workflow = {}) {
       this.workflow = workflow
+      this.initialWorkflowState = cloneDeep(this.workflow)
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.workflow, this.initialWorkflowState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }

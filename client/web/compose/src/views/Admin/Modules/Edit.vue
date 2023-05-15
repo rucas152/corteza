@@ -715,21 +715,7 @@ export default {
     }),
 
     checkUnsavedModule (next) {
-      console.log(next)
-      console.log(JSON.stringify(this.module))
-      console.log(JSON.stringify(this.initialModuleState))
-      console.log(isEqual(this.module, this.initialModuleState))
-
-      this.initialModuleState.config.recordDeDup.rules.forEach(rule => {
-          // Reason for this is because newly created module rules have constraints set to null by default from the backend after creation
-          // But in `client/web/compose/src/components/Admin/Module/UniqueValues.vue` line 149, I check if constraints is null so I set the value to an array
-          // because of this lodash isEqual method returns false even though the objects are the same, but the constraints are not set
-          if (rule.constraints === null) {
-            rule.constraints = []
-          }
-        })
-
-      next(!isEqual(this.module, this.initialModuleState) ? window.confirm(this.$t('build.unsavedChanges')) : true)
+      next(!isEqual(this.module, this.initialModuleState) ? window.confirm(this.$t('general.unsavedChanges')) : true)
     },
 
     handleNewField () {

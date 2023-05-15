@@ -1,5 +1,6 @@
 editor:
   new: New
+  unsavedChanges:  Unsaved changes will be lost. Do you wish to leave the page?
   title:
     create: Create sensitivity level
     edit: Edit sensitivity level

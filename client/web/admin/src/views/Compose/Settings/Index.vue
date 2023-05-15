@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { isEqual } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CComposeEditorBasic from 'corteza-webapp-admin/src/components/Settings/Compose/CComposeEditorBasic'
 import CComposeEditorUI from 'corteza-webapp-admin/src/components/Settings/Compose/CComposeEditorUI'
@@ -51,6 +52,7 @@ export default {
   data () {
     return {
       settings: {},
+      initialSettingsState: {},
 
       basic: {
         processing: false,
@@ -62,6 +64,14 @@ export default {
         success: false,
       },
     }
+  },
+
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
   },
 
   computed: {
@@ -104,12 +114,21 @@ export default {
         .then(settings => {
           settings.forEach(({ name, value }) => {
             this.$set(this.settings, name, value)
+            this.$set(this.initialSettingsState, name, value)
           })
         })
         .catch(this.toastErrorHandler(this.$t('notification:settings.compose.fetch.error')))
         .finally(() => {
           this.decLoader()
         })
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.settings, this.initialSettingsState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }

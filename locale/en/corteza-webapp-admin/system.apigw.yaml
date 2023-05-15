@@ -49,6 +49,7 @@ editor:
   title: Edit route
   new: New
   permissions: Permissions
+  unsavedChanges:  Unsaved changes will be lost. Do you wish to leave the page?
 
   info:
     title: Basic information

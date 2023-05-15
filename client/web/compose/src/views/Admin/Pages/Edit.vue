@@ -751,6 +751,7 @@
 </template>
 
 <script>
+import { isEqual } from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import EditorToolbar from 'corteza-webapp-compose/src/components/Admin/EditorToolbar'
 import PageTranslator from 'corteza-webapp-compose/src/components/Admin/Page/PageTranslator'
@@ -799,6 +800,7 @@ export default {
       processing: false,
 
       page: new compose.Page(),
+      initialPageState: new compose.Page(),
 
       showIconModal: false,
       attachments: [],
@@ -806,6 +808,7 @@ export default {
       linkUrl: '',
 
       layouts: [],
+      initialLayoutsState: [],
 
       layoutEditor: {
         index: undefined,
@@ -945,7 +948,9 @@ export default {
       immediate: true,
       handler (pageID) {
         this.page = undefined
+        this.initialPageState = undefined
         this.layouts = []
+        this.initialLayoutsState = []
 
         this.removedLayouts = new Set()
 
@@ -955,6 +960,7 @@ export default {
           const { namespaceID } = this.namespace
           this.findPageByID({ namespaceID, pageID, force: true }).then((page) => {
             this.page = page.clone()
+            this.initialPageState = page.clone()
             return this.fetchAttachments()
           }).then(this.fetchLayouts)
             .finally(() => {
@@ -963,6 +969,14 @@ export default {
         }
       },
     },
+  },
+
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedComposePage(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedComposePage(next)
   },
 
   created () {
@@ -986,6 +1000,7 @@ export default {
       const { namespaceID } = this.namespace
       return this.findLayoutsByPageID({ namespaceID, pageID: this.pageID, force: true }).then(layouts => {
         this.layouts = layouts
+        this.initialLayoutsState = JSON.parse(JSON.stringify(layouts))
       })
     },
 
@@ -1061,6 +1076,7 @@ export default {
         return this.updatePage({ namespaceID, ...this.page, resourceTranslationLanguage })
       }).then(page => {
         this.page = page.clone()
+        this.initialPageState = page.clone()
         return this.handleSaveLayouts()
       }).then(this.handlePageLayoutReorder)
         .then(() => {
@@ -1156,6 +1172,13 @@ export default {
 
     layoutHandleState (layoutHandle) {
       return handle.handleState(layoutHandle)
+    },
+
+    checkUnsavedComposePage (next) {
+      let layoutsStateChange = isEqual(this.layouts, this.initialLayoutsState);
+      let pageStateChange = isEqual(this.page, this.initialPageState)
+
+      next(!(layoutsStateChange && pageStateChange) ? window.confirm(this.$t('unsavedChanges')) : true)
     },
   },
 }

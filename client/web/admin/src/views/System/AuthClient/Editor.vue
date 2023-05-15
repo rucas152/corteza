@@ -47,7 +47,7 @@
   </b-container>
 </template>
 <script>
-
+import { isEqual, cloneDeep } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CAuthclientEditorInfo from 'corteza-webapp-admin/src/components/Authclient/CAuthclientEditorInfo'
 import { mapGetters } from 'vuex'
@@ -103,6 +103,7 @@ export default {
   data () {
     return {
       authclient: undefined,
+      initialAuthclientState: undefined,
       secret: '',
 
       info: {
@@ -130,6 +131,14 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
   watch: {
     authClientID: {
       immediate: true,
@@ -138,6 +147,7 @@ export default {
           this.fetchAuthclient()
         } else {
           this.authclient = makeNewAuthClient()
+          this.initialAuthclientState = makeNewAuthClient()
         }
       },
     },
@@ -150,6 +160,7 @@ export default {
       this.$SystemAPI.authClientRead({ clientID: this.authClientID })
         .then(ac => {
           this.authclient = ac
+          this.initialAuthclientState = cloneDeep(ac)
         })
         .catch(this.toastErrorHandler(this.$t('notification:authclient.fetch.error')))
         .finally(() => {
@@ -167,6 +178,7 @@ export default {
         this.$SystemAPI.authClientUpdate({ clientID, ...authclient })
           .then(ac => {
             this.authclient = ac
+            this.initialAuthclientState = cloneDeep(ac)
 
             this.toastSuccess(this.$t('notification:authclient.update.success'))
           })
@@ -178,6 +190,7 @@ export default {
         this.$SystemAPI.authClientCreate({ ...authclient })
           .then((ac) => {
             this.authclient = ac
+            this.initialAuthclientState = cloneDeep(ac)
             const { authClientID } = ac
             this.animateSuccess('info')
             this.toastSuccess(this.$t('notification:authclient.create.success'))
@@ -226,6 +239,14 @@ export default {
       this.$SystemAPI
         .authClientRegenerateSecret(({ clientID }))
         .then(newSecret => { this.secret = newSecret })
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.authclient, this.initialAuthclientState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }

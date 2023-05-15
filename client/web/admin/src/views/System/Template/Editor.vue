@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { isEqual, cloneDeep } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CTemplateEditorInfo from 'corteza-webapp-admin/src/components/Template/CTemplateEditorInfo'
 import CTemplateEditorContent from 'corteza-webapp-admin/src/components/Template/CTemplateEditorContent/Index'
@@ -94,6 +95,7 @@ export default {
   data () {
     return {
       template: undefined,
+      initialTemplateState: undefined,
 
       info: {
         processing: false,
@@ -131,9 +133,18 @@ export default {
           this.fetchTemplate()
         } else {
           this.template = new system.Template()
+          this.initialTemplateState = new system.Template()
         }
       },
     },
+  },
+
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
   },
 
   methods: {
@@ -143,6 +154,7 @@ export default {
       this.$SystemAPI.templateRead({ templateID: this.templateID })
         .then(t => {
           this.template = new system.Template(t)
+          this.initialTemplateState = new system.Template(cloneDeep(t))
         })
         .catch(this.toastErrorHandler(this.$t('notification:template.fetch.error')))
         .finally(() => {
@@ -199,6 +211,7 @@ export default {
         this.$SystemAPI.templateUpdate(template)
           .then(template => {
             this.template = template
+            this.initialTemplateState = cloneDeep(template)
 
             this.toastSuccess(this.$t('notification:template.update.success'))
           })
@@ -220,6 +233,14 @@ export default {
             this.decLoader()
             this.info.processing = false
           })
+      }
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.template, this.initialTemplateState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
       }
     },
   },

@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import { isEqual, cloneDeep } from 'lodash'
 import { NoID, system } from '@cortezaproject/corteza-js'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CUserEditorInfo from 'corteza-webapp-admin/src/components/User/CUserEditorInfo'
@@ -140,8 +141,13 @@ export default {
   data () {
     return {
       user: undefined,
+      initialUserState: undefined,
 
       membership: {
+        active: [],
+        original: [],
+      },
+      initialMembershipState: {
         active: [],
         original: [],
       },
@@ -200,9 +206,18 @@ export default {
           this.fetchExternalAuthProviders()
         } else {
           this.user = new system.User()
+          this.initialUserState = new system.User()
         }
       },
     },
+  },
+
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
   },
 
   methods: {
@@ -216,6 +231,7 @@ export default {
       return this.$SystemAPI.userRead({ userID: this.userID })
         .then(user => {
           this.user = new system.User(user)
+          this.initialUserState = new system.User(cloneDeep(user))
         })
         .catch(this.toastErrorHandler(this.$t('notification:user.fetch.error')))
         .finally(() => {
@@ -228,6 +244,7 @@ export default {
       return this.$SystemAPI.userMembershipList({ userID: this.userID })
         .then((set = []) => {
           this.membership = { active: [...set], original: [...set] }
+          this.initialMembershipState = cloneDeep(this.membership)
         })
         .catch(this.toastErrorHandler(this.$t('notification:user.roles.error')))
         .finally(() => {
@@ -264,6 +281,7 @@ export default {
         this.$SystemAPI.userUpdate(payload)
           .then(user => {
             this.user = new system.User(user)
+            this.initialUserState = new system.User(cloneDeep(user))
 
             this.animateSuccess('info')
             this.toastSuccess(this.$t('notification:user.update.success'))
@@ -498,6 +516,17 @@ export default {
           this.toastSuccess(this.$t('notification:user.avatarDelete.success'))
         })
         .catch(this.toastErrorHandler(this.$t('notification:user.avatarDelete.error')))
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        let userChangesStatus = !isEqual(this.user, this.initialUserState)
+        let membershipChangesStatus = !isEqual(this.membership, this.initialMembershipState)
+
+        next((userChangesStatus || membershipChangesStatus) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }

@@ -53,6 +53,7 @@
   </b-container>
 </template>
 <script>
+import { isEqual, cloneDeep } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CApplicationEditorInfo from 'corteza-webapp-admin/src/components/Application/CApplicationEditorInfo'
 import CApplicationEditorUnify from 'corteza-webapp-admin/src/components/Application/CApplicationEditorUnify'
@@ -84,6 +85,7 @@ export default {
   data () {
     return {
       application: undefined,
+      initialApplicationState: undefined,
 
       info: {
         processing: false,
@@ -118,6 +120,14 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
   watch: {
     applicationID: {
       immediate: true,
@@ -126,6 +136,7 @@ export default {
           this.fetchApplication()
         } else {
           this.application = {}
+          this.initialApplicationState = {}
         }
       },
     },
@@ -300,6 +311,15 @@ export default {
       application.unify.pinned = (application.flags || []).includes('pinned')
 
       this.application = application
+      this.initialApplicationState = cloneDeep(application)
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.application, this.initialApplicationState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }

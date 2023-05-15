@@ -95,6 +95,17 @@
           <div
             class="toolbox border-0 p-2 m-0 text-light text-center"
           >
+            <div
+              v-if="unsavedBlocks.has(index)"
+              :title="$t('tooltip.unsavedChanges')"
+              class="btn border-0"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'exclamation-triangle']"
+                class="text-warning"
+              />
+            </div>
+
             <b-button-group>
               <b-button
                 :title="$t('builder:tooltip.add.displayElement')"
@@ -405,6 +416,8 @@ export default {
       showReport: true,
 
       report: undefined,
+      
+      unsavedBlocks: new Set(),
 
       dataframes: [],
 
@@ -625,10 +638,19 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedBlocks(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedBlocks(next)
+  },
+
   watch: {
     reportID: {
       immediate: true,
       handler (reportID) {
+        this.unsavedBlocks.clear()
         this.scenarios.selected = undefined
 
         if (reportID) {
@@ -809,6 +831,7 @@ export default {
         .then(() => {
           this.mapBlocks()
           this.refreshReport()
+          this.unsavedBlocks.clear()
         })
     },
 
@@ -837,6 +860,8 @@ export default {
     },
 
     updateBlock () {
+      this.unsavedBlocks.add(this.blocks.currentIndex)
+
       if (this.currentBlock) {
         const elements = this.currentBlock.elements
 
@@ -855,10 +880,12 @@ export default {
 
     deleteBlock (index = undefined) {
       this.reindexBlocks(this.reportBlocks.filter((p, i) => index !== i))
+      this.unsavedBlocks.add(index)
     },
 
     // Display elements
     openDisplayElementSelector (index) {
+      // console.log('display elements')
       this.blocks.currentIndex = index
       this.displayElements.showSelector = true
     },
@@ -918,6 +945,11 @@ export default {
 
     getOptionKey (scenario) {
       return scenario
+    },
+
+    // Trigger browser dialog on page leave to prevent unsaved changes
+    checkUnsavedBlocks (next) {
+      next(!this.unsavedBlocks.size || window.confirm(this.$t('builder:unsaved-changes')))
     },
   },
 }

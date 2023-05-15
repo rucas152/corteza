@@ -316,6 +316,7 @@
 </template>
 
 <script>
+import { isEqual } from 'lodash'
 import { compose, NoID } from '@cortezaproject/corteza-js'
 import { url, handle } from '@cortezaproject/corteza-vue'
 import EditorToolbar from 'corteza-webapp-compose/src/components/Admin/EditorToolbar'
@@ -338,6 +339,7 @@ export default {
       processing: false,
 
       namespace: new compose.Namespace({ enabled: true }),
+      initialNamespaceState: new compose.Namespace({ enabled: true }),
       namespaceAssets: {
         logo: undefined,
         icon: undefined,
@@ -432,6 +434,14 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedNamespace(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedNamespace(next)
+  },
+
   methods: {
     async fetchNamespace () {
       this.processing = true
@@ -446,6 +456,12 @@ export default {
           .then(ns => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
+            this.initialNamespaceState = this.namespace.clone()
+            this.initialNamespaceState.meta = {
+              subtitle: '',
+              description: '',
+              ...this.initialNamespaceState.meta,
+            }
 
             if (this.isClone) {
               this.namespace.name = `${ns.name} (${this.$t('cloneSuffix')})`
@@ -456,6 +472,12 @@ export default {
           })
       } else {
         this.namespace = new compose.Namespace({ enabled: true })
+        this.initialNamespaceState = this.namespace.clone()
+        this.initialNamespaceState.meta = {
+              subtitle: '',
+              description: '',
+              ...this.initialNamespaceState.meta,
+            }
       }
 
       this.namespace.meta = {
@@ -534,6 +556,12 @@ export default {
           await this.$store.dispatch('namespace/update', { ...payload, namespaceID }).then((ns) => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
+            this.initialNamespaceState = this.namespace.clone()
+            this.initialNamespaceState.meta = {
+              subtitle: '',
+              description: '',
+              ...this.initialNamespaceState.meta,
+            }
 
             this.toastSuccess(this.$t('notification:namespace.saved'))
           })
@@ -546,6 +574,12 @@ export default {
         try {
           await this.$store.dispatch('namespace/clone', { namespaceID, name, slug, enabled, meta }).then((ns) => {
             this.namespace = new compose.Namespace(ns)
+            this.initialNamespaceState = this.namespace.clone()
+            this.initialNamespaceState.meta = {
+              subtitle: '',
+              description: '',
+              ...this.initialNamespaceState.meta,
+            }
           })
         } catch (e) {
           this.toastErrorHandler(this.$t('notification:namespace.cloneFailed'))(e)
@@ -557,6 +591,12 @@ export default {
           await this.$store.dispatch('namespace/create', payload).then((ns) => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
+            this.initialNamespaceState = this.namespace.clone()
+            this.initialNamespaceState.meta = {
+              subtitle: '',
+              description: '',
+              ...this.initialNamespaceState.meta,
+            }
 
             this.toastSuccess(this.$t('notification:namespace.saved'))
           })
@@ -692,6 +732,10 @@ export default {
     resetLogo () {
       this.namespace.meta.logo = undefined
       this.namespace.meta.logoID = undefined
+    },
+
+    checkUnsavedNamespace (next) {
+      next(!isEqual(this.namespace, this.initialNamespaceState) ? window.confirm(this.$t('manage.unsavedChanges')) : true)
     },
   },
 }

@@ -1,5 +1,6 @@
 editor:
   title: Compose settings
+  unsavedChanges:  Unsaved changes will be lost. Do you wish to leave the page?
   basic:
     attachments:
       max-size: Max size (MB)

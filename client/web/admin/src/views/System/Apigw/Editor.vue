@@ -53,6 +53,7 @@
   </b-container>
 </template>
 <script>
+import { isEqual, cloneDeep } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CRouteEditorInfo from 'corteza-webapp-admin/src/components/Apigw/CRouteEditorInfo'
 import CFiltersStepper from 'corteza-webapp-admin/src/components/Apigw/CFiltersStepper'
@@ -85,6 +86,7 @@ export default {
   data () {
     return {
       route: {},
+      initialRouteState: {},
       routeEndpoint: undefined,
 
       info: {
@@ -121,6 +123,14 @@ export default {
     },
   },
 
+  beforeRouteUpdate (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    this.checkUnsavedChanges(next)
+  },
+
   watch: {
     routeID: {
       immediate: true,
@@ -135,6 +145,8 @@ export default {
           this.route = {
             method: 'GET',
           }
+
+          this.initialRouteState = cloneDeep(this.route)
         }
       },
     },
@@ -146,6 +158,7 @@ export default {
       this.$SystemAPI.apigwRouteRead({ routeID: this.routeID, incFlags: 1 })
         .then((api) => {
           this.route = api
+          this.initialRouteState = cloneDeep(api)
           this.routeEndpoint = btoa(api.endpoint)
         })
         .catch(this.toastErrorHandler(this.$t('notification:gateway.fetch.error')))
@@ -324,6 +337,14 @@ export default {
 
     fetchSteps () {
       this.steps = ['prefilter', 'processer', 'postfilter']
+    },
+
+    checkUnsavedChanges (next) {
+      if (!this.$route.path.includes('/new')) {
+        next(!isEqual(this.route, this.initialRouteState) ? window.confirm(this.$t('unsavedChanges')) : true)
+      } else {
+        next(true)
+      }
     },
   },
 }
