@@ -62,7 +62,7 @@
         show-empty
         no-sort-reset
         no-local-sorting
-        :primary-key="primaryKey"
+        :primary-key="primaryKey" 
         class="mh-100 h-100 mb-0"
         @sort-changed="pagination.page = 1"
         @row-clicked="$emit('row-clicked', $event)"
@@ -390,6 +390,10 @@ export default {
       }
 
       this.$router.replace({ query: { ...this.$route.query, page, pageCursor } })
+    },
+
+    refresh () {
+      this.$refs.resourceList.refresh()
     },
   },
 }

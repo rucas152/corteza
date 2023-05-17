@@ -8,6 +8,7 @@
     </portal>
 
     <c-resource-list
+      ref="resourceList"
       data-test-id="table-modules-list"
       :primary-key="primaryKey"
       :filter="filter"
@@ -126,10 +127,7 @@
             />
           </template>
 
-          <b-dropdown-item
-            link-class="p-0"
-            variant="light"
-          >
+          <b-dropdown-item>
             <b-button
               data-test-id="button-all-records"
               variant="outline-light"
@@ -146,8 +144,6 @@
 
           <b-dropdown-item
             v-if="m.canGrant"
-            link-class="p-0"
-            variant="light"
           >
             <c-permissions-button
               :title="m.name || m.handle || m.moduleID"
@@ -158,6 +154,23 @@
               button-variant="link text-decoration-none text-dark regular-font rounded-0"
               class="text-dark d-print-none border-0"
             />
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(m)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('list.delete') }}
+            </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
       </template>
@@ -278,6 +291,8 @@ export default {
   methods: {
     ...mapActions({
       createPage: 'page/create',
+      deletePage: 'page/delete',
+      deleteModule: 'module/delete',
     }),
 
     handleRowClicked ({ moduleID, canUpdateModule, canDeleteModule }) {
@@ -313,6 +328,19 @@ export default {
     onImportSuccessful () {
       this.filterList()
       this.toastSuccess(this.$t('notification:general.import.successful'))
+    },
+
+    handleDelete (module) {
+      this.deleteModule(module).then(() => {
+        const moduleRecordPage = this.pages.find(p => p.moduleID === module.moduleID)
+        if (moduleRecordPage) {
+          return this.deletePage({ ...moduleRecordPage, strategy: 'rebase' })
+        }
+      }).catch(this.toastErrorHandler(this.$t('notification:module.deleteFailed')))
+        .finally(() => {
+          this.toastSuccess(this.$t('notification:module.deleted'))
+          this.$refs.resourceList.refresh()
+        })
     },
   },
 }

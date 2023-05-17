@@ -8,6 +8,7 @@
     </portal>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -105,10 +106,8 @@
               :icon="['fas', 'ellipsis-v']"
             />
           </template>
-          <b-dropdown-item
-            link-class="p-0"
-            variant="light"
-          >
+
+          <b-dropdown-item>
             <c-permissions-button
               :title="c.name || c.handle || c.chartID"
               :target="c.name || c.handle || c.chartID"
@@ -117,6 +116,23 @@
               :button-label="$t('permissions:ui.label')"
               button-variant="link dropdown-item text-decoration-none text-dark regular-font rounded-0"
             />
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(c)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('chart.delete') }}
+            </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
       </template>
@@ -216,6 +232,7 @@ export default {
 
     ...mapActions({
       createChart: 'chart/create',
+      deleteChart: 'chart/delete',
     }),
 
     create (subType) {
@@ -268,6 +285,13 @@ export default {
     onImportSuccessful () {
       this.filterList()
       this.toastSuccess(this.$t('notification:general.import.successful'))
+    },
+
+    handleDelete (chart) {
+      this.deleteChart(chart).then(() => {
+        this.toastSuccess(this.$t('notification:chart.deleted'))
+        this.$refs.resourceList.refresh()
+      }).catch(this.toastErrorHandler(this.$t('notification:chart.deleteFailed')))
     },
   },
 }
