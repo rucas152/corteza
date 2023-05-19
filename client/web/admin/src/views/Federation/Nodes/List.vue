@@ -23,9 +23,8 @@
       </b-button>
     </c-content-header>
 
-    <!-- Add three dots here -->
-
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :fields="fields"
       :filter="filter"
@@ -49,9 +48,8 @@
       @row-clicked="handleRowClicked"
       @search="filterList"
     >
-      <template #actions="{ item }">
+      <template #actions="{ item: n }">
         <b-dropdown
-          v-if="item.nodeID === item.sharedNodeID && (item.status || '').toLowerCase() === 'pair_requested'"
           variant="outline-light"
           toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
           no-caret
@@ -64,18 +62,58 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="n.nodeID === n.sharedNodeID && (item.status || '').toLowerCase() === 'pair_requested'"
+          >
+            <!-- what should we call this triangle i.e a label for it -->
             <b-button
               size="sm"
               variant="link"
-              class="p-0 pr-1"
-              @click="openConfirmPending(item)"
+              @click="openConfirmPending(n)"
             >
               <font-awesome-icon
                 :icon="['fas', 'exclamation-triangle']"
                 class="text-danger"
               />
             </b-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-if="!n.deletedAt"
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(n)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('delete') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-else
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(n)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('undelete') }}
+            </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
       </template>
@@ -346,6 +384,37 @@ export default {
         .finally(() => {
           this.pair.processing = false
         })
+    },
+
+    getNodeInfo (node) {
+      return { nodeID: node[this.primaryKey] }
+    },
+
+    handleDelete (node) {
+      this.incLoader()
+      const { nodeID } = this.getNodeInfo(node)
+
+      if (node.deletedAt) {
+        this.$FederationAPI.nodeUndelete({ nodeID })
+          .then(() => {
+            this.toastSuccess(this.$t('notification:federation.undelete.success'))
+            this.$refs.resourceList.refresh()
+          })
+          .catch(this.toastErrorHandler(this.$t('notification:federation.undelete.error')))
+          .finally(() => {
+            this.decLoader()
+          })
+      } else {
+        this.$FederationAPI.nodeDelete({ nodeID })
+          .then(() => {
+            this.toastSuccess(this.$t('notification:federation.delete.success'))
+            this.$refs.resourceList.refresh()
+          })
+          .catch(this.toastErrorHandler(this.$t('notification:federation.delete.error')))
+          .finally(() => {
+            this.decLoader()
+          })
+      }
     },
   },
 }
