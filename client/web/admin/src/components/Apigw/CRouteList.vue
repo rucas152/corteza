@@ -14,6 +14,7 @@
     </template>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -31,7 +32,7 @@
         prevPagination: $t('admin:general.pagination.prev'),
         nextPagination: $t('admin:general.pagination.next'),
       }"
-      class="h-100"
+      class="h-100 route-list"
       clickable
       @search="filterList"
       @row-clicked="handleRowClicked"
@@ -90,12 +91,84 @@
           @change="filterList"
         />
       </template>
+
+      <template #actions="{ item: r }">
+        <b-dropdown
+          boundary="viewport"
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+          class="position-static"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-permissions-button
+              v-if="getRouteInfo(r) && canGrant"
+              :title="getRouteInfo(r).endpoint || getRouteInfo(r).routeID"
+              :target="getRouteInfo(r).endpoint || getRouteInfo(r).routeID"
+              :resource="`corteza::system:apigw-route/${getRouteInfo(r).routeID}`"
+              button-variant="link dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="text-dark d-print-none border-0"
+            >
+              <font-awesome-icon :icon="['fas', 'lock']" />
+
+              {{ $t('permissions') }}
+            </c-permissions-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-if="!getRouteInfo(r).alreadyDeleted"
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(r)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('delete') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-else
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(r)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('undelete') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
+      </template>
     </c-resource-list>
   </b-card>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import listHelpers from 'corteza-webapp-admin/src/mixins/listHelpers'
 import moment from 'moment'
 import { components } from '@cortezaproject/corteza-vue'
@@ -148,6 +221,11 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+          label: '',
+          tdClass: 'text-right text-nowrap',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -171,9 +249,66 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      incLoader: 'ui/incLoader',
+      decLoader: 'ui/decLoader',
+    }),
+
     items () {
       return this.procListResults(this.$SystemAPI.apigwRouteList(this.encodeListParams()))
+    },
+
+    handleDelete (route) {
+      this.incLoader()
+
+      if (route.deletedAt) {
+        const { routeID } = this.getRouteInfo(route)
+        this.$SystemAPI
+          .apigwRouteUndelete({ routeID })
+          .then(() => {
+            this.toastSuccess(this.$t('notification:gateway.undelete.success'))
+            this.$refs.resourceList.refresh()
+          })
+          .catch(this.toastErrorHandler(this.$t('notification:gateway.undelete.error')))
+          .finally(() => {
+            this.decLoader()
+          })
+      } else {
+        const { routeID } = this.getRouteInfo(route)
+        this.$SystemAPI
+          .apigwRouteDelete({ routeID })
+          .then(() => {
+            this.toastSuccess(this.$t('notification:gateway.delete.success'))
+            this.$refs.resourceList.refresh()
+          })
+          .catch(this.toastErrorHandler(this.$t('notification:gateway.delete.error')))
+          .finally(() => {
+            this.decLoader()
+          })
+      }
     },
   },
 }
 </script>
+
+<style lang="scss">
+.route-list {
+  td:nth-of-type(5) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(5) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

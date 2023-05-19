@@ -201,5 +201,9 @@ export default {
     handleRowClicked (item) {
       this.$router.push({ name: this.editRoute, params: { [this.primaryKey]: item[this.primaryKey] } })
     },
+
+    getRouteInfo (item) {
+      return { routeID: item[this.primaryKey], endpoint: item.endpoint, alreadyDeleted: !!item.deletedAt }
+    },
   },
 }
