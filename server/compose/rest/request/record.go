@@ -339,6 +339,11 @@ type (
 		//
 		// Fields to update and their values
 		Values types.RecordValueSet
+
+		// IncludeAllRecords POST parameter
+		//
+		// Flag value for selecting all records
+		IncludeAllRecords bool
 	}
 
 	RecordBulkDelete struct {
@@ -361,6 +366,11 @@ type (
 		//
 		// Remove ALL records of a specified module (pending implementation)
 		Truncate bool
+
+		// IncludeAllRecords POST parameter
+		//
+		// Flag value for selecting all records
+		IncludeAllRecords bool
 	}
 
 	RecordDelete struct {
@@ -412,6 +422,11 @@ type (
 		//
 		// IDs of records to undelete
 		RecordIDs []string
+
+		// IncludeAllRecords POST parameter
+		//
+		// Flag value for selecting all records
+		IncludeAllRecords bool
 	}
 
 	RecordUpload struct {
@@ -1626,10 +1641,11 @@ func NewRecordPatch() *RecordPatch {
 // Auditable returns all auditable/loggable parameters
 func (r RecordPatch) Auditable() map[string]interface{} {
 	return map[string]interface{}{
-		"namespaceID": r.NamespaceID,
-		"moduleID":    r.ModuleID,
-		"records":     r.Records,
-		"values":      r.Values,
+		"namespaceID":       r.NamespaceID,
+		"moduleID":          r.ModuleID,
+		"records":           r.Records,
+		"values":            r.Values,
+		"includeAllRecords": r.IncludeAllRecords,
 	}
 }
 
@@ -1653,6 +1669,11 @@ func (r RecordPatch) GetValues() types.RecordValueSet {
 	return r.Values
 }
 
+// Auditable returns all auditable/loggable parameters
+func (r RecordPatch) GetIncludeAllRecords() bool {
+	return r.IncludeAllRecords
+}
+
 // Fill processes request and fills internal variables
 func (r *RecordPatch) Fill(req *http.Request) (err error) {
 
@@ -1674,6 +1695,12 @@ func (r *RecordPatch) Fill(req *http.Request) (err error) {
 		} else if err == nil {
 			// Multipart params
 
+			if val, ok := req.MultipartForm.Value["includeAllRecords"]; ok && len(val) > 0 {
+				r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
+				if err != nil {
+					return err
+				}
+			}
 		}
 	}
 
@@ -1697,6 +1724,13 @@ func (r *RecordPatch) Fill(req *http.Request) (err error) {
 		//        return err
 		//    }
 		//}
+
+		if val, ok := req.Form["includeAllRecords"]; ok && len(val) > 0 {
+			r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	{
@@ -1728,10 +1762,11 @@ func NewRecordBulkDelete() *RecordBulkDelete {
 // Auditable returns all auditable/loggable parameters
 func (r RecordBulkDelete) Auditable() map[string]interface{} {
 	return map[string]interface{}{
-		"namespaceID": r.NamespaceID,
-		"moduleID":    r.ModuleID,
-		"recordIDs":   r.RecordIDs,
-		"truncate":    r.Truncate,
+		"namespaceID":       r.NamespaceID,
+		"moduleID":          r.ModuleID,
+		"recordIDs":         r.RecordIDs,
+		"truncate":          r.Truncate,
+		"includeAllRecords": r.IncludeAllRecords,
 	}
 }
 
@@ -1753,6 +1788,11 @@ func (r RecordBulkDelete) GetRecordIDs() []string {
 // Auditable returns all auditable/loggable parameters
 func (r RecordBulkDelete) GetTruncate() bool {
 	return r.Truncate
+}
+
+// Auditable returns all auditable/loggable parameters
+func (r RecordBulkDelete) GetIncludeAllRecords() bool {
+	return r.IncludeAllRecords
 }
 
 // Fill processes request and fills internal variables
@@ -1782,6 +1822,13 @@ func (r *RecordBulkDelete) Fill(req *http.Request) (err error) {
 					return err
 				}
 			}
+
+			if val, ok := req.MultipartForm.Value["includeAllRecords"]; ok && len(val) > 0 {
+				r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
+				if err != nil {
+					return err
+				}
+			}
 		}
 	}
 
@@ -1801,6 +1848,13 @@ func (r *RecordBulkDelete) Fill(req *http.Request) (err error) {
 
 		if val, ok := req.Form["truncate"]; ok && len(val) > 0 {
 			r.Truncate, err = payload.ParseBool(val[0]), nil
+			if err != nil {
+				return err
+			}
+		}
+
+		if val, ok := req.Form["includeAllRecords"]; ok && len(val) > 0 {
+			r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
 			if err != nil {
 				return err
 			}
@@ -1954,9 +2008,10 @@ func NewRecordBulkUndelete() *RecordBulkUndelete {
 // Auditable returns all auditable/loggable parameters
 func (r RecordBulkUndelete) Auditable() map[string]interface{} {
 	return map[string]interface{}{
-		"namespaceID": r.NamespaceID,
-		"moduleID":    r.ModuleID,
-		"recordIDs":   r.RecordIDs,
+		"namespaceID":       r.NamespaceID,
+		"moduleID":          r.ModuleID,
+		"recordIDs":         r.RecordIDs,
+		"includeAllRecords": r.IncludeAllRecords,
 	}
 }
 
@@ -1973,6 +2028,11 @@ func (r RecordBulkUndelete) GetModuleID() uint64 {
 // Auditable returns all auditable/loggable parameters
 func (r RecordBulkUndelete) GetRecordIDs() []string {
 	return r.RecordIDs
+}
+
+// Auditable returns all auditable/loggable parameters
+func (r RecordBulkUndelete) GetIncludeAllRecords() bool {
+	return r.IncludeAllRecords
 }
 
 // Fill processes request and fills internal variables
@@ -1996,6 +2056,12 @@ func (r *RecordBulkUndelete) Fill(req *http.Request) (err error) {
 		} else if err == nil {
 			// Multipart params
 
+			if val, ok := req.MultipartForm.Value["includeAllRecords"]; ok && len(val) > 0 {
+				r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
+				if err != nil {
+					return err
+				}
+			}
 		}
 	}
 
@@ -2012,6 +2078,13 @@ func (r *RecordBulkUndelete) Fill(req *http.Request) (err error) {
 		//        return err
 		//    }
 		//}
+
+		if val, ok := req.Form["includeAllRecords"]; ok && len(val) > 0 {
+			r.IncludeAllRecords, err = payload.ParseBool(val[0]), nil
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	{

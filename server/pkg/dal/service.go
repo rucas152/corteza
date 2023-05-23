@@ -965,7 +965,8 @@ func (svc *service) ReplaceModelAttribute(ctx context.Context, model *Model, dif
 // FindModelByRefs returns the model with all of the given refs matching
 //
 // @note refs are primarily used for DAL pipelines where steps can reference models
-//       by handles and slugs such as module and namespace.
+//
+//	by handles and slugs such as module and namespace.
 func (svc *service) FindModelByRefs(connectionID uint64, refs map[string]any) *Model {
 	if connectionID == 0 {
 		connectionID = svc.defConnID

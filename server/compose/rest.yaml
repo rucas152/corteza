@@ -1095,6 +1095,9 @@ endpoints:
         name: ext
         required: true
         title: Export format
+      - type: "bool"
+        name:  excludeRecords
+        title: Flag value for excluding  records
       get:
       - name: filter
         type: string
@@ -1163,6 +1166,7 @@ endpoints:
       post:
       - { name: records, type: "[]string", title: Records to update }
       - { name: values, type: "types.RecordValueSet", title: Fields to update and their values }
+      - { name: includeAllRecords, type: "bool", title: Flag value for selecting all records }
   - name: bulkDelete
     method: DELETE
     title: Delete record row from module section
@@ -1177,6 +1181,9 @@ endpoints:
         name: truncate
         required: false
         title: Remove ALL records of a specified module (pending implementation)
+      - type: "bool"
+        name: includeAllRecords
+        title: Flag value for selecting all records
   - name: delete
     method: DELETE
     title: Delete record row from module section
@@ -1207,6 +1214,9 @@ endpoints:
           name: recordIDs
           required: false
           title: IDs of records to undelete
+        - type: "bool"
+          name: includeAllRecords
+          title: Flag value for selecting all records
   - name: upload
     path: "/attachment"
     method: POST

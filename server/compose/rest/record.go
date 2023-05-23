@@ -244,6 +244,21 @@ func (ctrl *Record) Patch(ctx context.Context, req *request.RecordPatch) (interf
 		counters[v.Name]++
 	}
 
+	if req.IncludeAllRecords {
+		err = ctrl.record.UpdateAll(ctx,
+			req.NamespaceID,
+			req.ModuleID,
+			req.Values,
+			payload.ParseUint64s(req.Records)...,
+		)
+
+		if rve := types.IsRecordValueErrorSet(err); rve != nil {
+			return ctrl.handleValidationError(rve), nil
+		}
+
+		return nil, err
+	}
+
 	for _, r := range req.Records {
 		oo = append(oo, &types.RecordBulkOperation{
 			RecordID:    cast.ToUint64(r),
@@ -332,6 +347,10 @@ func (ctrl *Record) BulkDelete(ctx context.Context, r *request.RecordBulkDelete)
 		return nil, fmt.Errorf("pending implementation")
 	}
 
+	if r.IncludeAllRecords {
+		return api.OK(), ctrl.record.DeleteAll(ctx, r.NamespaceID, r.ModuleID, payload.ParseUint64s(r.RecordIDs)...)
+	}
+
 	return api.OK(), ctrl.record.DeleteByID(ctx,
 		r.NamespaceID,
 		r.ModuleID,
@@ -344,6 +363,10 @@ func (ctrl *Record) Undelete(ctx context.Context, r *request.RecordUndelete) (in
 }
 
 func (ctrl *Record) BulkUndelete(ctx context.Context, r *request.RecordBulkUndelete) (interface{}, error) {
+	if r.IncludeAllRecords {
+		return api.OK(), ctrl.record.UndeleteAll(ctx, r.NamespaceID, r.ModuleID, payload.ParseUint64s(r.RecordIDs)...)
+	}
+
 	return api.OK(), ctrl.record.UndeleteByID(ctx,
 		r.NamespaceID,
 		r.ModuleID,
