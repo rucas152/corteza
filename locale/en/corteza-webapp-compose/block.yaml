@@ -263,6 +263,8 @@ record:
 recordList:
   addRecord: Add
   cancelSelection: Cancel
+  customFilter: Custom filter
+  customPresetFilter: Custom preset filter
   inlineEdit:
     enabled: Inline value editing enabled
     button:
@@ -320,6 +322,7 @@ recordList:
     addField: Add new filter field
     addFilter: + Add filter
     byValue: Filter records based on field value
+    addFilterToPreset: Add filter to preset
     conditions:
       and: AND
       or: OR

@@ -90,7 +90,7 @@
                   :key="idx"
                   :disabled="activeFilters.includes(f.name)"
                   @click="updateFilter(f.filter, f.name)"
-                >
+                  >
                   {{ f.name }}
                 </b-dropdown-item>
               </b-dropdown>
@@ -295,6 +295,7 @@
                       :record-list-filter="recordListFilter"
                       class="d-print-none ml-1"
                       @filter="onFilter"
+                      @filter-preset="onSaveFilterPreset"
                       @reset="activeFilters = []"
                     />
 
@@ -822,6 +823,7 @@ export default {
       items: [],
       showingDeletedRecords: false,
       activeFilters: [],
+      customPresetFilters: [],
     }
   },
 
@@ -989,7 +991,11 @@ export default {
     },
 
     filterPresets () {
-      return this.options.filterPresets.filter(({ name, roles }) => name && this.isUserRoleMember(roles))
+      let presets = []
+      presets = presets.concat(this.options.filterPresets.filter(({ name, roles }) => name && this.isUserRoleMember(roles)))
+      presets = presets.concat(this.customPresetFilters)
+
+      return presets
     },
 
     authUserRoles () {
@@ -1015,6 +1021,7 @@ export default {
       handler () {
         this.createEvents()
         this.getStorageRecordListFilter()
+        this.getStorageRecordListFilterPreset()
         this.prepRecordList()
         this.refresh(true)
       },
@@ -1071,17 +1078,37 @@ export default {
     onFilter (filter = []) {
       filter.forEach(f => {
         if (this.activeFilters.includes(f.name)) {
-          this.filterPresets.find(p => p.name === f.name).filter.forEach((filterPreset) => {
-            if (!isEqual(f.filter, filterPreset.filter)) {
-              const filterIndex = this.activeFilters.indexOf(f.name)
-              this.activeFilters.splice(filterIndex, 1)
-            }
-          })
+          const filterPresets = this.filterPresets.find(p => p.name === f.name)
+
+          if (filterPresets) {
+            filterPresets.filter.forEach((filterPreset) => {
+              if (!isEqual(f.filter, filterPreset.filter)) {
+                const filterIndex = this.activeFilters.indexOf(f.name)
+                this.activeFilters.splice(filterIndex, 1)
+
+                this.activeFilters.push(this.$t('recordList.customFilter'))
+                f.name = this.$t('recordList.customFilter')
+              }
+            })
+          }
+        } else {
+          this.activeFilters.push(this.$t('recordList.customFilter'))
+          f.name = this.$t('recordList.customFilter')
         }
       })
 
       this.recordListFilter = filter
       this.setStorageRecordListFilter()
+      this.refresh(true)
+    },
+
+    onSaveFilterPreset (filter = []) {
+      this.customPresetFilters = [{
+        name: this.$t('recordList.customPresetFilter'),
+        filter
+      }]
+
+      this.setStorageRecordListFilterPreset(filter)
       this.refresh(true)
     },
 
@@ -1604,7 +1631,23 @@ export default {
           removeItem(`record-list-filters-${this.uniqueID}`)
         } else {
           this.recordListFilter = currentFilters
+          this.activeFilters = currentFilters.map((filter) => filter.name)
         }
+      } catch (e) {
+        // Land here if the filter is corrupted
+        console.warn(this.$t('notification:record-list.corrupted-filter'))
+        // Remove filter from the local storage
+        removeItem(`record-list-filters-${this.uniqueID}`)
+      }
+    },
+
+    getStorageRecordListFilterPreset () {
+      try {
+        // Get record list filters from localStorage
+        const currentFilters = getItem(`record-list-preset-${this.uniqueID}`)
+
+        // Set the custom preset filters
+        this.customPresetFilters = [currentFilters]
       } catch (e) {
         // Land here if the filter is corrupted
         console.warn(this.$t('notification:record-list.corrupted-filter'))
@@ -1621,6 +1664,23 @@ export default {
         currentListFilters = getItem(`record-list-filters-${this.uniqueID}`)
         currentListFilters = this.recordListFilter
         setItem(`record-list-filters-${this.uniqueID}`, currentListFilters)
+      } catch (e) {
+        console.warning(this.$t('notification:record-list.corrupted-filter'))
+      }
+    },
+
+    setStorageRecordListFilterPreset (filter = []) {
+      let currentListFilters = []
+
+      try {
+        // Get record list filters from localStorage
+        currentListFilters = getItem(`record-list-preset-${this.uniqueID}`)
+        currentListFilters = {
+          name: this.$t('recordList.customPresetFilter'),
+          filter
+        }
+
+        setItem(`record-list-preset-${this.uniqueID}`, currentListFilters)
       } catch (e) {
         console.warning(this.$t('notification:record-list.corrupted-filter'))
       }
@@ -1791,6 +1851,10 @@ td:hover .inline-actions {
   button:hover {
     color: $primary !important;
   }
+}
+
+::v-deep .b-form-tags-button {
+  display: none;
 }
 </style>
 
