@@ -601,7 +601,7 @@ export default {
       }
     },
 
-    processFilter() {
+    processFilter () {
       return this.componentFilter.map(({ groupCondition, filter = [], name }) => {
         filter = filter.map(({ record, ...f }) => {
           if (record) {

@@ -90,7 +90,7 @@
                   :key="idx"
                   :disabled="activeFilters.includes(f.name)"
                   @click="updateFilter(f.filter, f.name)"
-                  >
+                >
                   {{ f.name }}
                 </b-dropdown-item>
               </b-dropdown>
@@ -1105,7 +1105,7 @@ export default {
     onSaveFilterPreset (filter = []) {
       this.customPresetFilters = [{
         name: this.$t('recordList.customPresetFilter'),
-        filter
+        filter,
       }]
 
       this.setStorageRecordListFilterPreset(filter)
@@ -1677,7 +1677,7 @@ export default {
         currentListFilters = getItem(`record-list-preset-${this.uniqueID}`)
         currentListFilters = {
           name: this.$t('recordList.customPresetFilter'),
-          filter
+          filter,
         }
 
         setItem(`record-list-preset-${this.uniqueID}`, currentListFilters)
