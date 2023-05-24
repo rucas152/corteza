@@ -769,94 +769,80 @@ func (svc record) processUpdateAll(ctx context.Context, f types.RecordFilter, va
 		action func(props ...*recordActionProps) *recordAction
 
 		valueError *types.RecordValueErrorSet
-
-		i uint
 	)
 
-	// load both the namespace and module
-	if ns, m, err = loadModuleCombo(ctx, svc.store, f.NamespaceID, f.ModuleID); err != nil {
-		return
-	}
-
-	aProps.setNamespace(ns)
-	aProps.setModule(m)
-
-	f.Limit = 1000
-	cursor := ""
-	f.IncPageNavigation = true
-	f.IncTotal = true
-
-	// performing a batched search for IDs, processing them in batches of 1000 for update.
-	for {
-		if f.Paging, err = filter.NewPaging(f.Limit, cursor); err != nil {
+	return store.Tx(ctx, svc.store, func(ctx context.Context, s store.Storer) error {
+		// load both the namespace and module
+		if ns, m, err = loadModuleCombo(ctx, svc.store, f.NamespaceID, f.ModuleID); err != nil {
 			return err
 		}
 
-		records, recordFilter, err = svc.Find(ctx, f)
-		if err != nil {
-			return err
-		}
+		aProps.setNamespace(ns)
+		aProps.setModule(m)
 
-		ids := records.IDs()
-		totalRecords := recordFilter.Total
+		f.Limit = 10
+		cursor := ""
+		f.IncPageNavigation = true
+		f.IncTotal = true
 
-		for _, r = range records {
-			// check if the excluded ID is present in the fetched list and remove it from the records
-			excludeRec, index := containsUint64(excludeIds, r.ID)
-			if excludeRec {
-				excludeIds = append(excludeIds[:index], excludeIds[index+1:]...)
-				continue
+		// performing a batched search for IDs, processing them in batches of 1000 for update.
+		for {
+			if f.Paging, err = filter.NewPaging(f.Limit, cursor); err != nil {
+				return err
 			}
 
-			aProps.setRecord(r)
-
-			switch operation {
-			case types.OperationTypePatch:
-				action = RecordActionPatch
-				r, valueError, err = svc.patch(ctx, r, values)
-			case types.OperationTypeDelete:
-				action = RecordActionDelete
-				r, err = svc.processDelete(ctx, r, ns, m)
-			case types.OperationTypeUndelete:
-				action = RecordActionUndelete
-				r, err = svc.processUndelete(ctx, r, ns, m)
-			}
-
-			aProps.setChanged(r)
-
-			if valueError != nil && !valueError.IsValid() {
-				return RecordErrValueInput().Wrap(valueError)
-			}
-
-			_ = svc.recordAction(ctx, aProps, action, err)
-
+			records, recordFilter, err = svc.Find(ctx, f)
 			if err != nil {
 				return err
 			}
+
+			// check if the excluded ID is present in the fetched record list ids and remove the record associated with it
+			for _, id := range excludeIds {
+				excludeRec, index := containsUint64(records.IDs(), id)
+				if excludeRec {
+					records = append(records[:index], records[index+1:]...)
+					continue
+				}
+			}
+
+			for _, r = range records {
+				aProps.setRecord(r)
+
+				switch operation {
+				case types.OperationTypePatch:
+					action = RecordActionPatch
+					r, valueError, err = svc.patch(ctx, r, values)
+				case types.OperationTypeDelete:
+					action = RecordActionDelete
+					r, err = svc.processDelete(ctx, r, ns, m)
+				case types.OperationTypeUndelete:
+					action = RecordActionUndelete
+					r, err = svc.processUndelete(ctx, r, ns, m)
+				}
+
+				aProps.setChanged(r)
+
+				if valueError != nil && !valueError.IsValid() {
+					return RecordErrValueInput().Wrap(valueError)
+				}
+
+				_ = svc.recordAction(ctx, aProps, action, err)
+
+				if err != nil {
+					return err
+				}
+			}
+
+			if recordFilter.NextPage == nil {
+				break
+			}
+
+			// prepare the next cursor
+			cursor, _ = strconv.Unquote(recordFilter.NextPage.Encode())
 		}
 
-		// prepare the next cursor
-		if f.PageCursor == nil {
-			f.PageCursor = &filter.PagingCursor{}
-		}
-		f.PageCursor.Set("ID", ids[len(ids)-1], false)
-
-		cursor = f.PageCursor.Encode()
-		cursor, _ = strconv.Unquote(cursor)
-
-		// break after iterating through all the records
-		i += f.Limit
-
-		if int(f.Limit) > len(ids) {
-			i += uint(int(f.Limit) - len(ids))
-		}
-
-		if i >= totalRecords {
-			break
-		}
-	}
-
-	return
+		return nil
+	})
 }
 
 // Raw create function that is responsible for value validation, event dispatching

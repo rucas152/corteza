@@ -1095,9 +1095,6 @@ endpoints:
         name: ext
         required: true
         title: Export format
-      - type: "bool"
-        name:  excludeRecords
-        title: Flag value for excluding  records
       get:
       - name: filter
         type: string
