@@ -63,4 +63,8 @@ export class Template {
   get resourceType (): string {
     return 'system:template'
   }
+
+  clone (): Template {
+    return new Template(JSON.parse(JSON.stringify(this)))
+  }
 }

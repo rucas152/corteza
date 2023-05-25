@@ -125,7 +125,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.settings, this.initialSettingsState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.settings, this.initialSettingsState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }

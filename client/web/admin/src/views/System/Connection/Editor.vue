@@ -164,7 +164,7 @@ export default {
           this.fetchConnection(connectionID)
         } else {
           this.connection = new system.DalConnection()
-          this.initialConnectionState = new system.DalConnection()
+          this.initialConnectionState = this.connection.clone()
         }
       },
     },
@@ -216,7 +216,7 @@ export default {
             this.$router.push({ name: `system.connection.edit`, params: { connectionID } })
           } else {
             this.connection = new system.DalConnection(connection)
-            this.initialConnectionState = new system.DalConnection(connection)
+            this.initialConnectionState = this.connection.clone()
           }
         })
         .catch(this.toastErrorHandler(this.$t(`notification:connection.${op}.error`)))
@@ -255,7 +255,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.connection, this.initialConnectionState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.connection, this.initialConnectionState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }

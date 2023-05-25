@@ -999,8 +999,8 @@ export default {
     async fetchLayouts () {
       const { namespaceID } = this.namespace
       return this.findLayoutsByPageID({ namespaceID, pageID: this.pageID, force: true }).then(layouts => {
-        this.layouts = layouts
-        this.initialLayoutsState = JSON.parse(JSON.stringify(layouts))
+        this.layouts = layouts.map((layout) => new compose.PageLayout(layout))
+        this.initialLayoutsState = this.layouts.map((layout) => layout.clone())
       })
     },
 

@@ -113,14 +113,7 @@ export default {
             },
           }
 
-          this.initialSensitivityLevelState = {
-            handle: '',
-            level: 1,
-            meta: {
-              name: '',
-              description: '',
-            },
-          }
+          this.initialSensitivityLevelState = cloneDeep(this.sensitivityLevel)
         }
       },
     },
@@ -204,7 +197,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.sensitivityLevel, this.initialSensitivityLevelState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.sensitivityLevel, this.initialSensitivityLevelState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }

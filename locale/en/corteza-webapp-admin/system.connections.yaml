@@ -26,7 +26,6 @@ list:
     createdAt: Created
 
 editor:
-  unsavedChanges:  Unsaved changes will be lost. Do you wish to leave the page?
   title:
     edit: Edit connection
     create: New connection

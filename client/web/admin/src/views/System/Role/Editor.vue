@@ -164,7 +164,7 @@ export default {
           this.fetchRole()
         } else {
           this.role = new system.Role()
-          this.initialRoleState = new system.Role()
+          this.initialRoleState = this.role.clone()
           this.isContext = false
         }
       },
@@ -192,7 +192,8 @@ export default {
       this.$SystemAPI.roleRead({ roleID: this.roleID })
         .then(r => {
           this.role = new system.Role(r)
-          this.initialRoleState = new system.Role(r)
+          this.initialRoleState = this.role.clone()
+
           this.isContext = !!this.role.isContext
 
           if (this.role.canManageMembersOnRole && !this.role.isContext && !this.role.isClosed) {
@@ -330,7 +331,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.role, this.initialRoleState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.role, this.initialRoleState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }

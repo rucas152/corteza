@@ -141,4 +141,8 @@ export class DalConnection {
       }
     }
   }
+
+  clone (): DalConnection {
+    return new DalConnection(JSON.parse(JSON.stringify(this)))
+  }
 }

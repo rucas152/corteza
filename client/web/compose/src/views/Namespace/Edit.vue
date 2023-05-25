@@ -456,12 +456,6 @@ export default {
           .then(ns => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
-            this.initialNamespaceState = this.namespace.clone()
-            this.initialNamespaceState.meta = {
-              subtitle: '',
-              description: '',
-              ...this.initialNamespaceState.meta,
-            }
 
             if (this.isClone) {
               this.namespace.name = `${ns.name} (${this.$t('cloneSuffix')})`
@@ -472,12 +466,6 @@ export default {
           })
       } else {
         this.namespace = new compose.Namespace({ enabled: true })
-        this.initialNamespaceState = this.namespace.clone()
-        this.initialNamespaceState.meta = {
-              subtitle: '',
-              description: '',
-              ...this.initialNamespaceState.meta,
-            }
       }
 
       this.namespace.meta = {
@@ -486,6 +474,8 @@ export default {
         hideSidebar: false,
         ...this.namespace.meta,
       }
+
+      this.initialNamespaceState = this.namespace.clone()
 
       this.processing = false
       this.loaded = true
@@ -556,12 +546,6 @@ export default {
           await this.$store.dispatch('namespace/update', { ...payload, namespaceID }).then((ns) => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
-            this.initialNamespaceState = this.namespace.clone()
-            this.initialNamespaceState.meta = {
-              subtitle: '',
-              description: '',
-              ...this.initialNamespaceState.meta,
-            }
 
             this.toastSuccess(this.$t('notification:namespace.saved'))
           })
@@ -574,12 +558,6 @@ export default {
         try {
           await this.$store.dispatch('namespace/clone', { namespaceID, name, slug, enabled, meta }).then((ns) => {
             this.namespace = new compose.Namespace(ns)
-            this.initialNamespaceState = this.namespace.clone()
-            this.initialNamespaceState.meta = {
-              subtitle: '',
-              description: '',
-              ...this.initialNamespaceState.meta,
-            }
           })
         } catch (e) {
           this.toastErrorHandler(this.$t('notification:namespace.cloneFailed'))(e)
@@ -590,13 +568,6 @@ export default {
         try {
           await this.$store.dispatch('namespace/create', payload).then((ns) => {
             this.namespaceEnabled = ns.enabled
-            this.namespace = new compose.Namespace(ns)
-            this.initialNamespaceState = this.namespace.clone()
-            this.initialNamespaceState.meta = {
-              subtitle: '',
-              description: '',
-              ...this.initialNamespaceState.meta,
-            }
 
             this.toastSuccess(this.$t('notification:namespace.saved'))
           })
@@ -624,6 +595,8 @@ export default {
         hideSidebar: false,
         ...this.namespace.meta,
       }
+
+      this.initialNamespaceState = this.namespace.clone()
     },
 
     handleDelete () {

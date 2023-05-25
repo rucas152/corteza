@@ -139,6 +139,7 @@ export default {
               name: '',
             },
           }
+
           this.initialWorkflowState = cloneDeep(this.workflow)
         }
       },
@@ -234,7 +235,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.workflow, this.initialWorkflowState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.workflow, this.initialWorkflowState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }

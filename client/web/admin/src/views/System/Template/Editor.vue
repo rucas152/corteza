@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { isEqual, cloneDeep } from 'lodash'
+import { isEqual } from 'lodash'
 import editorHelpers from 'corteza-webapp-admin/src/mixins/editorHelpers'
 import CTemplateEditorInfo from 'corteza-webapp-admin/src/components/Template/CTemplateEditorInfo'
 import CTemplateEditorContent from 'corteza-webapp-admin/src/components/Template/CTemplateEditorContent/Index'
@@ -154,7 +154,7 @@ export default {
       this.$SystemAPI.templateRead({ templateID: this.templateID })
         .then(t => {
           this.template = new system.Template(t)
-          this.initialTemplateState = new system.Template(cloneDeep(t))
+          this.initialTemplateState = this.template.clone()
         })
         .catch(this.toastErrorHandler(this.$t('notification:template.fetch.error')))
         .finally(() => {
@@ -210,8 +210,8 @@ export default {
       if (this.templateID) {
         this.$SystemAPI.templateUpdate(template)
           .then(template => {
-            this.template = template
-            this.initialTemplateState = cloneDeep(template)
+            this.template = new system.Template(template)
+            this.initialTemplateState = this.template.clone()
 
             this.toastSuccess(this.$t('notification:template.update.success'))
           })
@@ -238,7 +238,7 @@ export default {
 
     checkUnsavedChanges (next) {
       if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.template, this.initialTemplateState) ? window.confirm(this.$t('unsavedChanges')) : true)
+        next(!isEqual(this.template, this.initialTemplateState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       } else {
         next(true)
       }
