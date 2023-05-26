@@ -155,14 +155,26 @@
           <div
             class="d-flex align-items-baseline my-auto pt-1 text-nowrap h-100"
           >
-            {{ $t('recordList.selected', { count: selected.length, total: items.length }) }}
-            <b-button
-              variant="link"
-              class="p-0 text-decoration-none"
-              @click.prevent="handleSelectAllOnPage({ isChecked: false })"
-            >
-              ({{ $t('recordList.cancelSelection') }})
-            </b-button>
+            <div>
+              {{ $t('recordList.selected', { count: selectedAllRecords ? allSelectedRecordsCount : selected.length, total: selectedAllRecords ? getPagination.count : items.length }) }}
+              <b-button
+                variant="link"
+                class="p-0 text-decoration-none"
+                @click.prevent="handleSelectAllOnPage({ isChecked: false })"
+              >
+                ({{ $t('recordList.cancelSelection') }})
+              </b-button>
+            </div>
+
+            <div class="ml-3">
+              <b-button
+                size="sm"
+                variant="outline-secondary"
+                @click="selectAllRecords()"
+              >
+                {{ $t('recordList.selectAllRecords') }}
+              </b-button>
+            </div>
           </div>
 
           <div class="d-flex align-items-center ml-auto">
@@ -179,7 +191,8 @@
               v-show="options.bulkRecordEditEnabled && canUpdateSelectedRecords"
               :module="recordListModule"
               :namespace="namespace"
-              :selected-records="selected"
+              :selected-records="selectedAllRecords ? excludedRecords: selected"
+              :is-all-records="selectedAllRecords"
               @save="onBulkUpdate()"
             />
 
@@ -822,6 +835,8 @@ export default {
       items: [],
       showingDeletedRecords: false,
       activeFilters: [],
+      selectedAllRecords: false,
+      excludedRecords: [],
     }
   },
 
@@ -995,6 +1010,11 @@ export default {
     authUserRoles () {
       return this.$auth.user.roles
     },
+
+    allSelectedRecordsCount () {
+      return this.getPagination.count - this.excludedRecords.length
+    },
+
   },
 
   watch: {
@@ -1092,17 +1112,33 @@ export default {
 
     onSelectRow (selected, item) {
       if (selected) {
-        if (this.selected.includes(item.id)) {
-          return
-        }
+        if (this.selectedAllRecords) {
+          const i = this.excludedRecords.indexOf(item.id)
+          if (i < 0) {
+            return
+          }
+          this.excludedRecords.splice(i, 1)
+        } else {
+          if (this.selected.includes(item.id)) {
+            return
+          }
 
-        this.selected.push(item.id)
-      } else {
-        const i = this.selected.indexOf(item.id)
-        if (i < 0) {
-          return
+          this.selected.push(item.id)
         }
-        this.selected.splice(i, 1)
+      } else {
+        if (this.selectedAllRecords) {
+          if (this.excludedRecords.includes(item.id)) {
+            return
+          }
+
+          this.excludedRecords.push(item.id)
+        } else {
+          const i = this.selected.indexOf(item.id)
+          if (i < 0) {
+            return
+          }
+          this.selected.splice(i, 1)
+        }
       }
     },
 
@@ -1127,6 +1163,7 @@ export default {
 
     handleShowDeleted () {
       this.showingDeletedRecords = !this.showingDeletedRecords
+      this.selectedAllRecords = false
       this.refresh(true)
     },
 
@@ -1419,9 +1456,18 @@ export default {
     handleSelectAllOnPage ({ isChecked }) {
       if (isChecked) {
         this.selected = this.items.map(({ id }) => id)
+        if (this.selectedAllRecords) {
+          this.selected = this.selected.filter((id) => !this.excludedRecords.includes(id))
+        }
       } else {
         this.selected = []
+        this.excludedRecords = []
       }
+    },
+
+    selectAllRecords () {
+      this.selectedAllRecords = !this.selectedAllRecords
+      this.handleSelectAllOnPage({ isChecked: this.selectedAllRecords })
     },
 
     handleRestoreSelectedRecords () {
@@ -1435,15 +1481,25 @@ export default {
       } else {
         const { moduleID, namespaceID } = this.items[0].r
 
-        // filter undeletable records from the selected list
-        const recordIDs = this.items
-          .filter(({ id, r }) => r.canUndeleteRecord && this.selected.includes(id))
-          .map(({ id }) => id)
+        let recordIDs = []
+
+        if (this.selectedAllRecords) {
+          recordIDs = this.items
+            .filter(({ id, r }) => r.canUndeleteRecord && this.excludedRecords.includes(id))
+            .map(({ id }) => id)
+        } else {
+          // filter undeletable records from the selected list
+          recordIDs = this.items
+            .filter(({ id, r }) => r.canUndeleteRecord && this.selected.includes(id))
+            .map(({ id }) => id)
+        }
 
         this.processing = true
 
+        const includeAllRecords = this.selectedAllRecords
+
         this.$ComposeAPI
-          .recordBulkUndelete({ moduleID, namespaceID, recordIDs })
+          .recordBulkUndelete({ moduleID, namespaceID, recordIDs, includeAllRecords })
           .then(() => {
             this.refresh(true)
             this.toastSuccess(this.$t('notification:record.undeleteBulkSuccess'))
@@ -1451,6 +1507,7 @@ export default {
           .catch(this.toastErrorHandler(this.$t('notification:record.undeleteBulkFailed')))
           .finally(() => {
             this.processing = false
+            this.selectedAllRecords = false
           })
       }
     },
@@ -1474,15 +1531,25 @@ export default {
         // same module so this should be safe to do.
         const { moduleID, namespaceID } = this.items[0].r
 
-        // filter deletable records from the selected list
-        const recordIDs = this.items
-          .filter(({ id, r }) => r.canDeleteRecord && selected.includes(id))
-          .map(({ id }) => id)
+        let recordIDs = []
+
+        if (this.selectedAllRecords) {
+          recordIDs = this.items
+            .filter(({ id, r }) => r.canUndeleteRecord && this.excludedRecords.includes(id))
+            .map(({ id }) => id)
+        } else {
+          // filter undeletable records from the selected list
+          recordIDs = this.items
+            .filter(({ id, r }) => r.canUndeleteRecord && this.selected.includes(id))
+            .map(({ id }) => id)
+        }
 
         this.processing = true
 
+        const includeAllRecords = this.selectedAllRecords
+
         this.$ComposeAPI
-          .recordBulkDelete({ moduleID, namespaceID, recordIDs })
+          .recordBulkDelete({ moduleID, namespaceID, recordIDs, includeAllRecords })
           .then(() => this.refresh(true))
           .then(() => {
             this.toastSuccess(this.$t('notification:record.deleteBulkSuccess'))
@@ -1490,6 +1557,7 @@ export default {
           .catch(this.toastErrorHandler(this.$t('notification:record.deleteBulkFailed')))
           .finally(() => {
             this.processing = false
+            this.selectedAllRecords = false
           })
       }
     },
@@ -1584,6 +1652,8 @@ export default {
             this.fetchRecords(namespaceID, fields, records),
           ]).then(() => {
             this.items = records.map(r => this.wrapRecord(r))
+          }).then(() => {
+            this.handleSelectAllOnPage({ isChecked: this.selectedAllRecords })
           })
         })
         .catch(this.toastErrorHandler(this.$t('notification:record.listLoadFailed')))
@@ -1683,6 +1753,7 @@ export default {
     },
 
     onBulkUpdate () {
+      this.selectedAllRecords = false
       this.refresh(true)
     },
 

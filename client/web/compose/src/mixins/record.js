@@ -262,7 +262,7 @@ export default {
         })
     }, 500),
 
-    handleBulkUpdateSelectedRecords: throttle(function (records) {
+    handleBulkUpdateSelectedRecords: throttle(function (records, includeAllRecords) {
       this.processing = true
 
       const values = []
@@ -282,7 +282,7 @@ export default {
       const { moduleID, namespaceID } = this.module
 
       return this
-        .$ComposeAPI.recordPatch({ moduleID, namespaceID, records, values })
+        .$ComposeAPI.recordPatch({ moduleID, namespaceID, records, values, includeAllRecords })
         .catch(err => {
           const { details = undefined } = err
           if (!!details && Array.isArray(details) && details.length > 0) {

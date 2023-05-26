@@ -477,6 +477,7 @@ recordList:
     label: Parent field
   selectable: Users will be able to select records
   selected: '{{count}} of {{total}} records selected'
+  selectAllRecords: Select all records
   sort:
     tooltip: Sort column
   showRecords:

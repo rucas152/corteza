@@ -87,7 +87,7 @@
             <b-button
               variant="primary"
               :disabled="!fields.length || processing"
-              @click="handleBulkUpdateSelectedRecords(selectedRecords)"
+              @click="handleBulkUpdateSelectedRecords(selectedRecords, isAllRecords)"
             >
               {{ $t('general.label.save') }}
             </b-button>
@@ -154,6 +154,10 @@ export default {
     modalTitle: {
       type: String,
       default: '',
+    },
+
+    isAllRecords: {
+      type: Boolean,
     },
   },
 
