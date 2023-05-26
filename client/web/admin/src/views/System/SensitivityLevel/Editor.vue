@@ -90,11 +90,11 @@ export default {
   },
 
   beforeRouteUpdate (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   beforeRouteLeave (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   watch: {
@@ -195,11 +195,13 @@ export default {
       }
     },
 
-    checkUnsavedChanges (next) {
-      if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.sensitivityLevel, this.initialSensitivityLevelState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
-      } else {
+    checkUnsavedChanges (next, to) {
+      const isNewPage = this.$route.path.includes('/new') && to.name.includes('edit')
+
+      if (isNewPage) {
         next(true)
+      } else if (!to.name.includes('edit')) {
+        next(!isEqual(this.sensitivityLevel, this.initialSensitivityLevelState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       }
     },
   },

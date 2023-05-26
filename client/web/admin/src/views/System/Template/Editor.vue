@@ -133,18 +133,18 @@ export default {
           this.fetchTemplate()
         } else {
           this.template = new system.Template()
-          this.initialTemplateState = new system.Template()
+          this.initialTemplateState = this.template.clone()
         }
       },
     },
   },
 
   beforeRouteUpdate (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   beforeRouteLeave (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   methods: {
@@ -236,11 +236,13 @@ export default {
       }
     },
 
-    checkUnsavedChanges (next) {
-      if (!this.$route.path.includes('/new')) {
-        next(!isEqual(this.template, this.initialTemplateState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
-      } else {
+    checkUnsavedChanges (next, to) {
+      const isNewPage = this.$route.path.includes('/new') && to.name.includes('edit')
+
+      if (isNewPage) {
         next(true)
+      } else if (!to.name.includes('edit')) {
+        next(!isEqual(this.template, this.initialTemplateState) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
       }
     },
   },

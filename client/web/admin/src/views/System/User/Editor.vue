@@ -209,11 +209,11 @@ export default {
   },
 
   beforeRouteUpdate (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   beforeRouteLeave (to, from, next) {
-    this.checkUnsavedChanges(next)
+    this.checkUnsavedChanges(next, to)
   },
 
   methods: {
@@ -513,14 +513,16 @@ export default {
         .catch(this.toastErrorHandler(this.$t('notification:user.avatarDelete.error')))
     },
 
-    checkUnsavedChanges (next) {
-      if (!this.$route.path.includes('/new')) {
+    checkUnsavedChanges (next, to) {
+      const isNewPage = this.$route.path.includes('/new') && to.name.includes('edit')
+
+      if (isNewPage) {
+        next(true)
+      } else if (!to.name.includes('edit')) {
         let userChangesStatus = !isEqual(this.user, this.initialUserState)
         let membershipChangesStatus = !isEqual(this.membership.initial, this.membership.active)
 
         next((userChangesStatus || membershipChangesStatus) ? window.confirm(this.$t('general:editor.unsavedChanges')) : true)
-      } else {
-        next(true)
       }
     },
   },
