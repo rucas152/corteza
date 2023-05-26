@@ -9,7 +9,6 @@
     <span
       v-for="(v, index) of formattedValue"
       :key="index"
-      class="text-nowrap"
       :class="{ 'd-block': field.options.multiDelimiter === '\n' }"
       @click.stop
     >
