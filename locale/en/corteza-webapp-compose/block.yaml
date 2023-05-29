@@ -265,6 +265,10 @@ recordList:
   cancelSelection: Cancel
   customFilter: Custom filter
   customPresetFilter: Custom preset filter
+  presetFilter:
+    reset: Reset
+    filterName: Filter name
+    addFilterPresetName: Add filter preset name
   inlineEdit:
     enabled: Inline value editing enabled
     button:
@@ -322,7 +326,7 @@ recordList:
     addField: Add new filter field
     addFilter: + Add filter
     byValue: Filter records based on field value
-    addFilterToPreset: Add filter to preset
+    addFilterToPreset: Save as preset
     conditions:
       and: AND
       or: OR

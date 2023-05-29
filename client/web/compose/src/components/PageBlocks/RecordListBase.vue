@@ -610,6 +610,13 @@
         open-on-select
         @save="onInlineEdit()"
       />
+
+      <!-- Modal for naming custom filter -->
+      <custom-filter-preset
+        :show-custom-preset-filter-modal="showCustomPresetFilterModal"
+        :custom-filter="currentCustomPresetFilter"
+        @save="setStorageRecordListFilterPreset"
+      />
     </template>
 
     <template
@@ -741,6 +748,7 @@ import draggable from 'vuedraggable'
 import RecordListFilter from 'corteza-webapp-compose/src/components/Common/RecordListFilter'
 import ColumnPicker from 'corteza-webapp-compose/src/components/Admin/Module/Records/ColumnPicker'
 import BulkEditModal from 'corteza-webapp-compose/src/components/Public/Record/BulkEdit'
+import CustomFilterPreset from 'corteza-webapp-compose/src/components/Public/Record/CustomFilterPreset'
 
 const { CInputSearch } = components
 
@@ -760,6 +768,7 @@ export default {
     ColumnPicker,
     CInputSearch,
     BulkEditModal,
+    CustomFilterPreset,
   },
 
   extends: base,
@@ -824,6 +833,8 @@ export default {
       showingDeletedRecords: false,
       activeFilters: [],
       customPresetFilters: [],
+      currentCustomPresetFilter: undefined,
+      showCustomPresetFilterModal: false,
     }
   },
 
@@ -991,11 +1002,10 @@ export default {
     },
 
     filterPresets () {
-      let presets = []
-      presets = presets.concat(this.options.filterPresets.filter(({ name, roles }) => name && this.isUserRoleMember(roles)))
-      presets = presets.concat(this.customPresetFilters)
-
-      return presets
+      return [
+        ...this.options.filterPresets.filter(({ name, roles }) => name && this.isUserRoleMember(roles)),
+        ...this.customPresetFilters,
+      ]
     },
 
     authUserRoles () {
@@ -1085,16 +1095,13 @@ export default {
               if (!isEqual(f.filter, filterPreset.filter)) {
                 const filterIndex = this.activeFilters.indexOf(f.name)
                 this.activeFilters.splice(filterIndex, 1)
-
-                this.activeFilters.push(this.$t('recordList.customFilter'))
-                f.name = this.$t('recordList.customFilter')
               }
             })
           }
-        } else {
-          this.activeFilters.push(this.$t('recordList.customFilter'))
-          f.name = this.$t('recordList.customFilter')
         }
+
+        this.activeFilters.push(this.$t('recordList.customFilter'))
+        f.name = this.$t('recordList.customFilter')
       })
 
       this.recordListFilter = filter
@@ -1103,13 +1110,11 @@ export default {
     },
 
     onSaveFilterPreset (filter = []) {
-      this.customPresetFilters = [{
-        name: this.$t('recordList.customPresetFilter'),
+      this.currentCustomPresetFilter = {
         filter,
-      }]
+      }
 
-      this.setStorageRecordListFilterPreset(filter)
-      this.refresh(true)
+      this.showCustomPresetFilterModal = true
     },
 
     onUpdateFields (fields = []) {
@@ -1631,7 +1636,6 @@ export default {
           removeItem(`record-list-filters-${this.uniqueID}`)
         } else {
           this.recordListFilter = currentFilters
-          this.activeFilters = currentFilters.map((filter) => filter.name)
         }
       } catch (e) {
         // Land here if the filter is corrupted
@@ -1644,10 +1648,10 @@ export default {
     getStorageRecordListFilterPreset () {
       try {
         // Get record list filters from localStorage
-        const currentFilters = getItem(`record-list-preset-${this.uniqueID}`)
+        const currentFilterPresets = getItem(`record-list-preset-${this.uniqueID}`)
 
         // Set the custom preset filters
-        this.customPresetFilters = [currentFilters]
+        this.customPresetFilters = currentFilterPresets
       } catch (e) {
         // Land here if the filter is corrupted
         console.warn(this.$t('notification:record-list.corrupted-filter'))
@@ -1665,24 +1669,21 @@ export default {
         currentListFilters = this.recordListFilter
         setItem(`record-list-filters-${this.uniqueID}`, currentListFilters)
       } catch (e) {
-        console.warning(this.$t('notification:record-list.corrupted-filter'))
+        console.warn(this.$t('notification:record-list.corrupted-filter'))
       }
     },
 
-    setStorageRecordListFilterPreset (filter = []) {
-      let currentListFilters = []
+    setStorageRecordListFilterPreset ({ filter = [], name }) {
+      const currentListFilters = [...this.customPresetFilters]
+      currentListFilters.push({ ...filter, name })
+      this.customPresetFilters = currentListFilters
+
+      this.showCustomPresetFilterModal = false
 
       try {
-        // Get record list filters from localStorage
-        currentListFilters = getItem(`record-list-preset-${this.uniqueID}`)
-        currentListFilters = {
-          name: this.$t('recordList.customPresetFilter'),
-          filter,
-        }
-
         setItem(`record-list-preset-${this.uniqueID}`, currentListFilters)
       } catch (e) {
-        console.warning(this.$t('notification:record-list.corrupted-filter'))
+        console.warn(this.$t('notification:record-list.corrupted-filter'))
       }
     },
 
@@ -1851,10 +1852,6 @@ td:hover .inline-actions {
   button:hover {
     color: $primary !important;
   }
-}
-
-::v-deep .b-form-tags-button {
-  display: none;
 }
 </style>
 
