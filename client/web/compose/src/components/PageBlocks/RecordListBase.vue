@@ -72,6 +72,7 @@
                 :query="query"
                 :prefilter="prefilter"
                 :selection="selected"
+                :selected-all-records-count="selectedAllRecords ? allSelectedRecordsCount : 0"
                 :processing="processing"
                 :preselected-fields="fields.map(({ moduleField }) => moduleField)"
                 class="mr-1 float-left"
@@ -182,7 +183,7 @@
               class="d-inline m-0 mr-2"
               :buttons="options.selectionButtons"
               :module="recordListModule"
-              :extra-event-args="{ selected, filter }"
+              :extra-event-args="{ selected, filter, excluded }"
               v-bind="$props"
               @refresh="refresh()"
             />
@@ -191,7 +192,7 @@
               v-show="options.bulkRecordEditEnabled && canUpdateSelectedRecords"
               :module="recordListModule"
               :namespace="namespace"
-              :selected-records="selectedAllRecords ? excludedRecords: selected"
+              :selected-records="selectedAllRecords ? excluded: selected"
               :is-all-records="selectedAllRecords"
               @save="onBulkUpdate()"
             />
@@ -836,7 +837,7 @@ export default {
       showingDeletedRecords: false,
       activeFilters: [],
       selectedAllRecords: false,
-      excludedRecords: [],
+      excluded: [],
     }
   },
 
@@ -1012,7 +1013,7 @@ export default {
     },
 
     allSelectedRecordsCount () {
-      return this.getPagination.count - this.excludedRecords.length
+      return this.getPagination.count - this.excluded.length
     },
 
   },
@@ -1113,32 +1114,32 @@ export default {
     onSelectRow (selected, item) {
       if (selected) {
         if (this.selectedAllRecords) {
-          const i = this.excludedRecords.indexOf(item.id)
+          const i = this.excluded.indexOf(item.id)
           if (i < 0) {
             return
           }
-          this.excludedRecords.splice(i, 1)
-        } else {
-          if (this.selected.includes(item.id)) {
-            return
-          }
-
-          this.selected.push(item.id)
+          this.excluded.splice(i, 1)
         }
+
+        if (this.selected.includes(item.id)) {
+          return
+        }
+
+        this.selected.push(item.id)
       } else {
         if (this.selectedAllRecords) {
-          if (this.excludedRecords.includes(item.id)) {
+          if (this.excluded.includes(item.id)) {
             return
           }
 
-          this.excludedRecords.push(item.id)
-        } else {
-          const i = this.selected.indexOf(item.id)
-          if (i < 0) {
-            return
-          }
-          this.selected.splice(i, 1)
+          this.excluded.push(item.id)
         }
+
+        const i = this.selected.indexOf(item.id)
+        if (i < 0) {
+          return
+        }
+        this.selected.splice(i, 1)
       }
     },
 
@@ -1344,6 +1345,11 @@ export default {
     onExport (e) {
       this.processing = true
 
+      let exclude = ''
+      if (this.selectedAllRecords) {
+        exclude = this.excluded.map(r => `recordID='${r}'`).join(' AND ')
+      }
+
       const { namespaceID, moduleID } = this.filter || {}
       const { filter, filterRaw, timezone } = e
       e = {
@@ -1371,9 +1377,10 @@ export default {
         query: {
           fields: e.fields,
           // url.Make already URL encodes the the values, so the filter shouldn't be encoded
-          filter: filter,
+          filter: this.selectedAllRecords ? '' : filter,
           jwt: this.$auth.accessToken,
           timezone: timezone ? timezone.tzCode : undefined,
+          exclude: exclude,
         },
       })
 
@@ -1457,11 +1464,11 @@ export default {
       if (isChecked) {
         this.selected = this.items.map(({ id }) => id)
         if (this.selectedAllRecords) {
-          this.selected = this.selected.filter((id) => !this.excludedRecords.includes(id))
+          this.selected = this.selected.filter((id) => !this.excluded.includes(id))
         }
       } else {
         this.selected = []
-        this.excludedRecords = []
+        this.excluded = []
       }
     },
 
@@ -1485,7 +1492,7 @@ export default {
 
         if (this.selectedAllRecords) {
           recordIDs = this.items
-            .filter(({ id, r }) => r.canUndeleteRecord && this.excludedRecords.includes(id))
+            .filter(({ id, r }) => r.canUndeleteRecord && this.excluded.includes(id))
             .map(({ id }) => id)
         } else {
           // filter undeletable records from the selected list
@@ -1535,7 +1542,7 @@ export default {
 
         if (this.selectedAllRecords) {
           recordIDs = this.items
-            .filter(({ id, r }) => r.canUndeleteRecord && this.excludedRecords.includes(id))
+            .filter(({ id, r }) => r.canUndeleteRecord && this.excluded.includes(id))
             .map(({ id }) => id)
         } else {
           // filter undeletable records from the selected list

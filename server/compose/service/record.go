@@ -12,6 +12,7 @@ import (
 
 	"github.com/cortezaproject/corteza/server/pkg/filter"
 	"github.com/cortezaproject/corteza/server/pkg/revisions"
+	"github.com/cortezaproject/corteza/server/pkg/slice"
 	"github.com/spf13/cast"
 
 	"github.com/cortezaproject/corteza/server/pkg/dal"
@@ -798,7 +799,7 @@ func (svc record) processUpdateAll(ctx context.Context, f types.RecordFilter, va
 
 			// check if the excluded ID is present in the fetched record list ids and remove the record associated with it
 			for _, id := range excludeIds {
-				excludeRec, index := containsUint64(records.IDs(), id)
+				excludeRec, index := slice.HasUint64(records.IDs(), id)
 				if excludeRec {
 					records = append(records[:index], records[index+1:]...)
 					continue
@@ -2554,17 +2555,4 @@ func (rr recordReportEntry) SetValue(n string, pos uint, v any) error {
 	rr[n] = v
 
 	return nil
-}
-
-func containsUint64(slice []uint64, value uint64) (ok bool, pos int) {
-	if len(slice) == 0 {
-		return false, 0
-	}
-
-	for index, element := range slice {
-		if element == value {
-			return true, index
-		}
-	}
-	return false, 0
 }

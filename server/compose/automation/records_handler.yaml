@@ -87,6 +87,9 @@ params:
     pageCursor:
       types:
         - { wf: String }
+    exclude:
+      types:
+        - { wf: Array }
 
   edgeParams: &edgeParams
     module: *moduleLookup

@@ -11,14 +11,18 @@ type (
 	UInt64s []uint64
 )
 
-func HasUint64(ss []uint64, s uint64) bool {
-	for i := range ss {
-		if ss[i] == s {
-			return true
+func HasUint64(ss []uint64, s uint64) (bool, int) {
+	if len(ss) == 0 {
+		return false, -1
+	}
+
+	for index, value := range ss {
+		if value == s {
+			return true, index
 		}
 	}
 
-	return false
+	return false, -1
 }
 
 func (uu UInt64s) MarshalJSON() ([]byte, error) {

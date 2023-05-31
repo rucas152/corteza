@@ -209,6 +209,11 @@ type (
 		//
 		// Convert times to this timezone
 		Timezone string
+
+		// Exclude GET parameter
+		//
+		//
+		Exclude string
 	}
 
 	RecordExec struct {
@@ -1055,6 +1060,7 @@ func (r RecordExport) Auditable() map[string]interface{} {
 		"filter":      r.Filter,
 		"fields":      r.Fields,
 		"timezone":    r.Timezone,
+		"exclude":     r.Exclude,
 	}
 }
 
@@ -1093,6 +1099,11 @@ func (r RecordExport) GetTimezone() string {
 	return r.Timezone
 }
 
+// Auditable returns all auditable/loggable parameters
+func (r RecordExport) GetExclude() string {
+	return r.Exclude
+}
+
 // Fill processes request and fills internal variables
 func (r *RecordExport) Fill(req *http.Request) (err error) {
 
@@ -1119,6 +1130,12 @@ func (r *RecordExport) Fill(req *http.Request) (err error) {
 		}
 		if val, ok := tmp["timezone"]; ok && len(val) > 0 {
 			r.Timezone, err = val[0], nil
+			if err != nil {
+				return err
+			}
+		}
+		if val, ok := tmp["exclude"]; ok && len(val) > 0 {
+			r.Exclude, err = val[0], nil
 			if err != nil {
 				return err
 			}

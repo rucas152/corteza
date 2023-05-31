@@ -1975,6 +1975,7 @@ export default class Compose {
       filter,
       fields,
       timezone,
+      exclude,
     } = (a as KV) || {}
     if (!namespaceID) {
       throw Error('field namespaceID is empty')
@@ -1999,6 +2000,7 @@ export default class Compose {
       filter,
       fields,
       timezone,
+      exclude,
     }
 
     return this.api().request(cfg).then(result => stdResolve(result))

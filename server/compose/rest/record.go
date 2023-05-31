@@ -1,12 +1,15 @@
 package rest
 
 import (
+	"bufio"
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"math"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -611,8 +614,39 @@ func (ctrl *Record) Export(ctx context.Context, r *request.RecordExport) (interf
 		}
 		ss := encoder.Stream()
 
+		// get excluded ids
+		regex := regexp.MustCompile(`'(\d+)'`)
+		excludedIDs := regex.FindAllString(r.Exclude, -1)
+
 		// Find only the stream we are interested in
 		for _, s := range ss {
+
+			// if exclude filter is provided, filter out the records that match the filter
+			if r.Exclude != "" {
+				var exportBuffer bytes.Buffer
+				scanner := bufio.NewScanner(s.Source)
+
+				for scanner.Scan() {
+					line := scanner.Text()
+					foundMatch := false
+
+					for _, id := range excludedIDs {
+						recordID := id[1 : len(id)-1]
+						if bytes.Contains([]byte(line), []byte(recordID)) {
+							foundMatch = true
+							break
+						}
+					}
+
+					if !foundMatch {
+						exportBuffer.WriteString(line)
+						exportBuffer.WriteString("\n")
+					}
+				}
+
+				s.Source = &exportBuffer
+			}
+
 			if s.Resource == types.RecordResourceType {
 				io.Copy(w, s.Source)
 			}

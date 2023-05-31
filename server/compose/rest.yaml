@@ -1108,6 +1108,9 @@ endpoints:
         type: string
         required: false
         title: Convert times to this timezone
+      - type: string
+        name: exclude
+        required: false
   - name: exec
     path: "/exec/{procedure}"
     method: POST

@@ -7,6 +7,8 @@ import (
 	"github.com/cortezaproject/corteza/server/compose/types"
 	. "github.com/cortezaproject/corteza/server/pkg/expr"
 	"github.com/cortezaproject/corteza/server/pkg/filter"
+	"github.com/cortezaproject/corteza/server/pkg/payload"
+	"github.com/cortezaproject/corteza/server/pkg/slice"
 	"github.com/cortezaproject/corteza/server/pkg/wfexec"
 )
 
@@ -231,6 +233,17 @@ func (h recordsHandler) each(ctx context.Context, args *recordsEachArgs) (out wf
 		i.filter.PageCursor = i.filter.NextPage
 		i.filter.NextPage = nil
 		i.buffer, i.filter, err = h.rec.Find(ctx, i.filter)
+
+		// if exclude array is not empty,filter out records from the buffer
+		for _, idTypeValue := range args.Exclude {
+			if idStr, ok := idTypeValue.Get().(string); ok {
+				id := payload.ParseUint64(idStr)
+				excludeRec, index := slice.HasUint64(i.buffer.IDs(), id)
+				if excludeRec {
+					i.buffer = append(i.buffer[:index], i.buffer[index+1:]...)
+				}
+			}
+		}
 
 		return
 	}

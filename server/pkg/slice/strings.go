@@ -1,15 +1,15 @@
 package slice
 
-func ContainsAny[C comparable](haystack []C, needles ...C) bool {
-	for _, h := range haystack {
+func ContainsAny[C comparable](haystack []C, needles ...C) (bool, int) {
+	for index, h := range haystack {
 		for _, n := range needles {
 			if h == n {
-				return true
+				return true, index
 			}
 		}
 	}
 
-	return false
+	return false, -1
 }
 
 func ContainsAll[C comparable](haystack []C, needles ...C) bool {
