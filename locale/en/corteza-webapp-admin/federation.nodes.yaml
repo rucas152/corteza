@@ -1,64 +1,71 @@
 editor:
   generate:
-    body: '{{ userLabel }} is sending you an invitation for Corteza Federated Network. To start sharing data between organizations, go to the admin panel of your Corteza application, click on “Federation” and select “Pair Federation Network” on top right corner. Copy the link below and await confirmation from another administrator.'
-    description: To add your organization to a federated network send an email invite or share the link below with an administrator of another organization.
-    hello: Hello,
-    invitation: Invitation to Federated Network
-    kindRegards: Kind regards, Corteza team.
-    notGenerated: Link not generated
-    sendEmail: Send Email
-    subject: 'Subject:'
-  generateUri: Generate Federation Link
+    body: '{{ userLabel }} отправляет вам приглашение в федеративную сеть Corteza.
+      Чтобы начать обмен данными между организациями, перейдите в панель администратора
+      вашего приложения Corteza, нажмите «Федерация» и выберите «Парная сеть федерации»
+      в правом верхнем углу. Скопируйте ссылку ниже и дождитесь подтверждения от другого
+      администратора.'
+    description: Чтобы добавить свою организацию в федеративную сеть, отправьте приглашение
+      по электронной почте или поделитесь приведенной ниже ссылкой с администратором
+      другой организации.
+    hello: Привет,
+    invitation: Приглашение в федеративную сеть
+    kindRegards: С уважением, команда Кортеза.
+    notGenerated: Ссылка не создана
+    sendEmail: Отправить письмо
+    subject: 'Предмет:'
+  generateUri: Создать ссылку на федерацию
   info:
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    email: Admin Email
-    enabled: Enabled
-    name: Server name *
-    status: Status
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    email: Электронная почта администратора
+    enabled: Включено
+    name: Имя сервера *
+    status: Положение дел
     tags:
-      label: Tags
-      placeholder: +Add
-    title: Basic information
-    undelete: Undelete
-    updatedAt: Updated at
-    url: Server URL *
+      label: Теги
+      placeholder: +Добавить
+    title: Основная информация
+    undelete: Восстановить
+    updatedAt: Обновлено в
+    url: URL-адрес сервера *
   title:
-    create: Create Federated Node
-    edit: Edit Federated Node
+    create: Создать объединенный узел
+    edit: Изменить объединенный узел
 list:
   columns:
-    actions: ""
-    createdAt: Created
-    enabled: Enabled
-    name: Name
-    status: Status
-    tags: ""
+    actions: ''
+    createdAt: Созданный
+    enabled: Включено
+    name: Имя
+    status: Положение дел
+    tags: ''
   filterForm:
     query:
-      label: Filter servers list
-      placeholder: Filter servers by name
-  loading: Loading federated nodes
-  new: New
-  numFound: '{{count}} server found'
-  numFound_plural: '{{count}} servers found'
+      label: Список серверов фильтров
+      placeholder: Фильтровать серверы по имени
+  loading: Загрузка объединенных узлов
+  new: Новый
+  numFound: '{{count}} сервер найден'
+  numFound_plural: '{{count}} серверов найдено'
   pair:
-    confirm: Confirm
-    label: Pair Federation Node
-    networkEstablished: Federated network will be established after the final confirmation from the administrator of another Corteza Federation Node.
-    note: 'Note:'
+    confirm: Подтверждать
+    label: Парный узел федерации
+    networkEstablished: Федеративная сеть будет создана после окончательного подтверждения
+      от администратора другого узла федерации Corteza.
+    note: 'Примечание:'
     status:
       confirmPending:
-        description: |-
-          {{ email }} accepted the invitation to join “{{ name }}” Federated Network.
-           Click on “Confirm” to start sharing the data.
-        descriptionNoMail: |-
-          Admin of “{{ name }}” accepted the invitation to join the Federated Network.
-           Click on “Confirm” to start sharing the data
+        description: "{{ email }} принял приглашение присоединиться к федеративной\
+          \ сети \"{{ name }}\".\n Нажмите «Подтвердить», чтобы начать обмен данными."
+        descriptionNoMail: "Администратор «{{ name }}» принял приглашение присоединиться\
+          \ к федеративной сети.\n Нажмите «Подтвердить», чтобы начать обмен данными"
       none:
-        description: To pair your organization with a federated network, paste the generated URL of another organization below.
+        description: Чтобы связать вашу организацию с федеративной сетью, вставьте
+          сгенерированный URL-адрес другой организации ниже.
       pending:
-        description: Pairing successful, pending final confirmation by administrator
-  title: Federated Networks
+        description: Сопряжение успешно, ожидается окончательное подтверждение от
+          администратора
+  title: Федеративные сети
   yaml: YAML

@@ -1,177 +1,160 @@
-title: Integration Gateway
-list:
-  export: Export
-  title: Routes
-  new: New
-  permissions: Permissions
-  profiler: Profiler
-  yaml: YAML
-  loading: Loading routes
-  numFound: '{{count}} route found'
-  numFound_plural: '{{count}} routes found'
-  filterForm:
-    query:
-      label: Filter route list
-      placeholder: Filter routes by name
-    excluded:
-      label: Without
-    inclusive:
-      label: Including
-    exclusive:
-      label: Only
-    deleted:
-      label: deleted routes
-    handle:
-      placeholder: Filter endpoints by path
-
-  columns:
-    endpoint: Endpoint
-    createdAt: Created
-    enabled: Enabled
-    method: Method
-    actions: ''
-    state: State
-  rows:
-    filters:
-      deleted: Deleted
-
-settings:
-  title: Settings
-  profiler:
-    label: Profiler
-    enabled: Enabled
-    global: Enabled globally
-  proxy:
-    label: Proxy
-    follow: Follow redirects
-
 editor:
-  title: Edit route
-  new: New
-  permissions: Permissions
-
-  info:
-    title: Basic information
-
-    id: ID
-    endpoint: Endpoint
-    method: Method
-    description: Description
-    enabled: Enabled
-
-    delete: Delete
-    undelete: Undelete
-    deletedAt: Deleted at
-
-    updatedAt: Updated at
-    createdAt: Created at
-
-    tooltip: Endpoint must begin with a slash "/" and can not contain any special characters except for the underscore "_" and hyphen "-"
-    validation:
-      slash: Endpoint must begin with a slash "/"
-      minLength: Endpoint must contain at least one character
-      invalidCharacters: Endpoint contains invalid characters
-
   filters:
-    title: Filter list
-    enabled: Enabled
-    disabled: Disabled
-    add: Add
-    addFilter: Add filter
-    addHeader: Add header
-    params: Params
-    filterListEmpty: Filter list is empty!
-
-    modal:
-      title: Query parameters verifier
-      ok: Save & Close
-
-    step_title:
-      prefilter: Prefiltering
-      processer: Processing
-      postfilter: Postfiltering
-
-    list:
-      remove: Remove
-      filters: Filters
-      status: Status
-      actions: Actions
-      active: Active
-      noFilters: No filters
-
-    labels:
-      expr: Expression
-      location: URL
-      workflow: Workflow
-      status: HTTP Status
-      jsfunc: Function
-      input: Input
-      header: Headers
-      name: Name
-      value: Value
-
-    httpStatus:
-      none: No Status
-      '300': 300 - Multiple Choices
-      '301': 301 - Moved Permanently
-      '302': 302 - Found
-      '303': 303 - See Other
-      '304': 304 - Not Modified
-      '307': 307 - Temporary Redirect
-      '308': 308 - Permanent Redirect
-
-    placeholders:
-      workflow: Select a workflow
-
+    add: Добавлять
+    addFilter: Добавить фильтр
+    addHeader: Добавить заголовок
+    disabled: Неполноценный
+    enabled: Включено
+    filterListEmpty: Список фильтров пуст!
     help:
       expression:
-        example: Example == "match string" && match(SecondParam, "^foo\\s.*$")
-        link: Documentation
-
-profiler:
-  label: Profiler
-  title: Integration Gateway Profiler
-  refreshingIn: Refreshing in {{seconds}}s
-  description:
-    globalEnabled: Showing routes for all incoming requests
-    globalDisabled: Showing only registered routes with profiler prefilter
-  purge:
-    all: Purge requests for all routes
-    this: Purge requests for this route
-
-  hit:
-    title: Request Details
-    general:
-      label: General
-      id: Request ID
-      route: Request Route
-      URL: Request URL
-      method: Request Method
-      statusCode: Status Code
-      headers: Request Headers
-      remoteAddress: Remote Address
-      duration: Duration
-      start: Start
-      end: End
-      openRoute: Open Route
-    headers:
-      label: Headers
-    body:
-      label: Body
-
+        example: Пример == "match string" && match(SecondParam, "^foo\\s.*$")
+        link: Документация
+    httpStatus:
+      '300': 300 - Множественный выбор
+      '301': 301 - переехал навсегда
+      '302': 302 - Найдено
+      '303': 303 - См. Другое
+      '304': 304 – не изменено
+      '307': 307 – Временное перенаправление
+      '308': 308 - Постоянная переадресация
+      none: Нет положения
+    labels:
+      expr: Выражение
+      header: Заголовки
+      input: Вход
+      jsfunc: Функция
+      location: URL-адрес
+      name: Имя
+      status: HTTP-статус
+      value: Ценить
+      workflow: Рабочий процесс
+    list:
+      actions: Действия
+      active: Активный
+      filters: Фильтры
+      noFilters: Без фильтров
+      remove: Удалять
+      status: Положение дел
+    modal:
+      ok: Сохранить и закрыть
+      title: Верификатор параметров запроса
+    params: Параметры
+    placeholders:
+      workflow: Выберите рабочий процесс
+    step_title:
+      postfilter: Постфильтрация
+      prefilter: Предварительная фильтрация
+      processer: Обработка
+    title: Список фильтров
+  info:
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    description: Описание
+    enabled: Включено
+    endpoint: Конечная точка
+    id: ИДЕНТИФИКАТОР
+    method: Метод
+    title: Основная информация
+    tooltip: Конечная точка должна начинаться с косой черты "/" и не может содержать
+      никаких специальных символов, кроме подчеркивания "_" и дефиса "-"
+    undelete: Восстановить
+    updatedAt: Обновлено в
+    validation:
+      invalidCharacters: Конечная точка содержит недопустимые символы
+      minLength: Конечная точка должна содержать хотя бы один символ
+      slash: Конечная точка должна начинаться с косой черты "/"
+  new: Новый
+  permissions: Разрешения
+  title: Изменить маршрут
+list:
   columns:
     actions: ''
-    path: Route
-    count: Count
-    content_length: Content Length
-    http_method: Method
-    http_status_code: Status Code
-    size_min: Size (min)
-    size_max: Size (max)
-    size_avg: Size (avg)
-    time_min: Time (min)
-    time_max: Time (max)
-    time_avg: Time (avg)
-    time_start: Start time
-    time_finish: Finish time
-    time_duration: Duration
+    createdAt: Созданный
+    enabled: Включено
+    endpoint: Конечная точка
+    method: Метод
+    state: Состояние
+  export: Экспорт
+  filterForm:
+    deleted:
+      label: удаленные маршруты
+    excluded:
+      label: Без
+    exclusive:
+      label: Только
+    handle:
+      placeholder: Фильтровать конечные точки по пути
+    inclusive:
+      label: Включая
+    query:
+      label: Фильтровать список маршрутов
+      placeholder: Фильтровать маршруты по названию
+  loading: Загрузка маршрутов
+  new: Новый
+  numFound: '{{count}} маршрут найден'
+  numFound_plural: Найдено {{count}} маршрутов
+  permissions: Разрешения
+  profiler: Профили
+  rows:
+    filters:
+      deleted: Удалено
+  title: Маршруты
+  yaml: YAML
+profiler:
+  columns:
+    actions: ''
+    content_length: Длина содержимого
+    count: Считать
+    http_method: Метод
+    http_status_code: Код состояния
+    path: Маршрут
+    size_avg: Размер (средний)
+    size_max: Размер (макс.)
+    size_min: Размер (мин)
+    time_avg: Час (среднее)
+    time_duration: Продолжительность
+    time_finish: Время окончания
+    time_max: Время (макс.)
+    time_min: час (мин)
+    time_start: Время начала
+  description:
+    globalDisabled: Отображение только зарегистрированных маршрутов с предварительным
+      фильтром профилировщика
+    globalEnabled: Отображение маршрутов для всех входящих запросов
+  hit:
+    body:
+      label: Тело
+    general:
+      URL: URL-адрес запроса
+      duration: Продолжительность
+      end: Конец
+      headers: Заголовки запроса
+      id: Идентификатор запроса
+      label: Общий
+      method: Метод запроса
+      openRoute: Открытый маршрут
+      remoteAddress: Удаленный адрес
+      route: Запрос маршрута
+      start: Начинать
+      statusCode: Код состояния
+    headers:
+      label: Заголовки
+    title: Детали запроса
+  label: Профили
+  purge:
+    all: Очистить запросы для всех маршрутов
+    this: Удалить запросы для этого маршрута
+  refreshingIn: Обновление через {{seconds}} с
+  title: Профилировщик интеграционного шлюза
+settings:
+  profiler:
+    enabled: Включено
+    global: Включено глобально
+    label: Профили
+  proxy:
+    follow: Следить за перенаправлениями
+    label: Прокси
+  title: Настройки
+title: Интеграционный шлюз

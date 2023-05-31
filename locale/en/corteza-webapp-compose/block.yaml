@@ -1,807 +1,819 @@
-selector:
-  selectableBlocks:
-    placeholder: Blocks from other layouts
-  tooltip:
-    clone:
-      ref: Clone with references
-      noRef: Clone without references
 automation:
-  addPlaceholderLabel: Add placeholder (dummy button)
-  availableScriptsAndWorkflow: Available scripts and workflows ({{count}})
+  addPlaceholderLabel: Добавить заполнитель (фиктивную кнопку)
+  availableScriptsAndWorkflow: Доступные сценарии и рабочие процессы ({{count}})
   badge:
-    script: script
-    workflow: workflow
-  buttonLabel: Label
-  buttonVariant: Variant
-  configuredButtons: Configured buttons
-  dummyButtonLabel: Dummy
-  editButton: Edit
+    script: сценарий
+    workflow: рабочий процесс
+  buttonLabel: Этикетка
+  buttonVariant: Вариант
+  configuredButtons: Настроенные кнопки
+  dummyButtonLabel: Дурачок
+  editButton: Редактировать
   editTitle:
-    script: Edit automation script button
-    workflow: Edit workflow button
-  label: Automation
-  noDescription: No description
-  noLabel: Unlabeled
-  noScript: There is no script or workflow configured for this button
-  noScripts: There are no manual scripts compatible with this page block
-  removeAll: Remove all
-  searchPlaceholder: Filter available scripts by label, script name and description
-  stepID: 'Starting step ID: {{stepID}}'
+    script: Кнопка редактирования скрипта автоматизации
+    workflow: Кнопка редактирования рабочего процесса
+  label: Автоматизация
+  noDescription: без описания
+  noLabel: Без маркировки
+  noScript: Для этой кнопки не настроен сценарий или рабочий процесс.
+  noScripts: Нет ручных скриптов, совместимых с этим блоком страницы
+  removeAll: Убрать все
+  searchPlaceholder: Фильтр доступных скриптов по метке, имени скрипта и описанию
+  stepID: 'Идентификатор начального шага: {{stepID}}'
   variants:
-    primary: Primary
-    secondary: Secondary
-    light: Light
-    dark: Dark
-    success: Success
-    danger: Danger
-    warning: Warning
+    danger: Опасность
+    dark: Темный
+    light: Свет
+    primary: Начальный
+    secondary: Среднее
+    success: Успех
+    warning: Предупреждение
 calendar:
-  addEventsSource: Add events source
-  calendarHeader: Calendar header
-  feedLabel: Configure events source
-  feedPlaceholder: Select a feed source
-  hideHeader: Hide calendar header
-  hideNavigation: Hide prev/next button
-  hideTitle: Hide title text
-  hideToday: Hide today button
-  label: Calendar
+  addEventsSource: Добавить источник событий
+  calendarHeader: Заголовок календаря
+  feedLabel: Настроить источник событий
+  feedPlaceholder: Выберите источник фида
+  hideHeader: Скрыть заголовок календаря
+  hideNavigation: Скрыть кнопку «предыдущая/следующая»
+  hideTitle: Скрыть текст заголовка
+  hideToday: Скрыть кнопку «Сегодня»
+  label: Календарь
   recordFeed:
-    colorPicker: Choose a color
-    colorLabel: Event color
-    eventAllDay: Show as all-day-events
-    eventEndFieldLabel: Event end
-    eventEndFieldPlaceholder: (No field, event will last 1 hour)
-    eventStartFieldLabel: Event start
-    eventStartFieldPlaceholder: (No field)
-    moduleLabel: Select module
-    modulePlaceholder: (No module)
-    noMultiFields: Multi-value fields are currently not supported
-    optionLabel: Records
-    prefilterLabel: Prefilter events
-    prefilterPlaceholder: field1 = 1 AND field2 = 232
-    titleLabel: Title
-    titlePlaceholder: (No field)
+    colorLabel: Цвет события
+    colorPicker: Выберите цвет
+    eventAllDay: Показать как события на весь день
+    eventEndFieldLabel: Окончание мероприятия
+    eventEndFieldPlaceholder: (Нет поля, событие продлится 1 час)
+    eventStartFieldLabel: Начало мероприятия
+    eventStartFieldPlaceholder: (Нет поля)
+    moduleLabel: Выберите модуль
+    modulePlaceholder: (без модуля)
+    noMultiFields: Поля с несколькими значениями в настоящее время не поддерживаются
+    optionLabel: Рекорды
+    prefilterLabel: События предварительной фильтрации
+    prefilterPlaceholder: поле1 = 1 И поле2 = 232
+    titleLabel: Заголовок
+    titlePlaceholder: (Нет поля)
   reminderFeed:
-    colorLabel: Event color
-    optionLabel: Reminders
-  today: Today
+    colorLabel: Цвет события
+    optionLabel: Напоминания
+  today: Сегодня
   view:
-    dayGridMonth: Month
-    default: Default view
-    enabled: Enabled views
-    footnote: Make sure default is one of the available views
-    listMonth: Agenda
-    timeGridDay: Day
-    timeGridWeek: Week
-    onEventClick: On event click
-    openInSameTab: Open record in the same tab
-    openInNewTab: Open record in a new tab
-    openInModal: Open record in a modal
-  viewLabel: Calendar
+    dayGridMonth: Месяц
+    default: Вид по умолчанию
+    enabled: Включенные представления
+    footnote: Убедитесь, что значение по умолчанию является одним из доступных представлений.
+    listMonth: Повестка дня
+    onEventClick: При клике по событию
+    openInModal: Открыть запись в модальном режиме
+    openInNewTab: Открыть запись в новой вкладке
+    openInSameTab: Открыть запись в той же вкладке
+    timeGridDay: День
+    timeGridWeek: Неделя
+  viewLabel: Календарь
 chart:
-  add: New Chart
-  addFunnel: Funnel chart
-  addGauge: Gauge chart
-  addRadar: Radar chart
-  addGeneric: Generic chart
-  createFailed: Could not create a chart
+  add: Новая диаграмма
+  addFunnel: Воронкообразная диаграмма
+  addGauge: Калибровочная диаграмма
+  addGeneric: Общая диаграмма
+  addRadar: Радарная диаграмма
   columns:
-    name: Name
-    handle: Handle
-    changedAt: Last change
+    changedAt: Последнее изменение
+    handle: Ручка
+    name: Имя
   configure:
-    label: Configure chart
-    reportLabel: Report {{l}}
-    reportsLabel: Reports
-  display: Chart to display inside this block
+    label: Настроить диаграмму
+    reportLabel: Сообщить {{l}}
+    reportsLabel: Отчеты
+  createFailed: Не удалось создать диаграмму
+  display: Диаграмма для отображения внутри этого блока
   drillDown:
-    label: Drill down
-    description: If a record list is selected, it will be used to display the drill down data. If no record list is selected the drill down data will be shown in a modal.
-    openInModal: Open in modal
+    description: Если выбран список записей, он будет использоваться для отображения
+      данных детализации. Если список записей не выбран, детализированные данные будут
+      показаны в модальном режиме.
+    label: Детализация
+    openInModal: Открыть в модальном режиме
   edit:
-    label: Edit chart
     dimension:
       function:
-        date: DATE
-        label: Function
-        month: MONTH
-        none: (no grouping / buckets)
-        placeholder: Select dimension modifier (bucket size)
-        quarter: QUARTER
-        week: WEEK
-        year: YEAR
-  label: Chart
-  pick: Pick a chart
+        date: ДАТА
+        label: Функция
+        month: МЕСЯЦ
+        none: (без группировки/сегментов)
+        placeholder: Выберите модификатор размера (размер сегмента)
+        quarter: ЧЕТВЕРТЬ
+        week: НЕДЕЛЯ
+        year: ГОД
+    label: Изменить диаграмму
+  label: Диаграмма
+  openInBuilder: Открыть в построителе диаграмм
+  pick: Выберите диаграмму
   preview:
-    chartId: Chart preview (ID {{0}})
-  searchPlaceholder: Type here to search all charts in this namespace
-  openInBuilder: Open in chart builder
+    chartId: Предварительный просмотр диаграммы (идентификатор {{0}})
+  searchPlaceholder: Введите здесь для поиска всех диаграмм в этом пространстве имен
+comment:
+  contentField:
+    footnote: Значение поля будет использоваться как содержимое записи
+    label: Поле содержимого
+  contentInput: Введите содержание комментария
+  label: Комментарии
+  referenceField:
+    footnote: Значение поля будет использоваться как ссылка
+    label: Справочное поле
+  sortDirection:
+    asc: АСК
+    desc: DESC
+    footnote: Значение поля будет использоваться как ссылка направления сортировки
+    label: Направление сортировки
+  submit: Представлять на рассмотрение
+  titleField:
+    footnote: Значение поля будет использоваться как заголовок записи
+    label: Поле заголовка
+  titleInput: Введите название комментария
 content:
-  ok: Ok
-  label: Content
-  openLinkInNewTab: Open link in a new tab
+  label: Содержание
+  ok: Хорошо
+  openLinkInNewTab: Открыть ссылку в новой вкладке
   urlPlaceholder: https://example.tld
+field:
+  noPermission: Нет разрешения на чтение значения поля
+  selector:
+    available: Доступные поля
+    systemField: (системное поле)
 file:
-  label: File
+  label: Файл
   preview:
-    label: File block
+    label: Файловый блок
 general:
-  changeBlock: Change existing block
-  descriptionLabel: Description
-  descriptionPlaceholder: Block description
-  headerStyle: Block header style (color)
-  magnifyLabel: Block Magnification
-  magnifyOptions:
-    disabled: Disabled
-    modal: Modal
-    fullscreen: Fullscreen
-  wrap: Display block as a card
-  hidden:
-    label: Hidden
-  refresh:
-    label: Refresh
-    auto: Auto refresh
-    show: Show refresh button
-    description: Setting value to 5 seconds or more enables auto-refresh
-    rate: seconds
   border:
-    show: Show border
+    show: Показать границу
+  changeBlock: Изменить существующий блок
+  descriptionLabel: Описание
+  descriptionPlaceholder: Описание блока
+  headerStyle: Стиль заголовка блока (цвет)
+  hidden:
+    label: Скрытый
   label:
-    add: Add
-    back: Back
-    edit: Edit
-    general: General
-    import: Import
-    next: Next
-    none: None
-    ok: Ok
-    permissions: Permissions
-    remove: Remove
-    save: Save
-    cancel: Cancel
-    search: Search
-    refresh: Refresh block
-    magnify: Magnify block
-    and: And
-  module: Module
+    add: Добавлять
+    and: И
+    back: Назад
+    cancel: Отмена
+    edit: Редактировать
+    general: Общий
+    import: Импортировать
+    magnify: Увеличить блок
+    next: Следующий
+    none: Никто
+    ok: Хорошо
+    permissions: Разрешения
+    refresh: Обновить блок
+    remove: Удалять
+    save: Сохранять
+    search: Поиск
+  magnifyLabel: Увеличение блока
+  magnifyOptions:
+    disabled: Неполноценный
+    fullscreen: Полноэкранный
+    modal: Модальный
+  module: Модуль
+  refresh:
+    auto: Автоматическое обновление
+    description: Установка значения 5 секунд или более включает автоматическое обновление
+    label: Обновить
+    rate: секунды
+    show: Показать кнопку обновления
   style:
-    danger: Danger variant
-    default: Dark variant
-    primary: Primary variant
-    secondary: Secondary variant
-    success: Success variant
-    warning: Warning variant
-  title: Add new block
-  titleLabel: Title
-  titlePlaceholder: Block title
+    danger: Опасный вариант
+    default: Темный вариант
+    primary: Основной вариант
+    secondary: Вторичный вариант
+    success: Вариант успеха
+    warning: Вариант предупреждения
+  title: Добавить новый блок
+  titleLabel: Заголовок
+  titlePlaceholder: Название блока
   tooltip:
-    dragAndDrop: Drag and drop to change order
-    translations: Field translations
+    dragAndDrop: Перетащите, чтобы изменить порядок
+    translations: Полевые переводы
+  wrap: Показать блок как карточку
+geometry:
+  addSource: Добавить источник
+  bounds:
+    boundsLabel: Границы
+    lockBounds: Заблокировать границы
+    lowerRight: Границы внизу справа
+    topLeft: Границы вверху слева
+  centerLabel: Центр
+  feedLabel: Настроить источники
+  label: Геометрия
+  lock: Замок
+  mapHelpText: Переместите и прокрутите карту до положения, которое будет использоваться
+    по умолчанию. Вы также можете заблокировать положение или масштабирование, чтобы
+    пользователи не перемещались слишком далеко.
+  onMarkerClick: Щелчок по маркеру
+  openInModal: Открыть в модальном режиме
+  openInNewTab: Открыть в новой вкладке
+  openInSameTab: Открыть в той же вкладке
+  recordFeed:
+    colorLabel: Цвет маркера
+    colorPicker: Выберите цвет
+    displayMarker: Показать маркер
+    displayPolygon: Показать многоугольник
+    geometryFieldLabel: Поле геометрии*
+    geometryFieldPlaceholder: Поле геометрии
+    moduleLabel: Модуль*
+    modulePlaceholder: (без модуля)
+    noMultiFields: Поля с несколькими значениями в настоящее время не поддерживаются
+    optionLabel: Рекорды
+    prefilterLabel: Источники предварительной фильтрации
+    titleLabel: Заголовок
+    titlePlaceholder: Заголовок
+  tooltip:
+    goToCurrentLocation: Перейти к текущему местоположению
+  viewLabel: Геометрия
+  zoom:
+    zoomLabel: Увеличить
+    zoomMaxLabel: Максимальный зум
+    zoomMinLabel: Увеличить мин.
+    zoomStartingLabel: Увеличить Запуск
 iframe:
   label: IFrame
-  pickURLField: Pick an URL field
-  srcDesc: Used as a fallback when set in combination with record field.
-  srcFieldDesc: Only available on record pages and on modules with existing "url" field kind
-  srcFieldLabel: Field (URL) from record to use for the iframe
-  srcLabel: URL to show in the iframe
+  pickURLField: Выберите поле URL
+  srcDesc: Используется в качестве запасного варианта при установке в сочетании с
+    полем записи.
+  srcFieldDesc: Доступно только на страницах записей и в модулях с существующим типом
+    поля «url».
+  srcFieldLabel: Поле (URL) из записи для использования в iframe
+  srcLabel: URL для отображения в iframe
 metric:
-  defaultMetricLabel: Unnamed metric
+  defaultMetricLabel: Безымянный показатель
   drillDown:
-    label: Drill down
-    description: If a record list is selected, it will be used to display the drill down data. If no record list is selected the drill down data will be shown in a modal.
-    openInModal: Open in modal
+    description: Если выбран список записей, он будет использоваться для отображения
+      данных детализации. Если список записей не выбран, детализированные данные будут
+      показаны в модальном режиме.
+    label: Детализация
+    openInModal: Открыть в модальном режиме
   edit:
-    bucketLabel: Bucket size
-    bucketPlaceholder: Select a bucket size
-    dateFormat: Date format
-    dimensionFieldLabel: Field
-    dimensionFieldPlaceholder: Dimension field
-    dimensionLabel: Dimension
-    filterFootnote: Simplified SQL condition (WHERE ...) syntax is supported. Variables like {{0}}, {{1}} and {{2}} are evaluated (when available)
-    filterLabel: Filter
-    labelLabel: Label
-    labelPlaceholder: Label
-    metricFieldLabel: Field
-    metricFieldPlaceholder: Dimension field
-    metricLabel: Metric
-    metricFieldSelect: Select field
-    metricSelectAggregate: Select aggregation operation
-    metricAggregateLabel: Aggregation operation
-    moduleLabel: Module
-    modulePlaceholder: Pick a module
-    numberFormat: Number format
-    operationAvg: Avg
-    operationLabel: Aggregation operation
-    operationMax: Max
-    operationMin: Min
-    operationPlaceholder: Aggregation operation
-    operationStd: Std
-    operationSum: Sum
-    prefixLabel: Prefix
-    refreshData: Refresh data
-    suffixLabel: Suffix
-    tabTitle: Metric
-    transformFunctionDescription: v - current value; label - current value's label
-    transformFunctionLabel: Transform value
+    bucketLabel: Размер ковша
+    bucketPlaceholder: Выберите размер ведра
+    dateFormat: Формат даты
+    dimensionFieldLabel: Поле
+    dimensionFieldPlaceholder: Поле размера
+    dimensionLabel: Измерение
+    filterFootnote: Поддерживается упрощенный синтаксис условия SQL (WHERE...). Оцениваются
+      такие переменные, как {{0}}, {{1}} и {{2}} (если они доступны).
+    filterLabel: Фильтр
+    labelLabel: Этикетка
+    labelPlaceholder: Этикетка
+    metricAggregateLabel: Операция агрегации
+    metricFieldLabel: Поле
+    metricFieldPlaceholder: Поле размера
+    metricFieldSelect: Выберите поле
+    metricLabel: Метрика
+    metricSelectAggregate: Выберите операцию агрегирования
+    moduleLabel: Модуль
+    modulePlaceholder: Выберите модуль
+    numberFormat: Формат номера
+    operationAvg: Среднее
+    operationLabel: Операция агрегации
+    operationMax: Макс
+    operationMin: Мин.
+    operationPlaceholder: Операция агрегации
+    operationStd: стандарт
+    operationSum: Сумма
+    prefixLabel: Префикс
+    refreshData: Обновить данные
+    suffixLabel: Суффикс
+    tabTitle: Метрика
+    transformFunctionDescription: v - текущее значение; label - метка текущего значения
+    transformFunctionLabel: Преобразовать значение
   editStyle:
-    backgroundColor: Background color
-    color: Text color
-    colorPicker: Choose a color
-    fontSize: Font size in pixels
-    labelLabel: Label style
-    valueLabel: Value style
-  label: Metric
-record:
-  referenceRecordField: Reference record field
-  referenceRecordFieldPlaceholder: Select reference record selector
-  referenceRecordFieldDescription: Multi value record selector fields are not available
-  confirmDelete: Are you sure you want to delete this record?
-  deleteFailed: Could not delete record
-  deleteRecord: Delete record
-  invalidOwnerVar: Can not use ${ownerID} variable in non-record pages
-  invalidRecordVar: Can not use ${record...} variable in non-record pages
-  label: Record
-  listLoadFailed: Could not load record list
-  moduleOrPageNotSet: 'RecordList block error: module or page option not set'
-  moduleMismatch: Module incompatible, module mismatch
+    backgroundColor: Фоновый цвет
+    color: Цвет текста
+    colorPicker: Выберите цвет
+    fontSize: Размер шрифта в пикселях
+    labelLabel: Стиль этикетки
+    valueLabel: Стиль значения
+  label: Метрика
+navigation:
+  None: Никто
+  add: Добавить элемент навигации
+  addDropdown: Добавить элемент раскрывающегося списка
+  alignment: Выравнивание
+  appearance: Появление
+  background: Фон
+  bottom: Нижний
+  center: Центр
+  chart: Графики
+  color: Цвет
+  colorPicker: Выберите цвет
+  composePage: Создать страницу
+  danger: Опасность
+  delimiter: Разделитель
+  disabled: Неполноценный
+  displayOptions: Показать варианты
+  displaySubPages: Показать подстраницы
+  drop: Выпадающее положение
+  dropdown: Падать
+  dropdownItems: Выпадающие элементы
+  enabled: Включено
+  fieldLabel: Этикетка
+  info: Информация
+  justify: Оправдывать
+  label: Навигация
+  left: Левый
+  multi: Многострочный
+  navigationItems: Элементы навигации
+  newTab: Новая вкладка
+  noNavigationItems: Элемент навигации не настроен
+  none: Никто
+  openIn: Открыть в
+  pills: Таблетки
   preview:
-    blockNoRecord: Cannot render this block without a record
-    fieldsFromModule: Single record block, displaying fields ({{0}}) from module {{1}}
-    untitled: Untitled
-  recordDeleted: This record was deleted
-  recordSelectorDisplayOptions: On record selector click
-  openInSameTab: Open record in the same tab
-  openInNewTab: Open record in a new tab
-  openInModal: Open record in a modal
+    about: о
+    dropdown: падать
+    home: Дом
+    label: Этикетка
+    preview: Предварительный просмотр
+  primary: Начальный
+  right: Верно
+  sameTab: Та же вкладка
+  secondary: Среднее
+  selectBackground: Выбрать фон
+  selectOpenInType: Выберите открытый тип
+  small: Маленький
+  success: Успех
+  tabs: Вкладки
+  text: Текст
+  top: Вершина
+  type: Тип
+  url: URL-адрес
+  warning: Предупреждение
+nylas:
+  configurator:
+    componentID: Идентификатор компонента
+    kind: Тип компонента
+    kinds:
+      agenda: Повестка дня
+      composer: Композитор
+      contactList: Список контактов
+      conversation: Беседа
+      email: Электронная почта
+      mailbox: Почтовый ящик
+    label: Office365/Гугл
+  label: Office365/Гугл
+  viewer:
+    connect: Свяжитесь с Найласом
+    noComponentID: Идентификатор компонента Nylas не настроен
+    noExternal: Внешний провайдер Nylas не настроен
+progress:
+  add: + Добавить
+  aggregate:
+    label: Операция агрегации
+    select: Выберите операцию агрегирования
+  animated: Анимированный
+  count: Считать
+  default-variant: Вариант по умолчанию
+  display-options: Показать варианты
+  fetch-failed: Не удалось получить отчет о индикаторе выполнения.
+  field:
+    label: Поле
+    select: Выберите поле
+  label: Индикатор
+  module:
+    label: Модуль
+    select: Выберите модуль
+  preview: Живой пример
+  show:
+    progress: Показать прогресс
+    relative: Показать родственника
+    value: Показать значение
+  tab:
+    label: Прогресс
+  threshold:
+    label: Порог
+    variant: Установите, какой вариант показывать, если значение равно или превышает
+      пороговое значение
+  thresholds: Пороги
+  value:
+    default:
+      description: Это значение будет использоваться, если метрика не настроена
+      label: Значение по умолчанию
+    label: Ценить
+    max: Максимальное значение
+    min: Минимальное значение
+  variant:
+    danger: Опасность
+    dark: Темный
+    default: Темный
+    info: Информация
+    light: Свет
+    primary: Начальный
+    secondary: Среднее
+    success: Успех
+    warning: Предупреждение
+record:
+  confirmDelete: Вы уверены, что хотите удалить эту запись?
+  deleteFailed: Не удалось удалить запись
+  deleteRecord: Удалить запись
   fieldConditions:
-    label: Field conditions
-    action: + Add
-    placeholder: When should this field be displayed?
-    selectPlaceholder: Select field
-    help: Example
-    field: Field
-    condition: Condition
+    action: + Добавить
+    condition: Состояние
+    field: Поле
+    help: Пример
+    label: Полевые условия
+    placeholder: Когда должно отображаться это поле?
+    selectPlaceholder: Выберите поле
+  invalidOwnerVar: Нельзя использовать переменную ${ownerID} на страницах без записи
+  invalidRecordVar: Нельзя использовать переменную ${record...} на страницах без записей
+  label: Записывать
+  listLoadFailed: Не удалось загрузить список записей
+  moduleMismatch: Несовместимый модуль, несоответствие модулей
+  moduleOrPageNotSet: 'Ошибка блока RecordList: параметр модуля или страницы не установлен'
+  openInModal: Открыть запись в модальном режиме
+  openInNewTab: Открыть запись в новой вкладке
+  openInSameTab: Открыть запись в той же вкладке
+  preview:
+    blockNoRecord: Невозможно отобразить этот блок без записи
+    fieldsFromModule: Блок с одной записью, отображающий поля ({{0}}) из модуля {{1}}
+    untitled: Без названия
+  recordDeleted: Эта запись была удалена
+  recordSelectorDisplayOptions: В селекторе записи нажмите
+  referenceRecordField: Поле ссылочной записи
+  referenceRecordFieldDescription: Поля выбора записи с несколькими значениями недоступны
+  referenceRecordFieldPlaceholder: Выберите селектор справочной записи
 recordList:
-  addRecord: Add
-  cancelSelection: Cancel
-  inlineEdit:
-    enabled: Inline value editing enabled
-    button:
-      title: Edit value
-    modal:
-      title: Update record values
+  addRecord: Добавлять
   bulkRecord:
-    title: Update selected records
     field:
-      add: Add a field to update
-      addAnother: Add another field to update
-      remove: Remove field
-    reset: Reset
+      add: Добавьте поле для обновления
+      addAnother: Добавьте еще одно поле для обновления
+      remove: Удалить поле
+    reset: Перезагрузить
+    title: Обновить выбранные записи
+  cancelSelection: Отмена
   drillDown:
     filter:
-      label: 'Chart drill down'
-  tooltip:
-    deleteSelected: Delete selected records
-    undeleteSelected: Undelete selected records
-  editFields: Editable module fields
+      label: Детализация диаграммы
+  editFields: Редактируемые поля модуля
+  enableRecordPageNavigation: Пользователи смогут переходить к предыдущей/следующей
+    записи
   export:
-    all: Export all records
-    allow: Users will be able to export records
-    csv: CSV Export
-    dateRange: 'Select date range:'
-    query:
-      label: Search query
-      placeholder: Search...
+    all: Экспортировать все записи
+    allow: Пользователи смогут экспортировать записи
+    csv: Экспорт в CSV
+    datePresetUndefined: Неизвестная предустановка даты
+    dateRange: 'Выберите диапазон дат:'
     filter:
-      label: Filter records
-      placeholder: field1 = 1 AND field2 = 232
-      footnote: Simplified SQL condition (WHERE ...) syntax is supported. Variables like {{0}}, {{1}} and {{2}} are evaluated (when available)
-      createdAt: Record created
-      custom: Custom
-      lastMonth: Last month
-      lastWeek: Last week
-      thisMonth: This month
-      thisWeek: This week
-      today: Today
-      updatedAt: Record updated
-    inRange: Set date range
-    includeQuery: Filter by search query
-    json: JSON Export
-    limitations: 'CSV export limitation: only the first value in the multi value fields will be exported'
-    rangeBy: 'Set range by:'
-    recordCount: '{{count}} records ready for export'
-    selectFields: 'Select fields you want to export:'
-    selection: Selected records
-    specifyTimezone: Export to timezone
-    timezonePlaceholder: Select timezone
-    datePresetUndefined: Unknown date preset
-  federated: Federated
-  fields: Module fields
+      createdAt: Запись Создана
+      custom: Обычай
+      footnote: Поддерживается упрощенный синтаксис условия SQL (WHERE...). Оцениваются
+        такие переменные, как {{0}}, {{1}} и {{2}} (если они доступны).
+      label: Фильтровать записи
+      lastMonth: Прошлый месяц
+      lastWeek: На прошлой неделе
+      placeholder: поле1 = 1 И поле2 = 232
+      thisMonth: Этот месяц
+      thisWeek: На этой неделе
+      today: Сегодня
+      updatedAt: Запись обновлена
+    inRange: Установить диапазон дат
+    includeQuery: Фильтр по поисковому запросу
+    json: Экспорт JSON
+    limitations: 'Ограничение экспорта CSV: будет экспортировано только первое значение
+      в полях с несколькими значениями'
+    query:
+      label: Поисковый запрос
+      placeholder: Поиск...
+    rangeBy: 'Установить диапазон по:'
+    recordCount: '{{count}} записей готовы к экспорту'
+    selectFields: 'Выберите поля, которые вы хотите экспортировать:'
+    selection: Выбранные записи
+    specifyTimezone: Экспорт в часовой пояс
+    timezonePlaceholder: Выберите часовой пояс
+  federated: Федеративное
+  fields: Поля модуля
   filter:
-    addField: Add new filter field
-    addFilter: + Add filter
-    byValue: Filter records based on field value
+    addField: Добавить новое поле фильтра
+    addFilter: + Добавить фильтр
+    byValue: Фильтрация записей по значению поля
     conditions:
-      and: AND
-      or: OR
-    deletedRecords: Deleted records
-    field: Filter field
-    fieldPlaceholder: Pick a field
-    fieldValue: Field value
-    fieldValuePlaceholder: Input field filter
-    including: Including
-    label: Filter
-    note: 'Note: If Field value is undefined, the filter will look for records where that field value is undefined.'
-    only: Only
-    operators:
-      like: Like
-      notLike: Not Like
-      contains: Contains
-      notContains: Not contains
-      equal: Equal
-      greaterThan: Greater than
-      lessThan: Less than
-      notEqual: Not equal
-      between: Between
-      notBetween: Not between
-    title: Record list filter
-    update: Update filter
-    where: Where
-    without: Without
-    presets: Filter presets
+      and: И
+      or: ИЛИ
+    deletedRecords: Удаленные записи
+    field: Поле фильтра
+    fieldPlaceholder: Выберите поле
+    fieldValue: Значение поля
+    fieldValuePlaceholder: Фильтр поля ввода
     filters:
-      label: Filters
-      active: 'Active filters:'
+      active: 'Активные фильтры:'
+      label: Фильтры
+    including: Включая
+    label: Фильтр
     name:
-      label: Name
-      placeholder: Filter name
+      label: Имя
+      placeholder: Имя фильтра
+    note: Примечание. Если значение поля не определено, фильтр будет искать записи,
+      в которых это значение поля не определено.
+    only: Только
+    operators:
+      between: Между
+      contains: Содержит
+      equal: Равный
+      greaterThan: Больше чем
+      lessThan: Меньше, чем
+      like: Нравиться
+      notBetween: Не между
+      notContains: Не содержит
+      notEqual: Не равный
+      notLike: Не как
+    presets: Предустановки фильтров
     role:
-      label: Role(s)
-      placeholder: Select role(s) to apply filter to
-  hideRecordCloneButton: Hide clone record button
-  hideRecordEditButton: Hide edit record button
-  hideRecordPermissionsButton: Hide record permissions button
-  hideRecordReminderButton: Hide record reminder button
-  hideRecordViewButton: Hide view record button
-  enableRecordPageNavigation: Users will be able to navigate to previous/next record
+      label: Роль (и)
+      placeholder: Выберите роли, к которым нужно применить фильтр
+    title: Фильтр списка записей
+    update: Обновить фильтр
+    where: Где
+    without: Без
+  hideRecordCloneButton: Скрыть кнопку записи клона
+  hideRecordEditButton: Скрыть кнопку редактирования записи
+  hideRecordPermissionsButton: Скрыть кнопку разрешений на запись
+  hideRecordReminderButton: Скрыть кнопку напоминания о записи
+  hideRecordViewButton: Скрыть кнопку просмотра записи
   import:
-    dropzoneFileAdded: '{{name}} was uploaded and is ready for import ({{count}} record)'
-    dropzoneFileAdded_plural: '{{name}} was uploaded and is ready for import ({{count}} records)'
-    dropzoneLabel: Click or drop file here to upload (.csv or JSON)
-    failed: 'Something went wrong during the import. Please try again: {{failReason}}'
-    fileColumns: File columns
-    hasRequiredFileFields: 'This module has required file upload fields'
-    matchFields: 'Match imported columns with existing ones:'
-    moduleFields: Module fields
-    onError: 'If any record fails to import:'
-    onErrorFail: Cancel import
-    onErrorSkip: Skip record
-    pickModuleField: Pick a module field
-    progressRatio: '{{completed}} / {{entryCount}} rows'
+    dropzoneFileAdded: '{{name}} загружено и готово к импорту (запись {{count}})'
+    dropzoneFileAdded_plural: '{{name}} загружено и готово к импорту ({{count}} записей)'
+    dropzoneLabel: Нажмите или перетащите сюда файл для загрузки (.csv или JSON)
+    failed: 'Что-то пошло не так во время импорта. Пожалуйста, попробуйте еще раз:
+      {{failReason}}'
+    fileColumns: Столбцы файла
+    hasRequiredFileFields: В этом модуле есть обязательные поля для загрузки файлов
+    matchFields: 'Сопоставьте импортированные столбцы с существующими:'
+    moduleFields: Поля модуля
+    onError: 'Если какая-либо запись не импортируется:'
+    onErrorFail: Отменить импорт
+    onErrorSkip: Пропустить запись
+    pickModuleField: Выберите поле модуля
+    progressRatio: '{{completed}} / {{entryCount}} строк'
     report:
-      count: Number of records
-      detectedErrors: Detected errors
-      error: Error
-      failedEntries: Failed source entries
-      failedEntriesLine: Entry
-      failedEntriesLines: Entries from to (inclusive)
-      failedRecords: Failed records
-      finishedAt: Finished At
-      importedRecords: Imported records
-      startedAt: Started At
-      title: Record import error report
-      totalRecords: Total records
-    success: Import successful
-    to: Import to {{modulename}}
-    uploadFile: Upload the file you want to import (.csv or JSON format)
-  label: Record list
-  moduleFootnote: Modules without a {{0}} can only be used in a record list as an inline editor
-  moduleFieldsFootnote : If no fields are selected, the default fields will be shown
-  noRecords: There are no records matching your request
+      count: Количество записей
+      detectedErrors: Обнаруженные ошибки
+      error: Ошибка
+      failedEntries: Неудачные исходные записи
+      failedEntriesLine: Вход
+      failedEntriesLines: Записи с по (включительно)
+      failedRecords: Неудачные записи
+      finishedAt: Закончено в
+      importedRecords: Импортированные записи
+      startedAt: Началось в
+      title: Записать отчет об ошибке импорта
+      totalRecords: Всего записей
+    success: Импорт выполнен успешно
+    to: Импортировать в {{имя_модуля}}
+    uploadFile: Загрузите файл, который вы хотите импортировать (формат .csv или JSON)
+  inlineEdit:
+    button:
+      title: Изменить значение
+    enabled: Редактирование встроенных значений включено
+    modal:
+      title: Обновить значения записи
+  label: Список записей
+  moduleFieldsFootnote: Если поля не выбраны, будут показаны поля по умолчанию.
+  moduleFootnote: Модули без {{0}} можно использовать только в списке записей в качестве
+    встроенного редактора.
+  noRecords: Нет записей, соответствующих вашему запросу
   pagination:
-    next: Next
-    prev: Previous
-    showing: '{{from}} - {{to}} of {{count}} records'
-    single: One record
-    single_plural: '{{count}} records'
+    next: Следующий
+    prev: Предыдущий
+    showing: '{{from}} - {{to}} из {{count}} записей'
+    single: Одна запись
+    single_plural: '{{count}} записей'
   positionField:
-    footnote: Records will be sorted based on this field
-    label: Record sort field
+    footnote: Записи будут отсортированы на основе этого поля
+    label: Поле сортировки записи
   preview:
-    addRecordButton: Add record button
-    bePaged: '{{0}} be paged.'
-    isDisabled: '{{0}} is disabled.'
-    isEnabled: '{{0}} is enabled.'
-    isHidden: '{{0}} is hidden.'
-    isShown: '{{0}} is shown'
-    moduleNotSelected: Block with table of records, module not selected.
-    recordFromModule: 'Showing records from {{0}} module with columns: {{1}}'
-    recordsPerPage: '{{0}} records are shown per page.'
-    resultsCan: Results can
-    resultsCant: Results can not
-    resultsPrefiltered: 'Results are prefiltered:'
-    searchInput: Search inputbox
-    sorting: Sorting
-    tableHeader: Table header
-    usersSearchThrough: Users search through the records
-    usersSee: Users see {{0}}
-    withPresortedRecords: with presorted ({{0}}) record
+    addRecordButton: Добавить кнопку записи
+    bePaged: '{{0}} будут выведены на страницу.'
+    isDisabled: '{{0}} отключен.'
+    isEnabled: '{{0}} включен.'
+    isHidden: '{{0}} скрыт.'
+    isShown: '{{0}} показано'
+    moduleNotSelected: Блок с таблицей рекордов, модуль не выбран.
+    recordFromModule: 'Отображение записей из модуля {{0}} со столбцами: {{1}}'
+    recordsPerPage: '{{0}} записей отображается на странице.'
+    resultsCan: Результаты могут
+    resultsCant: Результаты не могут
+    resultsPrefiltered: 'Результаты предварительно фильтруются:'
+    searchInput: Поле ввода поиска
+    sorting: Сортировка
+    tableHeader: Заголовок таблицы
+    usersSearchThrough: Пользователи выполняют поиск по записям
+    usersSee: Пользователи видят {{0}}
+    withPresortedRecords: с предварительно отсортированной ({{0}}) записью
   record:
-    draggable: Can drag & drop records to order them
-    fullPageNavigation: Full page navigation
-    hideAddButton: Users will be able to add new records
-    hideImportButton: Users will be able to import records
-    pagingLabel: Paging
-    pagingOptions: Paging Options
-    moreOptions: More Options
-    hidePaging: User will be able to use Paging
-    inlineEditor: Inline Options
-    inlineEditorAllow: Inline record editor
-    recordsLabel: Records
-    noPermission: No permission to read record
-    perPage: Records per page
-    prefilterFootnote: Simplified SQL condition (WHERE ...) syntax is supported. Variables like {{0}}, {{1}} and {{2}} are evaluated (when available)
-    prefilterHideSearch: Users will be able to search the record list
-    filterHide: Users will be able to filter the list
-    prefilterLabel: Filtering
-    generalLabel: General Settings
-    prefilterCommand: Prefilter
-    prefilterPlaceholder: field1 = 1 AND field2 = 232
-    presortFootnote: Simplified SQL condition (ORDER BY ...) syntax is supported
-    presortToggleInput: Toggle input type
-    presortHideSort: Users will be able to sort the list
-    presortLabel: Sorting
-    presortInputLabel: Presort
-    presortPlaceholder: field1 DESC, field2 ASC
-    showTotalCount: Show total record count
-    showDeletedRecordsOption: Show option to see deleted records
-    openInSameTab: Open record in the same tab
-    openInNewTab: Open record in a new tab
-    openInModal: Open record in a modal
-    enableBulkRecordEdit: Enable bulk record edit
-    linkToParent: Link to parent record
-    buttons: Record buttons
+    buttons: Кнопки записи
+    draggable: Можно перетаскивать записи, чтобы упорядочить их
+    enableBulkRecordEdit: Включить массовое редактирование записи
+    filterHide: Пользователи смогут фильтровать список
+    fullPageNavigation: Полная навигация по страницам
+    generalLabel: общие настройки
+    hideAddButton: Пользователи смогут добавлять новые записи
+    hideImportButton: Пользователи смогут импортировать записи
+    hidePaging: Пользователь сможет использовать пейджинг
+    inlineEditor: Встроенные параметры
+    inlineEditorAllow: Встроенный редактор записей
+    linkToParent: Ссылка на родительскую запись
+    moreOptions: Больше вариантов
+    noPermission: Нет разрешения на чтение записи
+    openInModal: Открыть запись в модальном режиме
+    openInNewTab: Открыть запись в новой вкладке
+    openInSameTab: Открыть запись в той же вкладке
+    pagingLabel: пейджинг
+    pagingOptions: Параметры пейджинга
+    perPage: Записей на страницу
+    prefilterCommand: Предварительный фильтр
+    prefilterFootnote: Поддерживается упрощенный синтаксис условия SQL (WHERE...).
+      Оцениваются такие переменные, как {{0}}, {{1}} и {{2}} (если они доступны).
+    prefilterHideSearch: Пользователи смогут осуществлять поиск в списке записей
+    prefilterLabel: Фильтрация
+    prefilterPlaceholder: поле1 = 1 И поле2 = 232
+    presortFootnote: Поддерживается упрощенный синтаксис условия SQL (ORDER BY...).
+    presortHideSort: Пользователи смогут сортировать список
+    presortInputLabel: Предварительная сортировка
+    presortLabel: Сортировка
+    presortPlaceholder: поле1 DESC, поле2 ASC
+    presortToggleInput: Переключить тип ввода
+    recordDisplayOptions: На запись нажмите
+    recordSelectorDisplayOptions: В селекторе записи нажмите
+    recordsLabel: Рекорды
+    showDeletedRecordsOption: Показать параметр для просмотра удаленных записей
+    showTotalCount: Показать общее количество записей
     tooltip:
-      clone: Clone
-      edit: Edit
-      delete: Delete
-      restore: Restore
-      reminder: Reminder
-      view: View
-      permissions: Permissions
-    recordDisplayOptions: On record click
-    recordSelectorDisplayOptions: On record selector click
-  recordPage: record page
+      clone: Клон
+      delete: Удалить
+      edit: Редактировать
+      permissions: Разрешения
+      reminder: Напоминание
+      restore: Восстановить
+      view: Вид
+  recordPage: страница записи
   refField:
-    footnote: Field that links records with the parent record
-    label: Parent field
-  selectable: Users will be able to select records
-  selected: '{{count}} of {{total}} records selected'
-  sort:
-    tooltip: Sort column
+    footnote: Поле, которое связывает записи с родительской записью
+    label: Родительское поле
+  selectable: Пользователи смогут выбирать записи
+  selected: Выбрано {{count}} из {{total}} записей
   showRecords:
-    deleted: Show deleted records
-    existing: Show existing records
+    deleted: Показать удаленные записи
+    existing: Показать существующие записи
+  sort:
+    tooltip: Сортировать столбец
+  tooltip:
+    deleteSelected: Удалить выбранные записи
+    undeleteSelected: Восстановить выбранные записи
 recordOrganizer:
-  onRecordClick: On record click
-  openInSameTab: Open in the same tab
-  openInNewTab: Open in a new tab
-  openInModal: Open in a modal
+  addNewRecord: + Добавить новую запись
   descriptionField:
-    footnote: Field value will be used as record description
-    label: Description field
+    footnote: Значение поля будет использоваться как описание записи
+    label: Поле описания
   group:
-    footnote: Value that will be set to the key field. The records will be filtered based on this value, if it's defined.
-    label: Key value
+    footnote: Значение, которое будет установлено в ключевое поле. Записи будут фильтроваться
+      на основе этого значения, если оно определено.
+    label: Ключевое значение
   groupField:
-    footnote: Field whose value will change when a record is moved into the record organizer
-    label: Key field
-  label: Record organizer
+    footnote: Поле, значение которого изменится при перемещении записи в организатор
+      записей
+    label: Ключевое поле
+  label: Организатор записи
   labelField:
-    footnote: Field value will be used as record label
-    label: Label field
-  noRecords: No records in module linked with record organizer. Drag and drop records here.
-  notConfigured: Record organizer is not configured correctly
+    footnote: Значение поля будет использоваться как метка записи
+    label: Поле метки
+  noRecords: Нет записей в модуле, связанном с организатором записей. Перетащите записи
+    сюда.
+  notConfigured: Организатор записи настроен неправильно
+  onRecordClick: На запись нажмите
+  openInModal: Открыть в модальном режиме
+  openInNewTab: Открыть в новой вкладке
+  openInSameTab: Открыть в той же вкладке
   positionField:
-    footnote: Records will be sorted based on this field. That field value will be updated based on the position of the record.
-    label: Record sort field
+    footnote: Записи будут отсортированы по этому полю. Значение этого поля будет
+      обновляться в зависимости от позиции записи.
+    label: Поле сортировки записи
   preview:
-    label: 'Record Organizer block for module {{0}}. Label field {{1}}, Description field {{2}}. Value setting field: {{3}}, Sorted by position field: {{4}}.'
-    moduleNotSelected: Record Organizer module not selected
-  addNewRecord: + Add new record
-
+    label: 'Блок «Организатор записей» для модуля {{0}}. Поле метки {{1}}, поле описания
+      {{2}}. Поле установки значения: {{3}}, поле сортировки по положению: {{4}}.'
+    moduleNotSelected: Модуль «Организатор записей» не выбран
 recordRevisions:
-  label: Record revisions
-
-  viewer:
+  configurator:
     errors:
-      no-record: No record found to display revisions for
-      no-revisions: No record revisions found
-      disabled-on-module: Record revisions are disabled on this module
-
-    show-revisions: Show record revisions ({{ revision }})
-    show-changes: "{{ count }} change(s)"
-    revisions:
+      invalid-module-id: Поле не содержит допустимого идентификатора модуля.
+    fields:
       columns:
-        timestamp:
-          label: Timestamp
-        operation:
-          label: Operation
-        user:
-          label: User
+        displayed-fields:
+          label: Показывать
+        expanded-references:
+          label: Развернуть ссылки
+        kind:
+          label: Тип
+        label:
+          label: Этикетка
+      label: Настройка полей для отображения в изменениях ревизий записей
+      show-all:
+        label: Показать изменения для всех полей
+    label: Запись изменений
+    preload: Предварительно загружать версии записей
+  label: Запись изменений
+  viewer:
     changes:
       columns:
         field:
-          label: Field
-        old-value:
-          label: Old value
+          label: Поле
         new-value:
-          label: New value
-
-  configurator:
-    label: Record revisions
-    preload: Preload record revisions
+          label: Новое значение
+        old-value:
+          label: Старое значение
     errors:
-      invalid-module-id: Field does not contain a valid module ID.
-    fields:
-      label: Configure fields to display in record revisions changes
-      show-all:
-        label: Show changes for all fields
+      disabled-on-module: Редакции записей отключены в этом модуле.
+      no-record: Не найдена запись для отображения изменений для
+      no-revisions: Ревизий записи не найдено
+    revisions:
       columns:
-        label:
-          label: Label
-        kind:
-          label: Type
-        displayed-fields:
-          label: Show
-        expanded-references:
-          label: Expand references
-
-socialFeed:
-  label: Twitter feed
-  noInput: No input for displaying social feed...
-  preview:
-    socialFeed: Twitterblo feed
-  twitterProfileField: Field that contains Twitter Profile URL for a record
-  twitterProfileLabel: Twitter Profile URL for list pages i.e (https://twitter.com/bloomberg)
-selectBlockFootnote: Some types might be disabled for non-record pages
-field:
-  noPermission: No permission to read field value
-  selector:
-    available: Available fields
-    systemField: (system field)
-comment:
-  label: 'Comments'
-  titleField:
-    label: 'Title field'
-    footnote: 'Field value will be used as record title'
-  contentField:
-    label: 'Content field'
-    footnote: 'Field value will be used as record content'
-  titleInput: 'Enter comment title'
-  contentInput: 'Enter comment content'
-  submit: 'Submit'
-  sortDirection:
-    label: 'Sort direction'
-    footnote: 'Field value will be used as sorting direction reference'
-    asc: 'ASC'
-    desc: 'DESC'
-  referenceField:
-    label: 'Reference field'
-    footnote: 'Field value will be used as reference'
-navigation:
-  chart: Charts
-  colorPicker: Choose a color
-  noNavigationItems: No navigation item configured
-  label: Navigation
-  displayOptions: Display options
-  appearance: Appearance
-  alignment: Alignment
-  justify: Justify
-  fieldLabel: Label
-  enabled: Enabled
-  openIn: Open in
-  navigationItems: Navigation items
-  type: Type
-  disabled: Disabled
-  color: Color
-  background: Background
-  url: URL
-  drop: Dropdown position
-  add: Add navigation item
-  addDropdown: Add dropdown item
-  composePage: Compose page
-  tabs: Tabs
-  pills: Pills
-  small: Small
-  center: Center
-  left: Left
-  right: Right
-  bottom: Bottom
-  top: Top
-  None: None
-  primary: Primary
-  secondary: Secondary
-  success: Success
-  warning: Warning
-  danger: Danger
-  info: Info
-  text: Text
-  dropdown: Dropdown
-  multi: Multiline
-  sameTab: Same tab
-  selectOpenInType: Select open in type
-  newTab: New tab
-  dropdownItems: Dropdown items
-  delimiter: Delimiter
-  none: None
-  displaySubPages: Display sub-pages
-  selectBackground: Select background
-  preview:
-    preview: Preview
-    label: Label
-    home: Home
-    dropdown: dropdown
-    about: about
+        operation:
+          label: Операция
+        timestamp:
+          label: Отметка времени
+        user:
+          label: Пользователь
+    show-changes: '{{ количество }} изменений'
+    show-revisions: Показать ревизии записей ({{ ревизия }})
 report:
-  label: Report
-  scenario:
-    label: Scenario
   element:
-    label: Display element
-    description: Display elements are grouped by their respective block
-
-progress:
-  add: + Add
-  count: Count
-  aggregate:
-    label: Aggregation operation
-    select: Select aggregation operation
-  animated: Animated
-  default-variant: Default variant
-  display-options: Display options
-  fetch-failed: Failed to fetch progress bar report
-  field:
-    label: Field
-    select: Select field
-  label: Progress bar
-  module:
-    select: Select module
-    label: Module
-  preview: Live example
-  show:
-    value: Show value
-    relative: Show relative
-    progress: Show progress
-  tab:
-    label: Progress
-  thresholds: Thresholds
-  threshold:
-    label: Threshold
-    variant: Set which variant to show if value is equal or larger than the threshold
-  value:
-    label: Value
-    min: Minimum value
-    max: Maximum value
-    default:
-      label: Default value
-      description: This value will be used if metric is not configured
-  variant:
-    default: Dark
-    danger: Danger
-    dark: Dark
-    info: Info
-    light: Light
-    primary: Primary
-    secondary: Secondary
-    success: Success
-    warning: Warning
-
-nylas:
-  label: Office365/Google
-
-  viewer:
-    connect: Connect with Nylas
-    noExternal: Nylas external provider is not configured
-    noComponentID: Nylas component ID is not configured
-
-  configurator:
-    label: Office365/Google
-    kind: Component kind
-    componentID: Component ID
-    kinds:
-      agenda: Agenda
-      composer: Composer
-      contactList: Contact List
-      conversation: Conversation
-      email: Email
-      mailbox: Mailbox
-
-geometry:
-  label: Geometry
-  viewLabel: Geometry
-  feedLabel: Configure Sources
-  addSource: Add source
-  lock: Lock
-  mapHelpText: Move and scroll the map to the position that will be used as a default. You can also lock the position or zoom to prevent users from moving too far.
-  onMarkerClick: On marker click
-  openInSameTab: Open in the same tab
-  openInNewTab: Open in a new tab
-  openInModal: Open in a modal
-  recordFeed:
-    colorPicker: Choose a color
-    moduleLabel: Module*
-    modulePlaceholder: (No module)
-    noMultiFields: Multi-value fields are currently not supported
-    optionLabel: Records
-    prefilterLabel: Prefilter sources
-    colorLabel: Marker color
-    geometryFieldLabel: Geometry field*
-    titleLabel: Title
-    titlePlaceholder: Title
-    geometryFieldPlaceholder: Geometry field
-    displayMarker: Display marker
-    displayPolygon: Display polygon
-  centerLabel: Center
-  zoom:
-    zoomLabel: Zoom
-    zoomMinLabel: Zoom min
-    zoomMaxLabel: Zoom max
-    zoomStartingLabel: Zoom Starting
-  bounds:
-    boundsLabel: Bounds
-    lockBounds: Lock bounds
-    topLeft: Bounds top left
-    lowerRight: Bounds lower right
+    description: Элементы отображения сгруппированы по соответствующим блокам
+    label: Элемент отображения
+  label: Отчет
+  scenario:
+    label: Сценарий
+selectBlockFootnote: Некоторые типы могут быть отключены для страниц без записи.
+selector:
+  selectableBlocks:
+    placeholder: Блоки из других макетов
   tooltip:
-      goToCurrentLocation: Go to current location
-
+    clone:
+      noRef: Клонировать без ссылок
+      ref: Клон со ссылками
+socialFeed:
+  label: Лента Твиттера
+  noInput: Нет ввода для отображения социальной ленты...
+  preview:
+    socialFeed: Лента Twitterblo
+  twitterProfileField: Поле, содержащее URL-адрес профиля Twitter для записи
+  twitterProfileLabel: URL-адрес профиля Twitter для страниц списка, например (https://twitter.com/bloomberg)
 tabs:
-  alertTitle: Set a title for your block
-  title: Tabs
-  addTab: + Add
-  tab: Tab
-  selectBlock: Choose a block
-  noTabs: No tabs configured
-  noBlock: No block configured
-  displayTitle: Display Options
-  preview: Live example
-  newBlockModal: Add new block
+  addTab: + Добавить
+  alertTitle: Установите заголовок для вашего блока
+  displayTitle: Показать варианты
+  label: Вкладки
+  newBlockModal: Добавить новый блок
+  noBlock: Блок не настроен
+  noTabs: Вкладки не настроены
   placeholder:
-    block: Select a block to tab
+    block: Выберите блок для вкладки
+  preview: Живой пример
+  selectBlock: Выберите блок
   style:
-    appearance:
-      label: Appearance
-      tabs: Tabs
-      pills: Pills
-      small: Small
     alignment:
-      label: Alignment
-      left: Left
-      center: Center
-      right: Right
+      center: Центр
+      label: Выравнивание
+      left: Левый
+      right: Верно
+    appearance:
+      label: Появление
+      pills: Таблетки
+      small: Маленький
+      tabs: Вкладки
     justify:
-      label: Justify
-      justify: Justify
-      none: None
+      justify: Оправдывать
+      label: Оправдывать
+      none: Никто
     orientation:
-      label: Orientation
-      vertical: Vertical
-      horizontal: Horizontal
+      horizontal: Горизонтальный
+      label: Ориентация
+      vertical: Вертикальный
     position:
-      label: Position
-      start: Start
-      end: End
+      end: Конец
+      label: Позиция
+      start: Начинать
+  tab: Вкладка
   table:
     columns:
-      title:
-        label: Title
       block:
-        label: Block
+        label: Блокировать
+      title:
+        label: Заголовок
+  title: Вкладки
   tooltip:
-    edit: Edit block
-    editDisabled: Editing tabbed blocks is disabled until you save this block
-    addTab: Add tab
-    addBlock: Add new block
-    delete: Delete tab
-  label: Tabs
+    addBlock: Добавить новый блок
+    addTab: Добавить вкладку
+    delete: Удалить вкладку
+    edit: Редактировать блок
+    editDisabled: Редактирование блоков с вкладками отключено, пока вы не сохраните
+      этот блок

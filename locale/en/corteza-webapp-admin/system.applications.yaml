@@ -1,65 +1,65 @@
 editor:
   info:
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    enabled: Enabled
-    id: ID
-    name: Name *
-    title: Basic information
-    undelete: Undelete
-    updatedAt: Updated at
-  new: New
-  permissions: Permissions
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    enabled: Включено
+    id: ИДЕНТИФИКАТОР
+    name: Имя *
+    title: Основная информация
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
+  permissions: Разрешения
   title:
-    create: Create application
-    edit: Edit application
+    create: Создать приложение
+    edit: Изменить приложение
   unify:
     config:
-      description: Application configuration (JSON)
-      label: Configuration
-    listed: Listed
+      description: Конфигурация приложения (JSON)
+      label: Конфигурация
+    listed: Перечислено
     logo:
-      label: Logo
-      description: Logo used in the application selector
-      placeholder: Choose a logo or drop it here...
-      reset: Reset
+      description: Логотип, используемый в селекторе приложений
+      label: Логотип
+      placeholder: Выберите логотип или оставьте его здесь...
+      reset: Перезагрузить
     name:
-      description: Name used in the application selector
-      label: Name
-    pinned: Pinned
-    title: App selector
+      description: Имя, используемое в селекторе приложений
+      label: Имя
+    pinned: Закреплено
+    title: Селектор приложений
     url:
-      description: Application URL
-      label: URL
+      description: URL-адрес приложения
+      label: URL-адрес
 list:
   columns:
-    actions: ""
-    createdAt: Created
-    enabled: Enabled
-    name: Name
-    appListName: App selector name
-    state: State
-  export: Export
-  rows:
-    filters:
-      deleted: Deleted
+    actions: ''
+    appListName: Имя селектора приложений
+    createdAt: Созданный
+    enabled: Включено
+    name: Имя
+    state: Состояние
+  export: Экспорт
   filterForm:
     deleted:
-      label: deleted applications
+      label: удаленные приложения
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     inclusive:
-      label: Including
+      label: Включая
     query:
-      label: Filter applications list
-      placeholder: Filter applications by name
-  loading: Loading applications
-  new: New
-  numFound: '{{count}} application found'
-  numFound_plural: '{{count}} applications found'
-  permissions: Permissions
-  title: Applications
+      label: Фильтровать список приложений
+      placeholder: Фильтровать приложения по имени
+  loading: Загрузка приложений
+  new: Новый
+  numFound: '{{count}} приложение найдено'
+  numFound_plural: Найдено {{count}} приложений
+  permissions: Разрешения
+  rows:
+    filters:
+      deleted: Удалено
+  title: Приложения
   yaml: YAML

@@ -1,21 +1,20 @@
 label:
-  back: Back
+  back: Назад
   privacy_request:
-    single: Privacy Request
-    plural: Privacy Requests
+    plural: Запросы конфиденциальности
+    single: Запрос конфиденциальности
   sensitive_module:
-    single: Sensitive Module
-    plural: Sensitive Modules
-
+    plural: Чувствительные модули
+    single: Чувствительный модуль
 resourceList:
-  loading: Loading
-  noItems: No items
-  notFound: Not found
-  search:
-    placeholder: Type here to search items
+  loading: Загрузка
+  noItems: Нет товаров
+  notFound: Не найдено
   pagination:
-    next: Next
-    prev: Previous
-    showing: '{{from}} - {{to}} of {{count}} {{data}}'
-    single: 'One {{data}}'
-    single_plural: '{{count}} {{data}}'
+    next: Следующий
+    prev: Предыдущий
+    showing: '{{from}} - {{to}} из {{count}} {{data}}'
+    single: Один {{данные}}
+    single_plural: '{{число}} {{данные}}'
+  search:
+    placeholder: Введите здесь для поиска элементов

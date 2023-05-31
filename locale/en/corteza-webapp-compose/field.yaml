@@ -1,250 +1,259 @@
-available-items: Available fields
-selected-items: Selected fields
-defaultFieldValue: Default field value
-defaultValue: Default value
-required-field: This field is required
+available-items: Доступные поля
+constraints:
+  caseSensitive: С учетом регистра
+  description: Использовать ограничения уникальных значений для этого поля
+  equal: Равный
+  fuzzyMatch: Нечеткое совпадение
+  ignoreCase: Игнорировать регистр
+  label: Ограничение уникального значения
+  multiValues: Значения нескольких полей
+  none: Никто
+  oneOf: Один из
+  soundsLike: Звучит как
+  totalFieldConstraintCount: Поле используется в {{total}} другом ограничении уникального
+    значения. См. вкладку «уникальные значения» в редакторе модулей.
+  valueModifiers: Модификаторы значений
+defaultFieldValue: Значение поля по умолчанию
+defaultValue: Значение по умолчанию
 kind:
   bool:
-    checkedValueLabel: Value when checked
-    checkedValuePlaceholder: Checked value
-    label: Checkbox (Y/N)
-    uncheckedValueLabel: Value when unchecked
-    uncheckedValuePlaceholder: Unchecked value
+    checkedValueLabel: Значение при проверке
+    checkedValuePlaceholder: Проверяемое значение
+    label: Флажок (Да/Нет)
+    uncheckedValueLabel: Значение, когда флажок не установлен
+    uncheckedValuePlaceholder: Непроверенное значение
   dateTime:
-    dateOnly: Date Only
-    futureValuesOnly: Future Value Only
-    label: Date and time
-    outputFormat: Output format
-    outputFormatFootnote: See {{0}} for formatting options
-    pastValuesOnly: Past Values Only
-    relativeOutput: 'Output Relative value (eg: 3 days ago)'
-    timeOnly: Time Only
+    dateOnly: Только дата
+    futureValuesOnly: Только будущая стоимость
+    label: Дата и время
+    outputFormat: Выходной формат
+    outputFormatFootnote: См. {{0}} для параметров форматирования.
+    pastValuesOnly: Только прошлые значения
+    relativeOutput: 'Выходное относительное значение (например: 3 дня назад)'
+    timeOnly: Только время
     warning:
-      futureValuesOnly: Only dates in the future will be saved
-      pastValuesOnly: Only dates in the past will be saved
+      futureValuesOnly: Будут сохранены только даты в будущем
+      pastValuesOnly: Будут сохранены только даты в прошлом
   email:
-    label: Email
-    preventToLink: Don't turn email into a link
+    label: Электронная почта
+    preventToLink: Не превращайте электронную почту в ссылку
   file:
-    label: File
+    label: Файл
     view:
-      gallery: Gallery of images
-      grid: Grid
-      list: List
-      maxSizeLabel: Maximum file size
-      mimetypesFootnote: 'MIME types, separated with ",". Example: "text/plain,text/csv"'
-      mimetypesLabel: File type allow list
-      modeFootnote: How files are represented in record page blocks
-      modeLabel: View mode
-      showName: Hide file name
-      single: Single image
-      previewStyle: Preview style
-      height: Height
-      width: Width
-      maxHeight: Max height
-      maxWidth: Max width
-      borderRadius: Border radius
-      background: Background color
-      colorPicker: Choose a color
-      margin: Margin
-      unitType: Unit type
-      px: px
-      enableDownload: Enable download
-      clickToView: Click to view file
-      description: 'Add unit after value to set it. For example: 50px or 50%'
-  number:
-    exampleFormat: Format
-    exampleInput: Input
-    exampleResult: Result
-    examplesLabel: Format examples
-    formatLabel: Format
-    formatPlaceholder: Format
-    label: Number
-    liveExample: Live example
-    precisionLabel: Precision
-    precisionPlaceholder: Precision
-    prefixLabel: Prefix
-    prefixPlaceholder: Prefix
-    suffixLabel: Suffix
-    suffixPlaceholder: Suffix
-    displayType:
-      label: Display type
-      number: Number
-      progress: Progress bar
-    progress:
-      maximumValue: Maximum value
-      minimumValue: Minimum value
-      animated: Animated
-      show:
-        value: Show value
-        relative: Show relative
-        progress: Show progress
-      showRelative: Show relative
-      variants:
-        default: Default variant
-        danger: Danger
-        dark: Dark
-        info: Info
-        light: Light
-        primary: Primary
-        secondary: Secondary
-        success: Success
-        warning: Warning
-      thresholds:
-        label: Thresholds
-        description: Set which variant to show if value is equal or larger than the threshold
-  record:
-    currentUnnamedModule: (Current unnamed module)
-    label: Record
-    moduleLabel: Module name
-    modulePlaceholder: Pick module
-    queryFieldsLabel: Query fields on search
-    moduleField: Module field
-    variantField: Variant field
-    fieldFromModuleField: Label field from related module field
-    pickField: Pick field
-    suggestionPlaceholder: Start typing to search for records
-    prefilterFootnote: Simplified SQL condition (WHERE ...) syntax is supported. Variables like {{0}}, {{1}} and {{2}} are evaluated (when available)
-    prefilterLabel: Prefilter records
-    prefilterPlaceholder: field1 = 1 AND field2 = 232
-  select:
-    allow-duplicates: Allow duplicates
-    label: Select
-    optionAdd: Add
-    optionLabelPlaceholder: Label
-    optionNotSelected: No option selected
-    optionRemove: Remove
-    optionType:
-      default: Single input
-      each: Input for each value
-      label: Multiple value input type
-      multiple: Multiple select
-    optionValuePlaceholder: Value
-    optionsLabel: Options to select from
-    placeholder: Select an option by clicking here
-  string:
-    label: String
-    multiLine: Multi line
-    richText: Use Rich Text Editor
-  url:
-    example: 'Example URL: https://example.com'
-    label: URL
-    preventToLink: Don't turn Url into a link
-    sshOnly: Only allow SSL (https) Url
-    trimHash: Trim '#' from the Url
-    trimQuestionMark: Trim '?' from the Url
-    trimToDomain: Trim Url down to domain only
-  user:
-    label: User
-    na: N/A
-    presetWithCurrentUser: Preset with current user
-    suggestionPlaceholder: Start typing to search for users by email or name
-    roles:
-      label: User roles
-      placeholder: Filter by user roles
+      background: Фоновый цвет
+      borderRadius: Радиус границы
+      clickToView: Нажмите, чтобы просмотреть файл
+      colorPicker: Выберите цвет
+      description: 'Добавьте единицу измерения после значения, чтобы установить его.
+        Например: 50px или 50%'
+      enableDownload: Включить загрузку
+      gallery: Галерея изображений
+      grid: Сетка
+      height: Высота
+      list: Список
+      margin: Допуск
+      maxHeight: максимальная высота
+      maxSizeLabel: Максимальный размер файла
+      maxWidth: Максимальная ширина
+      mimetypesFootnote: 'Типы MIME, разделенные знаком ",". Пример: "текст/обычный,текст/csv"'
+      mimetypesLabel: Список разрешенных типов файлов
+      modeFootnote: Как файлы представлены в блоках страниц записи
+      modeLabel: Режим просмотра
+      previewStyle: Стиль предварительного просмотра
+      px: пикс.
+      showName: Скрыть имя файла
+      single: Одно изображение
+      unitType: Тип устройства
+      width: Ширина
   geometry:
-    label: Geometry
-    latitude: Latitude
-    longitude: Longitude
-    clickToPlaceMarker: Click to place/remove a marker
-    initialZoomAndPosition: Set initial map zoom and position
-    prefillWithCurrentLocation: Prefill with current location
-    hideCurrentLocationButton: Hide current location button
-    hideGeoSearch: Hide location search
+    clickToPlaceMarker: Щелкните, чтобы разместить/удалить маркер
+    geosearchInputPlaceholder: Введите адрес, место или почтовый индекс
+    hideCurrentLocationButton: Скрыть кнопку текущего местоположения
+    hideGeoSearch: Скрыть поиск местоположения
+    initialZoomAndPosition: Установить начальный масштаб карты и положение
+    label: Геометрия
+    latitude: Широта
+    longitude: Долгота
+    prefillWithCurrentLocation: Заполнить текущим местоположением
     tooltip:
-      goToCurrentLocation: Go to current location
-      useCurrentLocation: Use current location
-      openMap: Open map
-    geosearchInputPlaceholder: Enter address, place or postcode
-noPermission: No permission to read field value
-no-items-found: No items found
+      goToCurrentLocation: Перейти к текущему местоположению
+      openMap: Открыть карту
+      useCurrentLocation: Использовать текущее местоположение
+  number:
+    displayType:
+      label: Тип дисплея
+      number: Число
+      progress: Индикатор
+    exampleFormat: Формат
+    exampleInput: Вход
+    exampleResult: Результат
+    examplesLabel: Примеры форматов
+    formatLabel: Формат
+    formatPlaceholder: Формат
+    label: Число
+    liveExample: Живой пример
+    precisionLabel: Точность
+    precisionPlaceholder: Точность
+    prefixLabel: Префикс
+    prefixPlaceholder: Префикс
+    progress:
+      animated: Анимированный
+      maximumValue: Максимальное значение
+      minimumValue: Минимальное значение
+      show:
+        progress: Показать прогресс
+        relative: Показать родственника
+        value: Показать значение
+      showRelative: Показать родственника
+      thresholds:
+        description: Установите, какой вариант показывать, если значение равно или
+          превышает пороговое значение
+        label: Пороги
+      variants:
+        danger: Опасность
+        dark: Темный
+        default: Вариант по умолчанию
+        info: Информация
+        light: Свет
+        primary: Начальный
+        secondary: Среднее
+        success: Успех
+        warning: Предупреждение
+    suffixLabel: Суффикс
+    suffixPlaceholder: Суффикс
+  record:
+    currentUnnamedModule: (Текущий безымянный модуль)
+    fieldFromModuleField: Поле метки из связанного поля модуля
+    label: Записывать
+    moduleField: Поле модуля
+    moduleLabel: Имя модуля
+    modulePlaceholder: Выберите модуль
+    pickField: Выберите поле
+    prefilterFootnote: Поддерживается упрощенный синтаксис условия SQL (WHERE...).
+      Оцениваются такие переменные, как {{0}}, {{1}} и {{2}} (если они доступны).
+    prefilterLabel: Записи предварительной фильтрации
+    prefilterPlaceholder: поле1 = 1 И поле2 = 232
+    queryFieldsLabel: Поля запроса в поиске
+    suggestionPlaceholder: Начните вводить для поиска записей
+    variantField: Поле вариантов
+  select:
+    allow-duplicates: Разрешить дубликаты
+    label: Выбирать
+    optionAdd: Добавлять
+    optionLabelPlaceholder: Этикетка
+    optionNotSelected: Вариант не выбран
+    optionRemove: Удалять
+    optionType:
+      default: Один вход
+      each: Ввод для каждого значения
+      label: Тип ввода нескольких значений
+      multiple: Множественный выбор
+    optionValuePlaceholder: Ценить
+    optionsLabel: Варианты выбора
+    placeholder: Выберите вариант, нажав здесь
+  string:
+    label: Нить
+    multiLine: Многострочный
+    richText: Используйте редактор форматированного текста
+  url:
+    example: 'Пример URL: https://example.com'
+    label: URL-адрес
+    preventToLink: Не превращайте URL в ссылку
+    sshOnly: Разрешить URL-адрес только SSL (https)
+    trimHash: Обрезать '#' из URL-адреса
+    trimQuestionMark: Подрезать '?' из URL
+    trimToDomain: Обрезать URL только до домена
+  user:
+    label: Пользователь
+    na: Н/Д
+    presetWithCurrentUser: Предустановлен с текущим пользователем
+    roles:
+      label: Роли пользователей
+      placeholder: Фильтровать по ролям пользователей
+    suggestionPlaceholder: Начните вводить текст для поиска пользователей по электронной
+      почте или имени.
+label:
+  multi: Мульти значение
+  required: Необходимый
+no-items-found: ничего не найдено
+noPermission: Нет разрешения на чтение значения поля
 options:
   description:
     label:
-      default: Description
-      edit: Description edit
-      view: Description view
+      default: Описание
+      edit: Изменить описание
+      view: Представление описания
     placeholder:
-      default: Description text...
-      edit: Description when editing record field...
-      view: Description when viewing record field...
-    same: Show same description on view and edit
+      default: Текст описания...
+      edit: Описание при редактировании поля записи...
+      view: Описание при просмотре поля записи...
+    same: Показать одно и то же описание при просмотре и редактировании
   hint:
     label:
-      default: Hint
-      edit: Hint edit
-      view: Hint view
+      default: Намекать
+      edit: Подсказка изменить
+      view: Вид подсказки
     placeholder:
-      default: Hint text...
-      edit: Hint when editing record field...
-      view: Hint when viewing record field...
-    same: Show same hint on view and edit
+      default: Текст подсказки...
+      edit: Подсказка при редактировании поля записи...
+      view: Подсказка при просмотре поля записи...
+    same: Показывать ту же подсказку при просмотре и редактировании
   multiDelimiter:
-    comma: Separated by a comma
-    custom: A custom delimiter
-    customLabel: Or use a custom delimiter
-    customPlaceholder: Enter a custom delimiter
-    label: Multiple value delimiter
-    newline: Each value in a new line
-sanitizers:
-  add: + Add
-  description: Trim spaces from text or do other kinds of value manipulation before validation
-  examples: Examples
-  expression:
-    placeholder: trim(value)
-  label: Value sanitization
-selector:
-  search: Type here to search among module fields
-  available: Available fields
-  selectAll: Select all
-  selected: Selected fields
-  systemField: (system field)
-  unselectAll: Unselect all
+    comma: Через запятую
+    custom: Пользовательский разделитель
+    customLabel: Или используйте пользовательский разделитель
+    customPlaceholder: Введите пользовательский разделитель
+    label: Разделитель нескольких значений
+    newline: Каждое значение в новой строке
 privacy:
   sensitivity-level:
-    label: Sensitivity level
-    placeholder: Select a sensitivity level
+    label: Уровень чувствительности
+    placeholder: Выберите уровень чувствительности
   usage-disclosure:
-    label: Sensitive field usage disclosure (visible on data-privacy console)
-system:
-  id: Record ID
-  moduleID: Module ID
-  namespaceID: Namespace ID
-  revision: Record revision
-  meta: Meta data
-  recordID: Record ID
-  createdAt: Created at
-  createdBy: Created by
-  deletedAt: Deleted at
-  deletedBy: Deleted by
-  ownedBy: Owned by
-  updatedAt: Updated at
-  updatedBy: Updated by
-validators:
-  description: Set of expressions and error pairs that test validity of the input value
-  disableBuiltIn: Disable built-in validators
-  error:
-    placeholder: Text displayed when expression is true
+    label: Раскрытие информации об использовании конфиденциальных полей (отображается
+      на консоли конфиденциальности данных)
+required-field: Это поле обязательно к заполнению
+sanitizers:
+  add: + Добавить
+  description: Обрезайте пробелы в тексте или выполняйте другие виды манипуляций со
+    значениями перед проверкой.
+  examples: Примеры
   expression:
-    placeholder: value == ""
-  label: Value validation
+    placeholder: обрезка (значение)
+  label: Очистка стоимости
+selected-items: Выбранные поля
+selector:
+  available: Доступные поля
+  search: Введите здесь для поиска среди полей модуля
+  selectAll: Выбрать все
+  selected: Выбранные поля
+  systemField: (системное поле)
+  unselectAll: Снять все
+system:
+  createdAt: Создан в
+  createdBy: Сделано
+  deletedAt: Удалено в
+  deletedBy: Удалено
+  id: Идентификатор записи
+  meta: Мета дата
+  moduleID: Идентификатор модуля
+  namespaceID: Идентификатор пространства имен
+  ownedBy: Принадлежит
+  recordID: Идентификатор записи
+  revision: Запись ревизии
+  updatedAt: Обновлено в
+  updatedBy: Обновлено
+validators:
+  description: Набор выражений и пар ошибок, которые проверяют достоверность входного
+    значения.
+  disableBuiltIn: Отключить встроенные валидаторы
+  error:
+    placeholder: Текст, отображаемый, когда выражение истинно
+  expression:
+    placeholder: значение == ""
+  label: Проверка значения
 valueExpr:
-  description: Insert a formula or expression that calculates numeric values or combines and manipulates text values
-  label: Field value expression
-  placeholder: ((floor(numField1) + numField2) / 10) + 0.5
-label:
-  required: Required
-  multi: Multi value
-constraints:
-  label: Unique value constraint
-  description: Use unique value constraints for this field
-  ignoreCase: Ignore case
-  fuzzyMatch: Fuzzy match
-  soundsLike: Sounds like
-  caseSensitive: Case sensitive
-  oneOf: One of
-  none: None
-  equal: Equal
-  valueModifiers: Value modifiers
-  multiValues: Multi-field values
-  totalFieldConstraintCount: The field is used in {{total}} other unique value constraint. See "unique values" tab on module editor.
+  description: Вставьте формулу или выражение, которое вычисляет числовые значения
+    или объединяет текстовые значения и манипулирует ими.
+  label: Выражение значения поля
+  placeholder: ((этаж(numField1) + numField2) / 10) + 0,5

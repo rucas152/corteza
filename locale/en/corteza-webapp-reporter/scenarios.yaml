@@ -1,5 +1,5 @@
-datasource: Datasource
-label: Label
-none: None
-prefilter: Prefilter
-scenario-name: 'Scenario Name...'
+datasource: Источник данных
+label: Этикетка
+none: Никто
+prefilter: Предварительный фильтр
+scenario-name: Название сценария...

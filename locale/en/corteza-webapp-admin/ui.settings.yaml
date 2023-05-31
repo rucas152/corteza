@@ -1,50 +1,41 @@
 editor:
-  title: 'User Interface Settings'
-
-  mainLogo:
-    title: 'Main logo'
-
-    uploader:
-      instructions: 'Click or drop main logo here to upload'
-      uploading: 'Uploading main logo'
-
-  iconLogo:
-    title: 'Icon logo'
-
-    uploader:
-      instructions: 'Click or drop icon logo image here to upload'
-      uploading: 'Uploading icon logo'
-
   favicon:
-    title: 'Favicon'
-
+    title: Фавикон
     uploader:
-      instructions: 'Click or drop favicon file here to upload'
-      uploading: 'Uploading favicon'
-
+      instructions: Нажмите или перетащите сюда файл favicon, чтобы загрузить
+      uploading: Загрузка фавиконки
+  iconLogo:
+    title: Значок логотипа
+    uploader:
+      instructions: Нажмите или перетащите значок логотипа здесь, чтобы загрузить
+      uploading: Загрузка значка логотипа
+  mainLogo:
+    title: Основной логотип
+    uploader:
+      instructions: Нажмите или перетащите основной логотип сюда, чтобы загрузить
+      uploading: Загрузка основного логотипа
+  title: Настройки пользовательского интерфейса
   topbar:
-    title: Topbar
-
-    general: General
-
     app-selector:
-      hide: Hide app selector
+      hide: Скрыть селектор приложений
+    general: Общий
     help:
-      title: Help
-      hide: Hide help
-      hide-forum-link: Hide forum link
-      hide-documentation-link: Hide documentation link
-      hide-feedback-link: Hide feedback link
-    profile:
-      title: Profile
-      hide: Hide profile
-      hide-profile-link: Hide profile link
-      hide-change-password-link: Hide change password link
-
+      hide: Скрыть справку
+      hide-documentation-link: Скрыть ссылку на документацию
+      hide-feedback-link: Скрыть ссылку обратной связи
+      hide-forum-link: Скрыть ссылку на форум
+      title: Помощь
     links:
-      title: Custom links
-      handle: Name
-      invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-      url: URL
-      new-tab: New tab
-
+      handle: Имя
+      invalid-handle-characters: Должно быть не менее 2 символов. Может содержать
+        только буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться
+        буквой или цифрой
+      new-tab: Новая вкладка
+      title: Пользовательские ссылки
+      url: URL-адрес
+    profile:
+      hide: Скрыть профиль
+      hide-change-password-link: Скрыть ссылку смены пароля
+      hide-profile-link: Скрыть ссылку на профиль
+      title: Профиль
+    title: Артиллерия

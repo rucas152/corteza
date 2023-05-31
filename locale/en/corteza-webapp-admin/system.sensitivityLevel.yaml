@@ -1,42 +1,43 @@
 editor:
-  new: New
-  title:
-    create: Create sensitivity level
-    edit: Edit sensitivity level
   info:
-    title: Basic Information
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    description: Описание
     handle:
-      label: Handle
-      placeholder: handle (a - z, 0 - 9, underscore, dash)
-      invalid-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-    name: Name *
-    description: Description
-    level: Level {{level}}
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    undelete: Undelete
-    updatedAt: Updated at
-
+      invalid-characters: Должно быть не менее 2 символов. Может содержать только
+        буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+        или цифрой
+      label: Ручка
+      placeholder: ручка (a - z, 0 - 9, подчеркивание, тире)
+    level: Уровень {{уровень}}
+    name: Имя *
+    title: Основная информация
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
+  title:
+    create: Создать уровень чувствительности
+    edit: Изменить уровень чувствительности
 list:
-  title: Sensitivity Levels
-  loading: Loading sensitivity levels
-  new: New
   columns:
     actions: ''
-    'meta.name': Name
-    level: Level
-    createdAt: Created
-    state: State
-  rows:
-    filters:
-      deleted: Deleted
+    createdAt: Созданный
+    level: Уровень
+    meta.name: Имя
+    state: Состояние
   filterForm:
     deleted:
-      label: deleted sensitivity levels
+      label: удаленные уровни чувствительности
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     inclusive:
-      label: Including
+      label: Включая
+  loading: Загрузка уровней чувствительности
+  new: Новый
+  rows:
+    filters:
+      deleted: Удалено
+  title: Уровни чувствительности

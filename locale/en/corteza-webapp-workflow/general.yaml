@@ -1,56 +1,55 @@
-clear: Clear
-description: Description
-enabled: Enabled
-error: Error
-error-expression: Error message (expression)
-export: Export
-general: General
-handle: Handle
-import:
-  json: Import JSON
-  label: Import
-  reassign-run-as: "NOTE: the Run as workflow property won't be imported and should be reassigned"
-  upload-files: Browse or drop files to upload...
-label: Label
-loading: Loading
-name: Name
-new-workflow: New Workflow 
-none: None
-now: Now
-
-offset: Offset
-offset-expression: Offset (expression)
-permissions: Permissions
-searchPlaceholder: Type here to search all workflows...
-subworkflow: Subworkflow
-subworkflows: Subworkflows
-deleted: Deleted
-disabled: Disabled
-without: Without
-only: Only
-including: Including
-unnamed-workflow: Unnamed Workflow
-workflow-list: List of Workflows
-workflow:
-  single: Workflow
-  plural: Workflows
-save: Save
-today: Today
-cancel: Cancel
-resourceList:
-  notFound: Not found
-  noItems: No items to show
-  pagination:
-    next: Next
-    prev: Previous
-    showing: '{{from}} - {{to}} of {{count}} {{data}}'
-    single: 'One {{data}}'
-    single_plural: '{{count}} {{data}}'
-
-tooltip:
-  permissions: Workflow permissions
+cancel: Отмена
+clear: Прозрачный
 columns:
-  name: Name
-  enabled: Enabled
-  steps: Steps
-  changedAt: Last change
+  changedAt: Последнее изменение
+  enabled: Включено
+  name: Имя
+  steps: Шаги
+deleted: Удалено
+description: Описание
+disabled: Неполноценный
+enabled: Включено
+error: Ошибка
+error-expression: Сообщение об ошибке (выражение)
+export: Экспорт
+general: Общий
+handle: Ручка
+import:
+  json: Импорт JSON
+  label: Импортировать
+  reassign-run-as: ПРИМЕЧАНИЕ. свойство «Запуск от имени рабочего процесса» не будет
+    импортировано и должно быть переназначено.
+  upload-files: Просмотрите или перетащите файлы для загрузки...
+including: Включая
+label: Этикетка
+loading: Загрузка
+name: Имя
+new-workflow: Новый рабочий процесс
+none: Никто
+now: Сейчас
+offset: Компенсировать
+offset-expression: Смещение (выражение)
+only: Только
+permissions: Разрешения
+resourceList:
+  noItems: Нет элементов для отображения
+  notFound: Не найдено
+  pagination:
+    next: Следующий
+    prev: Предыдущий
+    showing: '{{from}} - {{to}} из {{count}} {{data}}'
+    single: Один {{данные}}
+    single_plural: '{{число}} {{данные}}'
+save: Сохранять
+searchPlaceholder: Введите здесь, чтобы найти все рабочие процессы...
+subworkflow: Подрабочий процесс
+subworkflows: Подпроцессы
+today: Сегодня
+tooltip:
+  permissions: Разрешения рабочего процесса
+unnamed-workflow: Безымянный рабочий процесс
+without: Без
+workflow:
+  plural: Рабочие процессы
+  single: Рабочий процесс
+workflow-list: Список рабочих процессов

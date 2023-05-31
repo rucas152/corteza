@@ -1,28 +1,28 @@
-message:
-  noPages: It seems this namespace has no visible pages yet
-  notifyAdministrator: Notify your system administrator
-  startBuilding: Follow these steps to start building
 label:
-  pageBuilder: Page builder
-  welcome: Welcome!
+  pageBuilder: Конструктор страниц
+  welcome: Добро пожаловать!
+message:
+  noPages: Кажется, в этом пространстве имен еще нет видимых страниц
+  notifyAdministrator: Сообщите системному администратору
+  startBuilding: Выполните следующие действия, чтобы начать сборку
 navigation:
-  noPageTitle: No page title
+  noPageTitle: Нет заголовка страницы
 notification:
   module:
-    createFailed: Could not create a module
-    saveFailed: Could not save this module
+    createFailed: Не удалось создать модуль
+    saveFailed: Не удалось сохранить этот модуль
 step:
   chart:
-    create: Make Chart
-    view: Your Charts
+    create: Сделать диаграмму
+    view: Ваши графики
   module:
-    create: Create Module
-    view: Your Modules
-  optional: This step is optional!
+    create: Создать модуль
+    view: Ваши модули
+  optional: Этот шаг необязателен!
   page:
-    create: Build Page
-    view: Your Pages
+    create: Страница сборки
+    view: Ваши страницы
 tooltip:
   page-configuration:
-    edit: Edit page
-    list: Page translations
+    edit: Отредактировать страницу
+    list: Переводы страниц

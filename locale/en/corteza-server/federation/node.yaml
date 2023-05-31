@@ -1,10 +1,10 @@
 errors:
-  notAllowedToCreate: not allowed to create nodes
-  notAllowedToManage: not allowed to manage this node
-  notAllowedToPair: not allowed to pair this node
-  notAllowedToSearch: not allowed to search or list nodes
-  notFound: node does not exist
-  pairingTokenInvalid: pairing token invalid
-  pairingURIInvalid: 'pairing URI invalid: {err}'
-  pairingURISourceIDInvalid: pairing URI without source node ID
-  pairingURITokenInvalid: pairing URI with invalid pairing token
+  notAllowedToCreate: не разрешено создавать узлы
+  notAllowedToManage: не разрешено управлять этим узлом
+  notAllowedToPair: не разрешено связывать этот узел
+  notAllowedToSearch: не разрешено искать или перечислять узлы
+  notFound: узел не существует
+  pairingTokenInvalid: токен сопряжения недействителен
+  pairingURIInvalid: 'недопустимый URI сопряжения: {err}'
+  pairingURISourceIDInvalid: связывание URI без идентификатора исходного узла
+  pairingURITokenInvalid: связывание URI с недопустимым токеном сопряжения

@@ -1,20 +1,21 @@
 errors:
-  emailNotUnique: email not unique
-  handleNotUnique: handle not unique
-  invalidEmail: invalid email
-  invalidHandle: invalid handle
-  invalidID: invalid ID
-  notAllowedToCreate: not allowed to create users
-  notAllowedToCreateSystem: not allowed to create system users
-  notAllowedToDelete: not allowed to delete this user
-  notAllowedToListUsers: not allowed to list users
-  notAllowedToRead: not allowed to read this user
-  notAllowedToSearch: not allowed to list or search users
-  notAllowedToSuspend: not allowed to suspend this user
-  notAllowedToUndelete: not allowed to undelete this user
-  notAllowedToUnsuspend: not allowed to unsuspend this user
-  notAllowedToUpdate: not allowed to update this user
-  notAllowedToUpdateSystem: not allowed to update system users
-  notFound: user not found
-  passwordNotSecure: provided password is not secure; use longer password with more special characters
-  usernameNotUnique: username not unique
+  emailNotUnique: электронная почта не уникальна
+  handleNotUnique: дескриптор не уникальный
+  invalidEmail: неверный адрес электронной почты
+  invalidHandle: неверный дескриптор
+  invalidID: Неверный ID
+  notAllowedToCreate: не разрешено создавать пользователей
+  notAllowedToCreateSystem: не разрешено создавать системных пользователей
+  notAllowedToDelete: не разрешено удалять этого пользователя
+  notAllowedToListUsers: не разрешено перечислять пользователей
+  notAllowedToRead: не разрешено читать этого пользователя
+  notAllowedToSearch: не разрешено перечислять или искать пользователей
+  notAllowedToSuspend: не разрешено приостановить действие этого пользователя
+  notAllowedToUndelete: не разрешено восстанавливать этого пользователя
+  notAllowedToUnsuspend: не разрешено разблокировать этого пользователя
+  notAllowedToUpdate: не разрешено обновлять этого пользователя
+  notAllowedToUpdateSystem: не разрешено обновлять системных пользователей
+  notFound: Пользователь не найден
+  passwordNotSecure: предоставленный пароль ненадежен; используйте более длинный пароль
+    с большим количеством специальных символов
+  usernameNotUnique: имя пользователя не уникально

@@ -1,125 +1,126 @@
-page-layout:
-  title: Title *
-  handle: Handle
-  add: Add layout
-  configure: 'Configure layout - "{{title}}"'
-  visibility: Visibility
-  tooltip:
-    configure: Configure layout
-    builder: Open layout in builder
-  condition:
-    label: Condition
-    placeholder: When will the layout be shown
-  roles:
-    label: Roles
-    placeholder: Pick roles that the layout will be shown to
-  recordToolbar:
-    label: Record toolbar
-    buttons:
-      label: Buttons
-      showBack: Show "Back" button
-      showDelete: Show "Delete" button
-      showClone: Show "Save as copy" button
-      showNew: Show "Add new" button
-      showEdit: Show "Edit" button
-      showSave: Show "Save" button
-    actions:
-      label: Actions
-      add: Add action
-      buttonLabel: Label
-      variant: Variant
-      visible: Visible
-      placement:
-        label: Placement
-        start: Start
-        center: Center
-        end: End
-      layout:
-        label: Redirect to layout
-        placeholder: No layout selected
-
 block:
   general:
-    changeBlock: Change existing block
+    changeBlock: Изменить существующий блок
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
     label:
-      cancel: Cancel
-      noHandle: No handle
-      pageBuilder: Page builder
-      saveAndClose: Save and close
+      cancel: Отмена
+      noHandle: Нет ручки
+      pageBuilder: Конструктор страниц
+      saveAndClose: Сохрани и закрой
     placeholder:
-      handle: handle (a - z, 0 - 9, underscore, dash)
-      sample: Sample
-    title: Add new block
-    invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-changeBlock: Change existing block
-copyOf: "Copy of {{title}}"
+      handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+      sample: Образец
+    title: Добавить новый блок
 build:
-  addBlock: Add block
-  selectBlockTitle: Select type of the new block
-  unsavedChanges: Unsaved changes will be lost. Do you wish to leave the page?
-createLabel: Create page
-edit:
-  create: Create page
-  edit: Edit page
-  pageDescription: Page description
-  visible: Is page visible
-  otherOptions: Other options
-icon:
-  configure: Configure page icon
-  noIcon: No icon
-  page: Page icon
-  upload: Upload icon
-  list: Uploaded icons
-url:
-  label: Or add URL to icon
-import: 'Import page(s):'
-instructions: Drag and drop pages to adjust the order and hierarchy
-invalid: Invalid configuration
-label:
-  cancel: Cancel
-  description: Description
-  handle: Handle
-  pageBuilder: Page builder
-  permissions: Permissions
-  saveAndClose: Save and close
-  delete: Delete Block
-loading: Loading
-moduleEdit: Edit module
-navigation:
-  page: Pages
-  viewPage: View Page
-newPlaceholder: Page title
-noBlock: No block added yet
-noPages: No pages
-notVisible: Hidden
-pageMoveFailed: Could not move this page
-reordered: Page reordered
-showSubPages: Expand sub-pages in the sidebar
-title: List of Pages
-tooltip:
-  unsavedChanges: Unsaved Changes
-  view: View page
-  edit:
-    page: Edit page
-    block: Edit block
-  copy:
-    block: Copy block
-  clone:
-    block: Clone block
-  delete:
-    block: Delete block
-  preview-link: Preview link
-  saveAsCopy: Cannot duplicate record page
-view: View
-visible: Visible
+  addBlock: Блокировщик рекламы
+  selectBlockTitle: Выберите тип нового блока
+  unsavedChanges: Несохраненные изменения будут потеряны. Вы хотите покинуть страницу?
+changeBlock: Изменить существующий блок
+copyOf: Копия {{название}}
+createLabel: Создать страницу
 delete:
-  rebase: Update parent of sub-pages
-  cascade: Delete sub-pages
+  cascade: Удалить подстраницы
+  rebase: Обновить родительский элемент подстраниц
+edit:
+  create: Создать страницу
+  edit: Отредактировать страницу
+  otherOptions: Другие варианты
+  pageDescription: Описание страницы
+  visible: Видна ли страница
+icon:
+  configure: Настроить значок страницы
+  list: Загруженные иконки
+  noIcon: Нет значка
+  page: Значок страницы
+  upload: Значок загрузки
+import: 'Страницы импорта:'
+instructions: Перетащите страницы, чтобы настроить порядок и иерархию
+invalid: Неверная конфигурация
+label:
+  cancel: Отмена
+  delete: Удалить блок
+  description: Описание
+  handle: Ручка
+  pageBuilder: Конструктор страниц
+  permissions: Разрешения
+  saveAndClose: Сохрани и закрой
+loading: Загрузка
+moduleEdit: Редактировать модуль
+navigation:
+  page: Страницы
+  viewPage: Просмотр страницы
+newPlaceholder: Заголовок страницы
+noBlock: Блок еще не добавлен
+noPages: Нет страниц
+notVisible: Скрытый
+page-layout:
+  add: Добавить макет
+  condition:
+    label: Состояние
+    placeholder: Когда покажут макет
+  configure: Настроить макет - "{{title}}"
+  handle: Ручка
+  recordToolbar:
+    actions:
+      add: Добавить действие
+      buttonLabel: Этикетка
+      label: Действия
+      layout:
+        label: Перенаправить на макет
+        placeholder: Макет не выбран
+      placement:
+        center: Центр
+        end: Конец
+        label: Размещение
+        start: Начинать
+      variant: Вариант
+      visible: Видимый
+    buttons:
+      label: Кнопки
+      showBack: Показать кнопку «Назад»
+      showClone: Показать кнопку «Сохранить как копию»
+      showDelete: Показать кнопку «Удалить»
+      showEdit: Показать кнопку "Редактировать"
+      showNew: Показать кнопку «Добавить новый»
+      showSave: Показать кнопку "Сохранить"
+    label: Панель инструментов записи
+  roles:
+    label: Роли
+    placeholder: Выберите роли, которым будет показан макет
+  title: Заголовок *
+  tooltip:
+    builder: Открыть макет в конструкторе
+    configure: Настроить макет
+  visibility: Видимость
+pageMoveFailed: Не удалось переместить эту страницу
 public:
   record:
     create:
-      title: Creating record for module "{{name}}"
+      title: Создание записи для модуля "{{name}}"
     edit:
-      title: Editing record for module "{{name}}"
+      title: Редактирование записи для модуля "{{name}}"
     view:
-      title: Viewing record for module "{{name}}"
+      title: Просмотр записи для модуля "{{name}}"
+reordered: Страница изменена
+showSubPages: Развернуть подстраницы на боковой панели
+title: Список страниц
+tooltip:
+  clone:
+    block: Клонировать блок
+  copy:
+    block: Копировать блок
+  delete:
+    block: Удалить блок
+  edit:
+    block: Редактировать блок
+    page: Отредактировать страницу
+  preview-link: Ссылка для предварительного просмотра
+  saveAsCopy: Невозможно дублировать страницу записи
+  unsavedChanges: Несохраненные изменения
+  view: Просмотр страницы
+url:
+  label: Или добавьте URL к значку
+view: Вид
+visible: Видимый

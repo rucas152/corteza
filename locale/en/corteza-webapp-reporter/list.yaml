@@ -1,15 +1,15 @@
-permissions: Permissions
-report:
-  builder: Report Builder
-  edit: Edit
-  list: List of Reports
-  new: New Report
-searchPlaceholder: Type here to search reports
-title: Reports
-tooltip:
-  permissions: Report permissions
-untitledTitle: Untitled report
 columns:
-  name: Name
-  handle: Handle
-  changedAt: Last change
+  changedAt: Последнее изменение
+  handle: Ручка
+  name: Имя
+permissions: Разрешения
+report:
+  builder: Построитель отчетов
+  edit: Редактировать
+  list: Список отчетов
+  new: Новый отчет
+searchPlaceholder: Введите здесь для поиска отчетов
+title: Отчеты
+tooltip:
+  permissions: Разрешения отчетов
+untitledTitle: Отчет без названия

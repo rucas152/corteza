@@ -1,11 +1,11 @@
 errors:
-  composeModuleNotFound: compose module not found
-  composeNamespaceNotFound: compose namespace not found
-  invalidID: invalid ID
-  nodeNotFound: node does not exist
-  notAllowedToCreate: not allowed to create modules
-  notAllowedToManage: not allowed to manage this module
-  notFound: module does not exist
-  notUnique: node not unique
-  requestParametersInvalid: request parameters invalid
-  staleData: stale data
+  composeModuleNotFound: модуль компоновки не найден
+  composeNamespaceNotFound: пространство имен compose не найдено
+  invalidID: Неверный ID
+  nodeNotFound: узел не существует
+  notAllowedToCreate: не разрешено создавать модули
+  notAllowedToManage: не разрешено управлять этим модулем
+  notFound: модуль не существует
+  notUnique: узел не уникальный
+  requestParametersInvalid: параметры запроса недействительны
+  staleData: устаревшие данные

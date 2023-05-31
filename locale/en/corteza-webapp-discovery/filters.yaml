@@ -1,14 +1,11 @@
-title: Filter
-
-types:
-  title: Types
-  namespace: Namespace
-  module: Module
-  user: User
-  record: Record
-
 aggregation-groups:
-  modules: Modules
-  namespaces: Namespaces
-
-reset: Reset
+  modules: Модули
+  namespaces: Пространства имен
+reset: Перезагрузить
+title: Фильтр
+types:
+  module: Модуль
+  namespace: Пространство имен
+  record: Записывать
+  title: Типы
+  user: Пользователь

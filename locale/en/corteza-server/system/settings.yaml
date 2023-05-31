@@ -1,8 +1,13 @@
 errors:
-  notAllowedToRead: not allowed to read this setting
-  notAllowedToManage: not allowed to manage this setting
-  invalidPasswordMinLength: password constraint minimum length should be at least 8 characters
-  invalidPasswordMinUpperCase: password constraint minimum upper case count should not be a negative number
-  invalidPasswordMinLowerCase: password constraint minimum lower case count should not be a negative number
-  invalidPasswordMinNumCount: password constraint minimum number count should not be a negative number
-  invalidPasswordMinSpecialCharCount: password constraint minimum special character count should not be a negative number
+  invalidPasswordMinLength: минимальная длина ограничения пароля должна быть не менее
+    8 символов
+  invalidPasswordMinLowerCase: ограничение пароля минимальное количество строчных
+    букв не должно быть отрицательным числом
+  invalidPasswordMinNumCount: минимальное количество ограничений пароля не должно
+    быть отрицательным числом
+  invalidPasswordMinSpecialCharCount: ограничение пароля минимальное количество специальных
+    символов не должно быть отрицательным числом
+  invalidPasswordMinUpperCase: ограничение пароля минимальное количество прописных
+    букв не должно быть отрицательным числом
+  notAllowedToManage: не разрешено управлять этой настройкой
+  notAllowedToRead: не разрешено читать этот параметр

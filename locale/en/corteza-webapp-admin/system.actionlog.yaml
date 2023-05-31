@@ -1,46 +1,46 @@
 list:
   columns:
-    action: Action
-    actor: User
-    description: Description
-    requestOrigin: Origin
-    resource: Resource
-    severity: Severity
-    timestamp: Timestamp
-  loading: Loading actions
+    action: Действие
+    actor: Пользователь
+    description: Описание
+    requestOrigin: Источник
+    resource: Ресурс
+    severity: Строгость
+    timestamp: Отметка времени
   details:
-    id: 'ID'
-    header: 'Details'
-    timestamp: 'Timestamp'
-    requestOrigin: 'Request Origin'
-    requestID: 'Request ID'
-    actorIPAddr: 'Actor/User'
-    actor: 'User'
-    actorID: 'User ID'
-    severity: 'Severity'
-    resource: 'Resource'
-    action: 'Action'
-    headerAdditional: 'Additional information'
-    description: 'Description'
-    error: 'Error'
-  severity:
-    emergency: 'Emergency'
-    alert: 'Alert'
-    critical: 'Critical'
-    error: 'Error'
-    warning: 'Warning'
-    notice: 'Notice'
-    info: 'Info'
-    debug: 'Debug'
+    action: Действие
+    actor: Пользователь
+    actorID: ID пользователя
+    actorIPAddr: Актер/Пользователь
+    description: Описание
+    error: Ошибка
+    header: Подробности
+    headerAdditional: Дополнительная информация
+    id: ИДЕНТИФИКАТОР
+    requestID: Идентификатор запроса
+    requestOrigin: Запросить происхождение
+    resource: Ресурс
+    severity: Строгость
+    timestamp: Отметка времени
   filter:
-    action: Action
-    actor: User ID
-    choose-date: Choose a date
-    from: Starting from
-    no-time: No time selected
-    resource: Resource
-    search: Search
-    to: Ending at
-    today: Today
-  loadOlder: Load older actions
-  title: Action log
+    action: Действие
+    actor: ID пользователя
+    choose-date: Выберите дату
+    from: Начиная с
+    no-time: Время не выбрано
+    resource: Ресурс
+    search: Поиск
+    to: Окончание в
+    today: Сегодня
+  loadOlder: Загрузить старые действия
+  loading: Загрузка действий
+  severity:
+    alert: Тревога
+    critical: Критический
+    debug: Отлаживать
+    emergency: Чрезвычайная ситуация
+    error: Ошибка
+    info: Информация
+    notice: Уведомление
+    warning: Предупреждение
+  title: Журнал действий

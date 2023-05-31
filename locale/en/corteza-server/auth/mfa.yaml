@@ -1,22 +1,18 @@
-template:
-  title: Multi-factor authentication
-
-  email:
-    instructions: Check your inbox and enter the received code
-    code: Code
-    verify: Verify
-    resend: Resend
-    confirmed: Email OTP confirmed
-
-  totp:
-    instructions: Check your TOTP application and enter the code you received
-    code: Code
-    confirmed: TOTP confirmed
-    verify: Verify
-
 alerts:
   email:
-    resent: Email OTP resent
-
+    resent: OTP повторно отправлен по электронной почте
   topt:
-    valid: TOTP valid
+    valid: TOTP действителен
+template:
+  email:
+    code: Код
+    confirmed: OTP по электронной почте подтвержден
+    instructions: Проверьте свой почтовый ящик и введите полученный код
+    resend: Отправить
+    verify: Проверять
+  title: Многофакторная аутентификация
+  totp:
+    code: Код
+    confirmed: TOTP подтвержден
+    instructions: Проверьте свое приложение TOTP и введите полученный код
+    verify: Проверять

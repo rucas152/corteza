@@ -1,120 +1,124 @@
 editor:
-  external-auth-providers:
-    label: Label
-    title: Manage external auth providers
-    type: Type
-  info:
-    confirmEmail: Confirm email address
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    email: Email *
-    handle: Handle
-    placeholder-handle: handle (a - z, 0 - 9, underscore, dash)
-    invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-    name: Full name
-    revokeAllSession: Revoke all active sessions
-    suspend: Suspend
-    suspendedAt: Suspended at
-    title: Basic information
-    undelete: Undelete
-    unsuspend: Unsuspend
-    updatedAt: Updated at
   avatar:
-    title: Profile avatar
-    preview:
-      label: Avatar
-      title: Avatar
+    colorPicker: Выберите цвет
     initial:
-      color: Text color
-      backgroundColor: Background color
+      backgroundColor: Фоновый цвет
+      color: Цвет текста
+    preview:
+      label: Аватар
+      title: Аватар
+    title: Аватар профиля
     uploader:
-      instructions: Upload avatar
-      uploading: Uploading user avatar
-    colorPicker: Choose a color
+      instructions: Загрузить аватар
+      uploading: Загрузка аватара пользователя
+  external-auth-providers:
+    label: Этикетка
+    title: Управление внешними поставщиками аутентификации
+    type: Тип
+  info:
+    confirmEmail: Подтвердите адрес электронной почты
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    email: Электронная почта *
+    handle: Ручка
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    name: Полное имя
+    placeholder-handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+    revokeAllSession: Отменить все активные сеансы
+    suspend: Приостановить
+    suspendedAt: Приостановлено в
+    title: Основная информация
+    undelete: Восстановить
+    unsuspend: Разблокировать
+    updatedAt: Обновлено в
   mfa:
     TOTP:
       disabled:
-        text: User did not configure TOTP protection
+        text: Пользователь не настроил TOTP-защиту
       enabled:
-        text: User configured TOTP protection auth mobile app
+        text: Настроенное пользователем мобильное приложение для аутентификации TOTP-защиты
       remove:
-        label: Remove
+        label: Удалять
     emailOTP:
       disable:
-        label: Disable
+        label: Запрещать
       disabled:
-        text: |-
-          Email OTP protection is disabled for this user
-          Email with the security code on each login will not be sent
+        text: 'Защита электронной почты OTP отключена для этого пользователя
+
+          Электронная почта с защитным кодом при каждом входе не будет отправлена'
       enable:
-        label: Enable
+        label: Давать возможность
       enabled:
-        text: |-
-          Email OTP protection is enabled for this user
-          User will receive email with the security code on each login
-    title: Multi-factor authentication
-  new: New
+        text: 'Для этого пользователя включена защита электронной почты OTP
+
+          Пользователь будет получать электронное письмо с кодом безопасности при
+          каждом входе в систему.'
+    title: Многофакторная аутентификация
+  new: Новый
   password:
-    confirm: Confirm password
-    length: The passwords must be at least {{length}} characters long!
-    missmatch: The passwords must match
-    new: New password
-    title: Password
-    removePassword: Remove password
-  permissions: Permissions
+    confirm: Подтвердите пароль
+    length: Пароли должны содержать не менее {{length}} символов!
+    missmatch: Пароли должны совпадать
+    new: Новый пароль
+    removePassword: Удалить пароль
+    title: Пароль
+  permissions: Разрешения
   roles:
-    add: Add
-    count: roles
-    remove: Remove
-    title: Role membership
-    unnamed: Unnamed role
+    add: Добавлять
+    count: роли
+    remove: Удалять
+    title: Ролевое членство
+    unnamed: Безымянная роль
   title:
-    create: Create user
-    edit: Edit user
+    create: Создать пользователя
+    edit: Изменить пользователя
+export:
+  buttonLabel: Экспорт
+  export: Экспорт
+  inclRoleMembership: Включить членство в ролях
+  inclRoles: Включить роли
+  membershipRequiredLabel: Роли можно экспортировать, только если выбрано членство
+    в роли.
+  title: Экспорт пользователей
+import:
+  buttonLabel: Импортировать
+  title: Импорт пользователей
+  uploadFilePlaceholder: Нажмите или перетащите файлы сюда, чтобы импортировать
 list:
   columns:
-    actions: ""
-    createdAt: Created
-    email: Email
-    enabled: Enabled
-    handle: Handle
-    name: Name
-    state: State
-  export: Export
-  rows:
-    filters:
-      deleted: Deleted
-      suspended: Suspended
+    actions: ''
+    createdAt: Созданный
+    email: Электронная почта
+    enabled: Включено
+    handle: Ручка
+    name: Имя
+    state: Состояние
+  export: Экспорт
   filterForm:
     deleted:
-      label: deleted users
+      label: удаленные пользователи
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     inclusive:
-      label: Including
+      label: Включая
     query:
-      label: Filter users list
-      placeholder: Filter users by name, email
+      label: Фильтровать список пользователей
+      placeholder: Фильтровать пользователей по имени, электронной почте
     suspended:
-      label: suspended users
-  loading: Loading users
-  new: New
-  numFound: '{{count}} user found'
-  numFound_plural: '{{count}} users found'
-  permissions: Permissions
-  title: Users
+      label: заблокированные пользователи
+  loading: Загрузка пользователей
+  new: Новый
+  numFound: '{{count}} пользователь найден'
+  numFound_plural: Найдено {{count}} пользователей
+  permissions: Разрешения
+  rows:
+    filters:
+      deleted: Удалено
+      suspended: Приостановленный
+  title: Пользователи
   yaml: YAML
-export:
-  buttonLabel: Export
-  title: Export users
-  inclRoleMembership: Include role membership
-  inclRoles: Include roles
-  membershipRequiredLabel: Roles can only be exported when role membership is selected
-  export: Export
-import:
-  buttonLabel: Import
-  title: Import users
-  uploadFilePlaceholder: Click or drop files here to import

@@ -1,8 +1,0 @@
-errors:
-  invalidID: Неверный ID
-  notAllowedToDelete: не разрешено удалять этот сеанс
-  notAllowedToManage: не разрешено управлять рабочим процессом сеанса
-  notAllowedToRead: не разрешено читать эту сессию
-  notAllowedToSearch: не разрешено искать или перечислять сеансы
-  notFound: сессия не найдена
-  staleData: устаревшие данные

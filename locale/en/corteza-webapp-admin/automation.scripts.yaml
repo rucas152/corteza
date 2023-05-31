@@ -1,16 +1,16 @@
 list:
   columns:
-    updatedAt: Last update
+    updatedAt: Последнее обновление
   filter:
-    absoluteTime: Show absolute time
-    incScriptsWithErrors: Errors ({{ count }})
-    incScriptsWithIterator: Iterator ({{ count }})
-    incScriptsWithSecurity: Security ({{ count }})
-    incScriptsWithTriggers: Triggers ({{ count }})
-    searchQuery: Search query
+    absoluteTime: Показать абсолютное время
+    incScriptsWithErrors: Ошибки ({{ количество }})
+    incScriptsWithIterator: Итератор ({{ count }})
+    incScriptsWithSecurity: Безопасность ({{ количество }})
+    incScriptsWithTriggers: Триггеры ({{ количество }})
+    searchQuery: Поисковый запрос
   flags:
-    iterator: Iterator
-    security: Security
-    triggers: Triggers
-  labelMissing: <label missing>
-  title: Corredor Scripts
+    iterator: Итератор
+    security: Безопасность
+    triggers: Триггеры
+  labelMissing: <метка отсутствует>
+  title: Брокер скриптов

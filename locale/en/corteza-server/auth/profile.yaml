@@ -1,30 +1,31 @@
-template:
-  title: Your profile
-  form:
-    email:
-      label: Email
-      placeholder: email@domain.ltd
-      resend-confirmation-link: Email is not verified, <a data-test-id="link-resend-confirmation" href="{{link}}?resend">resend confirmation link.</a>
-    name:
-      label: Full name
-      placeholder: Your full name
-    handle:
-      label: Handle
-      placeholder: Short name, nickname or handle
-    avatar:
-      label: Avatar
-      delete: Delete
-      upload: Upload avatar
-    avatar-initial:
-      label: Avatar initial
-      color: Avatar text color
-      background-color: Avatar background color
-    preferred-language:
-      label: Preferred language
-    buttons:
-      submit: Update profile
 alerts:
-  profile-updated: Profile successfully updated
-  profile-update-fail: Could not update profile due to input errors
-  profile-avatar-uploaded: Profile avatar successfully uploaded
-  profile-avatar-deleted: Profile avatar successfully deleted
+  profile-avatar-deleted: Аватар профиля успешно удален
+  profile-avatar-uploaded: Аватар профиля успешно загружен
+  profile-update-fail: Не удалось обновить профиль из-за ошибок ввода
+  profile-updated: Профиль успешно обновлен
+template:
+  form:
+    avatar:
+      delete: Удалить
+      label: Аватар
+      upload: Загрузить аватар
+    avatar-initial:
+      background-color: Цвет фона аватара
+      color: Цвет текста аватара
+      label: Начальный аватар
+    buttons:
+      submit: Обновить профиль
+    email:
+      label: Электронная почта
+      placeholder: емайл@домаин.лтд
+      resend-confirmation-link: Электронная почта не подтверждена, <a data-test-id="link-resend-confirmation"
+        href="{{link}}?resend">повторно отправить ссылку для подтверждения.</a>
+    handle:
+      label: Ручка
+      placeholder: Краткое имя, псевдоним или псевдоним
+    name:
+      label: Полное имя
+      placeholder: Ваше полное имя
+    preferred-language:
+      label: Предпочтительный язык
+  title: Ваш профиль

@@ -1,87 +1,94 @@
 add:
-  datasource: Add datasource
-  display-element: Add display element
-available: Available
+  datasource: Добавить источник данных
+  display-element: Добавить элемент отображения
+available: Доступный
+available-columns: Доступные столбцы
 block:
-  description: Block description
-  save: Save Block
-  title: Block title
-  configuration: Block configuration
+  configuration: Конфигурация блока
+  description: Описание блока
+  save: Сохранить блок
+  title: Название блока
 datasource:
-  label: Datasource
+  label: Источник данных
   types:
-    load:
-      label: Load
-      data-from-resource: Loads data from a specified resource, such as Compose records
-    link:
-      label: Link
-      load-datasources: Links two Load datasources with a unique column that links them together, such as a Compose record selector
-    join:
-      label: Join
-      load-datasources: Joins two datasources with a unique column that joins them together, such as a Compose record selector. The join step produces a single set of rows in contrast to the link step which produces an independent data frame for each local row
     aggregate:
-      label: Aggregate
-      load-datasource: Aggregates data from a load datasource based on a column value and aggregates it, such as counting the number of Accounts with the same status
+      label: Совокупность
+      load-datasource: Агрегирует данные из источника данных нагрузки на основе значения
+        столбца и агрегирует их, например, подсчитывая количество Аккаунтов с одинаковым
+        статусом.
+    join:
+      label: Присоединиться
+      load-datasources: Объединяет два источника данных с помощью уникального столбца,
+        который объединяет их вместе, например селектора записей Compose. Шаг соединения
+        создает один набор строк, в отличие от шага связывания, который создает независимый
+        фрейм данных для каждой локальной строки.
+    link:
+      label: Связь
+      load-datasources: Связывает два источника данных Load с уникальным столбцом,
+        который связывает их вместе, например с селектором записей Compose.
+    load:
+      data-from-resource: Загружает данные из указанного ресурса, например Compose
+        Records.
+      label: Нагрузка
 datasources:
-  label: Datasources
-  save: Save Datasources
-description: Description
+  label: Источники данных
+  save: Сохранить источники данных
+description: Описание
 display-elements:
   types:
-    text: Text
-    metric: Metric
-    table: Table
-    chart: Chart
-element: Element
-elements: Elements
-filter-expression: Filter expression
-general: General
-joined-datasource-handling: Joined datasource handling
-layout: Layout
-layout-options:
-  horizontal: Horizontal
-  vertical: Vertical
-limit: Limit
-no-blocks-added: No blocks added yet
-or: Or
-pick-scenario: Pick a scenario
-prefilter: Prefilter
-presort-order: Presort order
-report:
-  builder: Report Builder
-  view: View Report
-save-button: Save
-scenarios:
-  label: Scenarios
-  save: Save Scenarios
-title: Title
-tooltip:
-  edit:
-    report: Edit report
-    block: Edit block
-  add:
-    displayElement: Add display element
-  delete:
-    block: Delete block
-  configure-scenarios: Configure scenarios
-available-columns: Available columns
-selected-columns: Selected columns
-no-columns-found: No columns found
-type-to-search: Type here to search among columns
-selected: Selected
-select-all: Select all
-unselect-all: Unselect all
-value: Value
-name: Name
+    chart: Диаграмма
+    metric: Метрика
+    table: Стол
+    text: Текст
+element: Элемент
+elements: Элементы
 filter:
   operators:
-    like: Like
-    notLike: Not Like
-    contains: Contains
-    notContains: Not contains
-    equal: Equal
-    greaterThan: Greater than
-    greaterThanEqualTo: Greater than or equal to
-    lessThanEqualTo: Less than or equal to
-    lessThan: Less than
-    notEqual: Not equal
+    contains: Содержит
+    equal: Равный
+    greaterThan: Больше чем
+    greaterThanEqualTo: Больше или равно
+    lessThan: Меньше, чем
+    lessThanEqualTo: Меньше или равно
+    like: Нравиться
+    notContains: Не содержит
+    notEqual: Не равный
+    notLike: Не как
+filter-expression: Выражение фильтра
+general: Общий
+joined-datasource-handling: Объединенная обработка источников данных
+layout: Макет
+layout-options:
+  horizontal: Горизонтальный
+  vertical: Вертикальный
+limit: Ограничение
+name: Имя
+no-blocks-added: Блоки еще не добавлены
+no-columns-found: Столбцы не найдены
+or: Или
+pick-scenario: Выберите сценарий
+prefilter: Предварительный фильтр
+presort-order: Предварительный заказ
+report:
+  builder: Построитель отчетов
+  view: Посмотреть отчет
+save-button: Сохранять
+scenarios:
+  label: Сценарии
+  save: Сохранить сценарии
+select-all: Выбрать все
+selected: Выбрано
+selected-columns: Выбранные столбцы
+title: Заголовок
+tooltip:
+  add:
+    displayElement: Добавить элемент отображения
+  configure-scenarios: Настройка сценариев
+  delete:
+    block: Удалить блок
+  edit:
+    block: Редактировать блок
+    report: Изменить отчет
+type-to-search: Введите здесь для поиска среди столбцов
+unselect-all: Снять все
+value: Ценить

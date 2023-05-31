@@ -1,68 +1,67 @@
 editor:
   info:
-    archive: Archive
-    archivedAt: Archived at
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    handle: Handle
-    placeholder-handle: handle (a - z, 0 - 9, underscore, dash)
-    invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-    name: Role name *
-    title: Basic information
-    unarchive: Unarchive
-    undelete: Undelete
-    updatedAt: Updated at
-
-    description: Description
-
+    archive: Архив
+    archivedAt: Архивировано в
     context:
-      label: Contextual role
-      expression-label: Expression
-      resource-types-label: Resource type
-
+      expression-label: Выражение
+      label: Контекстная роль
+      resource-types-label: Тип ресурса
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    description: Описание
+    handle: Ручка
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    name: Имя роли *
+    placeholder-handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+    title: Основная информация
+    unarchive: Разархивировать
+    undelete: Восстановить
+    updatedAt: Обновлено в
   members:
-    add: Add
-    count: Members ({{count}})
-    remove: Remove
-    searchUsers: Search users
-    title: Role members
-    unnamed: Unnamed user
-  new: New
-  permissions: Permissions
+    add: Добавлять
+    count: Участники ({{count}})
+    remove: Удалять
+    searchUsers: Поиск пользователей
+    title: Члены роли
+    unnamed: Безымянный пользователь
+  new: Новый
+  permissions: Разрешения
   title:
-    create: Create role
-    edit: Edit role
+    create: Создать роль
+    edit: Изменить роль
 list:
   columns:
-    actions: ""
-    createdAt: Created
-    enabled: Enabled
-    handle: Handle
-    name: Name
-    state: State
-  rows:
-    filters:
-      archived: Archived
-      deleted: Deleted
+    actions: ''
+    createdAt: Созданный
+    enabled: Включено
+    handle: Ручка
+    name: Имя
+    state: Состояние
   filterForm:
     archived:
-      label: archived roles
+      label: заархивированные роли
     deleted:
-      label: deleted roles
+      label: удаленные роли
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     inclusive:
-      label: Including
+      label: Включая
     query:
-      label: Filter roles list
-      placeholder: Filter roles by name
-  loading: Loading roles
-  new: New
-  numFound: '{{count}} role found'
-  numFound_plural: '{{count}} roles found'
-  permissions: Permissions
-  title: Roles
+      label: Список ролей фильтров
+      placeholder: Фильтровать роли по имени
+  loading: Загрузка ролей
+  new: Новый
+  numFound: '{{count}} роль найдена'
+  numFound_plural: Найдено {{count}} ролей
+  permissions: Разрешения
+  rows:
+    filters:
+      archived: В архиве
+      deleted: Удалено
+  title: Роли
   yaml: YAML

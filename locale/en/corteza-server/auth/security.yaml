@@ -1,27 +1,24 @@
-template:
-  title: Security
-
-  password:
-    title: Password
-    change-link: Change your password
-
-  mfa:
-    title: Multi-factor authentication
-    totp:
-      title: Additional security with mobile app (time-based one-time-password)
-      enforced: Configured and required on login
-      disabled: Currently disabled
-      configure: Configure
-      disable: Disable
-
-    email:
-      title: Additional security with one-time-password over email
-      enforced: Enabled and required on login
-      disabled: Currently disabled
-      enable: Configure
-      disable: Disable
-
-    all-disabled: All MFA methods are currently disabled. Ask your administrator to enable them.
-
 alerts:
-  topt-disabled: Two factor authentication with TOTP disabled
+  topt-disabled: Двухфакторная аутентификация с отключенным TOTP
+template:
+  mfa:
+    all-disabled: Все методы MFA в настоящее время отключены. Попросите вашего администратора
+      включить их.
+    email:
+      disable: Запрещать
+      disabled: В настоящее время отключен
+      enable: Настроить
+      enforced: Включено и требуется при входе в систему
+      title: Дополнительная безопасность с одноразовым паролем по электронной почте
+    title: Многофакторная аутентификация
+    totp:
+      configure: Настроить
+      disable: Запрещать
+      disabled: В настоящее время отключен
+      enforced: Настроено и требуется при входе в систему
+      title: Дополнительная безопасность с мобильным приложением (одноразовый пароль
+        на основе времени)
+  password:
+    change-link: Измените свой пароль
+    title: Пароль
+  title: Безопасность

@@ -1,17 +1,17 @@
 errors:
-  badSinkParamEncoding: bad encoding of sink parameters
-  contentLengthExceedsMaxAllowedSize: content length exceeds max size limit
-  failedToCreateEvent: failed to create sink event from request
-  failedToProcess: failed to process request
-  failedToRespond: failed to respond to request
-  failedToSign: 'could not sign request params: {err}'
-  invalidContentType: invalid content-type header
-  invalidHttpMethod: invalid HTTP method
-  invalidPath: invalid path
-  invalidSignature: invalid signature
-  invalidSignatureParam: invalid sink signature parameter
-  invalidSinkRequestUrlParams: invalid sink request url params
-  misplacedSignature: signature misplaced
-  missingSignature: missing sink signature parameter
-  processingError: sink request process error
-  signatureExpired: signature expired
+  badSinkParamEncoding: неверная кодировка параметров стока
+  contentLengthExceedsMaxAllowedSize: длина содержимого превышает максимальный размер
+  failedToCreateEvent: не удалось создать событие приемника из запроса
+  failedToProcess: не удалось обработать запрос
+  failedToRespond: не ответил на запрос
+  failedToSign: 'не удалось подписать параметры запроса: {err}'
+  invalidContentType: недопустимый заголовок типа контента
+  invalidHttpMethod: неверный HTTP-метод
+  invalidPath: неверный путь
+  invalidSignature: недействительная подпись
+  invalidSignatureParam: недопустимый параметр подписи приемника
+  invalidSinkRequestUrlParams: неверные параметры URL-адреса запроса приемника
+  misplacedSignature: подпись неуместна
+  missingSignature: отсутствует параметр подписи приемника
+  processingError: ошибка процесса запроса приемника
+  signatureExpired: срок действия подписи истек

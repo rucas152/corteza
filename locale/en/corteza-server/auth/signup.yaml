@@ -1,24 +1,24 @@
-template:
-  title: Sign up
-  form:
-    email:
-      label: E-mail
-      placeholder: email@domain.ltd
-    password:
-      label: Password
-      placeholder: Password
-    name:
-      label: Full name
-      placeholder: Your full name
-    nickname:
-      label: Short name, nickname or handle
-      placeholder: Short name, nickname or handle
-    button:
-      sign-up: Submit
-  log-in: Already have an account? <a data-test-id="link-login" href="{{link}}">Log in</a>
-
 alerts:
-  signup-successful: Sign-up successful
-  email-confirmed-logged-in: Email address confirmed, you're now logged-in.
-  invalid-expired-token: Invalid or expired email confirmation token, please resend confirmation request.
-  signup-disabled: Signup disabled
+  email-confirmed-logged-in: Адрес электронной почты подтвержден, вы вошли в систему.
+  invalid-expired-token: Токен подтверждения электронной почты недействителен или
+    срок его действия истек. Пожалуйста, отправьте запрос на подтверждение еще раз.
+  signup-disabled: Регистрация отключена
+  signup-successful: Регистрация прошла успешно
+template:
+  form:
+    button:
+      sign-up: Представлять на рассмотрение
+    email:
+      label: Электронная почта
+      placeholder: емайл@домаин.лтд
+    name:
+      label: Полное имя
+      placeholder: Ваше полное имя
+    nickname:
+      label: Краткое имя, псевдоним или псевдоним
+      placeholder: Краткое имя, псевдоним или псевдоним
+    password:
+      label: Пароль
+      placeholder: Пароль
+  log-in: У вас уже есть аккаунт? <a data-test-id="link-login" href="{{link}}">Войти</a>
+  title: Зарегистрироваться

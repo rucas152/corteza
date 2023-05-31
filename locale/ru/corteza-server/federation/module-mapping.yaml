@@ -1,8 +1,0 @@
-errors:
-  composeModuleNotFound: модуль компоновки не найден
-  composeNamespaceNotFound: пространство имен compose не найдено
-  federationModuleNotFound: модуль федерации не найден
-  moduleMappingExists: сопоставление модуля уже существует
-  nodeNotFound: узел не существует
-  notAllowedToMap: не разрешено отображать этот модуль
-  notFound: сопоставление модуля не существует

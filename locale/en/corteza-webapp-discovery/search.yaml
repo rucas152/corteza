@@ -1,18 +1,18 @@
+card:
+  button-text: Показать больше
+  email: Электронная почта
+  fields: Поля
+  handle: Ручка
+  module: Модуль
+  namespace: Пространство имен
+  record: Записывать
+  type: Тип
+  user: Пользователь
+discovering: Открытие
+input-placeholder: Введите текст для поиска
+no-results: Без результатов
 notification:
-  search-error: There was problem getting search result
-input-placeholder: Enter search text
-card: 
-  button-text: Show more
-  type: Type
-  handle: Handle
-  namespace: Namespace
-  module: Module
-  user: User
-  email: Email
-  record: Record
-  fields: Fields
+  search-error: Возникла проблема с получением результатов поиска
+range: Показаны {{фактические}} из {{все}} результатов
 tooltip:
-  map: Toggle map
-range: Showing {{actual}} of {{all}} results
-discovering: Discovering
-no-results: No results
+  map: Переключить карту

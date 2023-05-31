@@ -1,6 +1,6 @@
 errors:
-  empty: This field is required
-  invalidValue: Invalid field value
-  invalidRef: Invalid field reference
-  duplicateValueInSet: This value already exists in list
-  duplicateValue: The value "{{value}}" already exists in another record
+  duplicateValue: Значение "{{value}}" уже существует в другой записи.
+  duplicateValueInSet: Это значение уже существует в списке
+  empty: Это поле обязательно к заполнению
+  invalidRef: Недопустимая ссылка на поле
+  invalidValue: Недопустимое значение поля

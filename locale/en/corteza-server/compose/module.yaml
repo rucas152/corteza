@@ -1,18 +1,19 @@
 errors:
-  handleNotUnique: handle not unique
-  invalidHandle: invalid handle
-  invalidID: invalid ID
-  invalidNamespaceID: invalid or missing namespace ID
-  nameNotUnique: name not unique
-  fieldNameReserved: field name reserved
-  namespaceNotFound: namespace does not exist
-  notAllowedToCreate: not allowed to create modules
-  notAllowedToDelete: not allowed to delete this module
-  notAllowedToListModules: not allowed to list modules
-  notAllowedToRead: not allowed to read this module
-  notAllowedToReadNamespace: not allowed to read this namespace
-  notAllowedToSearch: not allowed to search or list modules
-  notAllowedToUndelete: not allowed to undelete this module
-  notAllowedToUpdate: not allowed to update this module
-  notFound: module does not exist
-  staleData: stale data
+  fieldNameReserved: имя поля зарезервировано
+  handleNotUnique: дескриптор не уникальный
+  invalidHandle: неверный дескриптор
+  invalidID: Неверный ID
+  invalidNamespaceID: недействительный или отсутствующий идентификатор пространства
+    имен
+  nameNotUnique: имя не уникальное
+  namespaceNotFound: пространство имен не существует
+  notAllowedToCreate: не разрешено создавать модули
+  notAllowedToDelete: не разрешено удалять этот модуль
+  notAllowedToListModules: не разрешено перечислять модули
+  notAllowedToRead: не разрешено читать этот модуль
+  notAllowedToReadNamespace: не разрешено читать это пространство имен
+  notAllowedToSearch: не разрешено искать или перечислять модули
+  notAllowedToUndelete: не разрешено восстанавливать этот модуль
+  notAllowedToUpdate: не разрешено обновлять этот модуль
+  notFound: модуль не существует
+  staleData: устаревшие данные

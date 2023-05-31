@@ -1,15 +1,18 @@
-configuration: Configuration
-edge: Edge
-label: Label *
-target: Target
+configuration: Конфигурация
+edge: Край
+label: Этикетка *
+target: Цель
 tooltip:
-  run-workflow: Run workflow
-  configure-step: Configure step
+  configure-step: Шаг настройки
+  run-workflow: Запустить рабочий процесс
 workflow:
-  'run-as': Run as
-  'not-setup-properly': When not explicitly set, workflow will be executed by user that invoked it
-  invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-  placeholder-handle: handle (a - z, 0 - 9, underscore, dash)
+  invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+    буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+    или цифрой
+  not-setup-properly: Если это не указано явно, рабочий процесс будет выполняться
+    пользователем, который его вызвал.
+  placeholder-handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+  run-as: Беги как
   sub-workflow:
-    label: Subworkflow
-    description: Subworkflows can't have enabled triggers
+    description: Подрабочие процессы не могут иметь включенных триггеров
+    label: Подрабочий процесс

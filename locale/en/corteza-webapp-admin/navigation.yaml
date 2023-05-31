@@ -1,46 +1,40 @@
-dashboard: Dashboard
-
-system:
-  group: System
-  items:
-    users: Users
-    actionlog: Action log
-    apigw: Integration Gateway
-    applications: Applications
-    authclients: Auth Clients
-    connections: Connections
-    sensitivityLevel: Sensitivity Levels
-    permissions: Permissions
-    queues: Messaging Queues
-    roles: Roles
-    settings: Auth Settings
-    email: Email settings
-    stats: Stats
-    templates: Templates
-
-compose:
-  group: Compose
-  items:
-    automation: Automation
-    permissions: Permissions
-    settings: Settings
-
 automation:
-  group: Automation
+  group: Автоматизация
   items:
-    permissions: Permissions
-    scripts: Corredor Scripts
-    sessions: Sessions
-    workflows: Workflows
-
+    permissions: Разрешения
+    scripts: Брокер скриптов
+    sessions: Сессии
+    workflows: Рабочие процессы
+compose:
+  group: Написать
+  items:
+    automation: Автоматизация
+    permissions: Разрешения
+    settings: Настройки
+dashboard: Панель приборов
 federation:
-  group: Federation
+  group: Федерация
   items:
-    nodes: Nodes
-    permissions: Permissions
-
+    nodes: Узлы
+    permissions: Разрешения
+system:
+  group: Система
+  items:
+    actionlog: Журнал действий
+    apigw: Интеграционный шлюз
+    applications: Приложения
+    authclients: Клиенты аутентификации
+    connections: Соединения
+    email: Настройки электронной почты
+    permissions: Разрешения
+    queues: Очереди сообщений
+    roles: Роли
+    sensitivityLevel: Уровни чувствительности
+    settings: Настройки авторизации
+    stats: Статистика
+    templates: Шаблоны
+    users: Пользователи
 ui:
-  group: User interface
+  group: Пользовательский интерфейс
   items:
-    settings: Settings
-
+    settings: Настройки

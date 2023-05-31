@@ -1,11 +1,11 @@
+connection-load-failed: Не удалось загрузить подключения
 general:
-  error: Error
-  success: Success
-  warning: Warning
-search:
-  failed: Search failed
+  error: Ошибка
+  success: Успех
+  warning: Предупреждение
 list:
   load:
-    error: Failed to load resource list
-connection-load-failed: Failed to load connections
-sensitive-data-fetch-failed: Failed to fetch sensitive data
+    error: Не удалось загрузить список ресурсов
+search:
+  failed: Ошибка поиска
+sensitive-data-fetch-failed: Не удалось получить конфиденциальные данные

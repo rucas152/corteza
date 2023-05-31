@@ -1,77 +1,81 @@
 editor:
   content:
     editor:
-      unsupported: Unsupported editor
-    partial: Partial template
+      unsupported: Неподдерживаемый редактор
+    partial: Частичный шаблон
     preview:
-      html: Preview HTML
-      pdf: Preview PDF
-      title: Preview output
-    title: Template content
+      html: Предварительный просмотр HTML
+      pdf: Предварительный просмотр PDF
+      title: Предварительный просмотр
+    title: Содержимое шаблона
     toolbox:
-      partials: Partials
+      partials: Частицы
       samples:
-        defaultHTML: Default HTML
-        label: Samples
+        defaultHTML: HTML по умолчанию
+        label: Образцы
       snippets:
-        funcCall: Call a function
-        interpolate: Interpolate value
-        iterator: Iterate over a set
-        label: Snippets
-      title: Toolbox
+        funcCall: Вызов функции
+        interpolate: Интерполировать значение
+        iterator: Итерация по набору
+        label: Фрагменты
+      title: Ящик для инструментов
   info:
     contentType:
       text_html: HTML
-      text_plain: Plain text
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    handle: Handle
-    placeholder-handle: handle (a - z, 0 - 9, underscore, dash)
-    invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
+      text_plain: Простой текст
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    handle: Ручка
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
     meta:
-      description: Description
-      short: Short name *
-    partial: Partial template
-    partialDescription: Partial templates may be used inside other templates such as headers and footers. Partial templates may not be used on their own.
-    title: Basic information
-    type: Template type
-    undelete: Undelete
-    updatedAt: Updated at
-  new: New
-  permissions: Permissions
+      description: Описание
+      short: Короткое имя *
+    partial: Частичный шаблон
+    partialDescription: Частичные шаблоны могут использоваться внутри других шаблонов,
+      таких как верхние и нижние колонтитулы. Частичные шаблоны не могут использоваться
+      сами по себе.
+    placeholder-handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+    title: Основная информация
+    type: Тип шаблона
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
+  permissions: Разрешения
   title:
-    create: Create template
-    edit: Edit template
+    create: Создать шаблон
+    edit: Изменить шаблон
 list:
   columns:
-    actions: ""
-    createdAt: Created
-    handle: Handle
-    language: Language
+    actions: ''
+    createdAt: Созданный
+    handle: Ручка
+    language: Язык
     meta:
-      short: Short name
-    state: State
-  export: Export
-  rows:
-    filters:
-      deleted: Deleted
+      short: Короткое имя
+    state: Состояние
+  export: Экспорт
   filterForm:
     deleted:
-      label: deleted templates
+      label: удаленные шаблоны
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     handle:
-      label: Filter templates list
-      placeholder: Filter templates by handle
+      label: Список шаблонов фильтров
+      placeholder: Фильтровать шаблоны по дескриптору
     inclusive:
-      label: Including
-  loading: Loading templates
-  new: New
-  numFound: '{{count}} template found'
-  numFound_plural: '{{count}} templates found'
-  permissions: Permissions
-  title: Templates
+      label: Включая
+  loading: Загрузка шаблонов
+  new: Новый
+  numFound: '{{count}} шаблон найден'
+  numFound_plural: '{{count}} шаблонов найдено'
+  permissions: Разрешения
+  rows:
+    filters:
+      deleted: Удалено
+  title: Шаблоны
   yaml: YAML

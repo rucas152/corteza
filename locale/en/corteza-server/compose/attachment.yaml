@@ -1,29 +1,29 @@
 errors:
-  failedToExtractMimeType: could not extract mime type
-  failedToProcessImage: could not process image
-  failedToStoreFile: could not extract store file
-  invalidID: invalid ID
-  invalidModuleID: invalid module ID
-  invalidNamespaceID: invalid namespace ID
-  invalidPageID: invalid page ID
-  invalidRecordID: invalid record ID
-  moduleNotFound: module not found
-  namespaceNotFound: namespace not found
-  notAllowedToCreate: not allowed to create attachments
-  notAllowedToCreateEmptyAttachment: not allowed to create empty attachments
-  notAllowedToCreateRecords: not allowed to create records
-  notAllowedToListAttachments: not allowed to list attachments
-  notAllowedToRead: not allowed to read this module
-  notAllowedToReadNamespace: not allowed to read this namespace
-  notAllowedToReadPage: not allowed to read this page
-  notAllowedToReadRecord: not allowed to read this record
-  notAllowedToSearch: not allowed to search or list modules
-  notAllowedToUpdateNamespace: not allowed to update this namespace
-  notAllowedToUpdatePage: not allowed to update this page
-  notAllowedToUpdateRecord: not allowed to update this record
-  notFound: attachment not found
-  pageNotFound: page not found
-  recordNotFound: record not found
-  invalidModuleField: invalid module field
-  tooLarge: uploaded file is too large
-  notAllowedToUploadThisType: not allowed to upload this type of file
+  failedToExtractMimeType: не удалось извлечь MIME-тип
+  failedToProcessImage: не удалось обработать изображение
+  failedToStoreFile: не удалось извлечь файл хранилища
+  invalidID: Неверный ID
+  invalidModuleField: недопустимое поле модуля
+  invalidModuleID: неверный идентификатор модуля
+  invalidNamespaceID: неверный идентификатор пространства имен
+  invalidPageID: неверный идентификатор страницы
+  invalidRecordID: неверный идентификатор записи
+  moduleNotFound: модуль не найден
+  namespaceNotFound: пространство имен не найдено
+  notAllowedToCreate: не разрешено создавать вложения
+  notAllowedToCreateEmptyAttachment: не разрешено создавать пустые вложения
+  notAllowedToCreateRecords: не разрешено создавать записи
+  notAllowedToListAttachments: не разрешено перечислять вложения
+  notAllowedToRead: не разрешено читать этот модуль
+  notAllowedToReadNamespace: не разрешено читать это пространство имен
+  notAllowedToReadPage: не разрешено читать эту страницу
+  notAllowedToReadRecord: не разрешено читать эту запись
+  notAllowedToSearch: не разрешено искать или перечислять модули
+  notAllowedToUpdateNamespace: не разрешено обновлять это пространство имен
+  notAllowedToUpdatePage: не разрешено обновлять эту страницу
+  notAllowedToUpdateRecord: не разрешено обновлять эту запись
+  notAllowedToUploadThisType: не разрешено загружать этот тип файла
+  notFound: вложение не найдено
+  pageNotFound: Страница не найдена
+  recordNotFound: запись не найдена
+  tooLarge: загруженный файл слишком большой

@@ -1,9 +1,11 @@
 errors:
-  notFound: data privacy request not found
-  invalidID: invalid ID
-  invalidKind: invalid kind
-  invalidStatus: invalid status
-  notAllowedToRead: not allowed to read this data privacy request
-  notAllowedToSearch: not allowed to search or list data privacy request
-  notAllowedToCreate: not allowed to create data privacy request
-  notAllowedToApprove: not allowed to approve/reject data privacy request
+  invalidID: Неверный ID
+  invalidKind: недопустимый вид
+  invalidStatus: недействительный статус
+  notAllowedToApprove: не разрешено одобрять/отклонять запрос на конфиденциальность
+    данных
+  notAllowedToCreate: не разрешено создавать запрос конфиденциальности данных
+  notAllowedToRead: не разрешено читать этот запрос конфиденциальности данных
+  notAllowedToSearch: не разрешено искать или перечислять запросы конфиденциальности
+    данных
+  notFound: запрос конфиденциальности данных не найден

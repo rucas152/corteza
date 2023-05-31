@@ -1,111 +1,117 @@
 break:
-  label: Break
-  short: Break
-  tooltip: Stop iterator execution and continue with workflow
+  label: Перерыв
+  short: Перерыв
+  tooltip: Остановить выполнение итератора и продолжить рабочий процесс
 continue:
-  label: Continue
-  short: Continue
-  tooltip: Stop current iteration and continue with the next one
+  label: Продолжать
+  short: Продолжать
+  tooltip: Остановить текущую итерацию и перейти к следующей
 debug:
-  label: Debug
-  short: Debug
-  tooltip: Logs current workflow scope into server logs. If workflow debug is enabled
+  label: Отлаживать
+  short: Отлаживать
+  tooltip: Записывает текущую область рабочего процесса в журналы сервера. Если включена
+    отладка рабочего процесса
 delay:
-  label: Delay
-  short: Delay
-  tooltip: Delays workflow execution
+  label: Задерживать
+  short: Задерживать
+  tooltip: Задерживает выполнение рабочего процесса
 error:
-  label: Error
-  short: Error
-  tooltip: Throws error and stops workflow execution, also prevents saving of records triggered with before trigger
+  label: Ошибка
+  short: Ошибка
+  tooltip: Выдает ошибку и останавливает выполнение рабочего процесса, а также предотвращает
+    сохранение записей, запущенных с помощью перед триггером.
 error-handler:
-  label: Error Handler
-  short: Error Handler
-  tooltip: Continue workflow from this step if an error is triggered
+  label: Обработчик ошибок
+  short: Обработчик ошибок
+  tooltip: Продолжить рабочий процесс с этого шага, если возникла ошибка
+exec-workflow:
+  label: Выполнить рабочий процесс
+  short: Рабочий процесс
+  tooltip: Выполнение рабочего процесса и сопоставление переменных из его области
+    действия с текущей
 expressions:
   configurator:
-    add-expression: + Add Expression
-    expression: Expression
-    expression-placeholder: Expression...
-    target: Target
-  label: Expressions
-  short: Expressions
-  tooltip: Define and mutate scope variables
+    add-expression: + Добавить выражение
+    expression: Выражение
+    expression-placeholder: Выражение...
+    target: Цель
+  label: Выражения
+  short: Выражения
+  tooltip: Определение и изменение переменных области видимости
 function:
   configurator:
-    arguments: Arguments
-    constant: Constant
-    expression: Expression
-    name: Name
-    option-select: Select an option
-    result: Result
-    results: Results
-    target: Target
-    add-result: + Add result
-    search-workflow: Search for a workflow
-    select-function: Select function
-    type: Type
-    type*: Type*
-  label: Function
-  short: Function
-  tooltip: Execute the chosen predefined function
-exec-workflow:
-  label: Execute Workflow
-  short: Workflow
-  tooltip: Execute a workflow and map variables from its scope to the current one
-gatewayExclusive:
-  label: Gateway (Exclusive)
-  short: Gateway
-  tooltip: Workflow execution can continue on first path that fits condition
-gatewayInclusive:
-  label: Gateway (Inclusive)
-  short: Gateway
-  tooltip: Workflow execution can continue on all paths that fit condition
-gatewayParallel:
-  label: Gateway (Fork/Join)
-  short: Gateway
-  tooltip: Splits workflow execution into two parallel paths or merges multiple paths into one
+    add-result: + Добавить результат
+    arguments: Аргументы
+    constant: Постоянный
+    expression: Выражение
+    name: Имя
+    option-select: Выберите вариант
+    result: Результат
+    results: Полученные результаты
+    search-workflow: Поиск рабочего процесса
+    select-function: Выберите функцию
+    target: Цель
+    type: Тип
+    type*: Тип*
+  label: Функция
+  short: Функция
+  tooltip: Выполнить выбранную предопределенную функцию
 gateway:
   configurator:
-    condition: Condition
-    two-paths: Gateway must be source of at least two paths
+    condition: Состояние
+    two-paths: Шлюз должен быть источником как минимум двух путей
+gatewayExclusive:
+  label: Шлюз (эксклюзивный)
+  short: Шлюз
+  tooltip: Выполнение рабочего процесса может продолжаться по первому пути, соответствующему
+    условию.
+gatewayInclusive:
+  label: Шлюз (включительно)
+  short: Шлюз
+  tooltip: Выполнение рабочего процесса может продолжаться на всех путях, соответствующих
+    условию.
+gatewayParallel:
+  label: Шлюз (разветвление/соединение)
+  short: Шлюз
+  tooltip: Разделяет выполнение рабочего процесса на два параллельных пути или объединяет
+    несколько путей в один
 iterator:
-  label: Iterator
-  short: Iterator
-  tooltip: Iterate over items
+  label: Итератор
+  short: Итератор
+  tooltip: Перебирать элементы
 prompt:
-  label: Prompt
-  short: Prompt
-  tooltip: Prompts user and waits for input
+  label: Быстрый
+  short: Быстрый
+  tooltip: Запрашивает пользователя и ждет ввода
 swimlane:
-  label: Swimlane
-  short: Swimlane
-  tooltip: Visually group steps
+  label: дорожка для плавания
+  short: дорожка для плавания
+  tooltip: Визуально группируйте шаги
 termination:
-  label: Termination (End)
-  short: Termination
-  tooltip: Terminate workflow execution
+  label: Прекращение (Конец)
+  short: Прекращение
+  tooltip: Завершить выполнение рабочего процесса
+tooltip:
+  configure-step: Шаг настройки
 trigger:
   configurator:
-    add: + Add
-    add-constraints: + Add Constraints
-    constraints: Constraints
-    event*: Event*
-    failed-fetch-event-types: Failed to fetch event types
-    initial-scope: Initial Scope
-    equal: Equal
-    not-equal: Not equal
-    like: Like
-    not-like: Not like
-    operator: Operator
-    resource:  Resource
-    resource*:  Resource*
-    select-constraint-type: Select constraint type
-    select-operator: Select operator
-    select-event-type: Select event type
-    select-resource-type: Select resource type
-  label: Trigger (Start)
-  short: Trigger
-  tooltip: Trigger the workflow execution based on configuration
-tooltip:
-  configure-step: Configure step
+    add: + Добавить
+    add-constraints: + Добавить ограничения
+    constraints: Ограничения
+    equal: Равный
+    event*: Событие*
+    failed-fetch-event-types: Не удалось получить типы событий.
+    initial-scope: Начальная область
+    like: Нравиться
+    not-equal: Не равный
+    not-like: Не как
+    operator: Оператор
+    resource: Ресурс
+    resource*: Ресурс*
+    select-constraint-type: Выберите тип ограничения
+    select-event-type: Выберите тип события
+    select-operator: Выберите оператора
+    select-resource-type: Выберите тип ресурса
+  label: Триггер (Старт)
+  short: Курок
+  tooltip: Инициировать выполнение рабочего процесса на основе конфигурации

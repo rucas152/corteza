@@ -1,57 +1,52 @@
-ui:
-  save: Save changes
-  cancel: Cancel
-  set-for: Set permissions for {{target}}
-  loading: Loading permissions
-
-  edit:
-    label: User roles
-    description: Select role to set permissions
-
-  evaluate:
-    description: Evaluate applied permissions
-
-  add:
-    label: Add
-    title: Evaluate permissions
-    save: Save & Close
-    role:
-      label: Roles
-      placeholder: Select role(s)
-    user:
-      label: Users
-      placeholder: Search or select a user
-
-  tooltip:
-    unknown-context:
-      user: Can not evaluate permission for a user with contextual role on a non-specific resource
-      role: Can not evaluate permission for contextual role on a non-specific resource
-
-  access:
-    allow: Allow
-    inherit: Inherit
-    deny: Deny
-
 resources:
   system:
     report:
-      all: all reports
-      specific: report "{{target}}"
-      tooltip: Report permissions
+      all: все отчеты
       operations:
         delete:
-          description: ""
-          specific: Delete report "{{target}}"
-          title: Delete any report
+          description: ''
+          specific: Удалить отчет "{{target}}"
+          title: Удалить любой отчет
         read:
-          description: ""
-          specific: Read report "{{target}}"
-          title: Read any report
+          description: ''
+          specific: Прочитать отчет "{{target}}"
+          title: Читать любой отчет
         run:
-          description: ""
-          specific: Run report "{{target}}"
-          title: Run any report
+          description: ''
+          specific: Запустить отчет "{{target}}"
+          title: Запустите любой отчет
         update:
-          description: ""
-          specific: Update report "{{target}}"
-          title: Update any report
+          description: ''
+          specific: Обновить отчет "{{target}}"
+          title: Обновите любой отчет
+      specific: отчет "{{цель}}"
+      tooltip: Разрешения отчетов
+ui:
+  access:
+    allow: Позволять
+    deny: Отрицать
+    inherit: Наследовать
+  add:
+    label: Добавлять
+    role:
+      label: Роли
+      placeholder: Выберите роль(и)
+    save: Сохранить и закрыть
+    title: Оценить разрешения
+    user:
+      label: Пользователи
+      placeholder: Найдите или выберите пользователя
+  cancel: Отмена
+  edit:
+    description: Выберите роль для установки разрешений
+    label: Роли пользователей
+  evaluate:
+    description: Оцените примененные разрешения
+  loading: Загрузка разрешений
+  save: Сохранить изменения
+  set-for: Установить разрешения для {{target}}
+  tooltip:
+    unknown-context:
+      role: Не удается оценить разрешение для контекстной роли на неконкретном ресурсе
+      user: Не удается оценить разрешение для пользователя с контекстной ролью на
+        неопределенный ресурс

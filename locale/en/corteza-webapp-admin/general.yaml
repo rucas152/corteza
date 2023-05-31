@@ -1,50 +1,49 @@
 label:
-  template:
-    single: Template
-    plural: Templates
-  user:
-    single: User
-    plural: Users
-  role:
-    single: Role
-    plural: Roles
   application:
-    single: Application
-    plural: Applications
+    plural: Приложения
+    single: Приложение
   auth_client:
-    single: Auth Client
-    plural: Auth Clients
-  queue:
-    single: Messaging Queue
-    plural: Messaging Queues
-  route:
-    single: Route
-    plural: Routes
+    plural: Клиенты аутентификации
+    single: Клиент авторизации
+  clear: Прозрачный
   connection:
-    single: Database Connection
-    plural: Database Connections
+    plural: Подключения к базе данных
+    single: Подключение к базе данных
+  delete: Удалить
+  fileTypeNotAllowed: Недопустимый тип файла
+  loadMore: Загрузи больше
+  loading: Загрузка
+  none: Никто
+  now: Сейчас
+  plus-add: + Добавить
+  queue:
+    plural: Очереди сообщений
+    single: Очередь сообщений
+  refresh: Обновить
+  requests: Запросы
+  role:
+    plural: Роли
+    single: Роль
+  route:
+    plural: Маршруты
+    single: Маршрут
+  routes: Маршруты
+  saveAndClose: Сохрани и закрой
   sensitivity_level:
-    single: Sensitivity Level
-    plural: Sensitivity Levels
+    plural: Уровни чувствительности
+    single: Уровень чувствительности
   session:
-    single: Session
-    plural: Sessions
+    plural: Сессии
+    single: Сессия
+  submit: Представлять на рассмотрение
+  template:
+    plural: Шаблоны
+    single: Шаблон
+  today: Сегодня
+  undelete: Восстановить
+  user:
+    plural: Пользователи
+    single: Пользователь
   workflow:
-    single: Workflow
-    plural: Workflows
-  plus-add: + Add
-  clear: Clear
-  none: None
-  now: Now
-  today: Today
-  routes: Routes
-  requests: Requests
-  refresh: Refresh
-  loadMore: Load more
-  loading: Loading
-  saveAndClose: Save and close
-  submit: Submit
-  delete: Delete
-  undelete: Undelete
-  fileTypeNotAllowed: File type not allowed
-
+    plural: Рабочие процессы
+    single: Рабочий процесс

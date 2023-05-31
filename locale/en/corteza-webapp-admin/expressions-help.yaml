@@ -1,123 +1,140 @@
-calculate: Field expressions provide a way to calculate field values based on the defined expression
+calculate: Выражения поля предоставляют способ вычисления значений поля на основе
+  определенного выражения.
 categories:
   dateTime:
-    earliest: Returns earliest DateTime
-    label: Date and Time
-    latest: Returns latest DateTime
-    modTime: Returns modified DateTime string
-    parseDuration: Returns parsed duration
-    parseISOTime: Returns parsed ISO DateTime string
-    strftime: Returns DateTime string for the specified date and format
+    earliest: Возвращает самое раннее DateTime
+    label: Дата и время
+    latest: Возвращает последнюю дату и время
+    modTime: Возвращает измененную строку DateTime
+    parseDuration: Возвращает проанализированную продолжительность
+    parseISOTime: Возвращает проанализированную строку ISO DateTime
+    strftime: Возвращает строку DateTime для указанной даты и формата
   general:
-    description: Returns the first non null value
-    label: General
+    description: Возвращает первое ненулевое значение
+    label: Общий
   number:
-    ceil: Rounds number up to the nearest integer
-    floor: Rounds number down to the nearest integer
-    label: Number
-    max: Returns item with the highest value
-    min: Returns item with the lowest value
-    rounds: Rounds a floating point number to the specified number of digits
+    ceil: Округляет число до ближайшего целого числа
+    floor: Округляет число в меньшую сторону до ближайшего целого
+    label: Число
+    max: Возвращает элемент с наибольшим значением
+    min: Возвращает элемент с наименьшим значением
+    rounds: Округляет число с плавающей запятой до указанного количества цифр
   string:
-    format: Returns the formatted string
-    label: String
-    longest: Returns the longest string
-    shortest: Returns the shortest string
-    toLower: Converts all characters to lowercase
-    toUpper: Converts all characters to uppercase
-    trim: Removes spaces at the beginning and at the end of the string
-    trimLeft: Removes character from the beginning of the string
-    trimRight: Removes character from the end of the string
-example-description: Below are a few examples of different use cases of field expressions.
-examples: Examples
-field: Field Expressions
+    format: Возвращает отформатированную строку
+    label: Нить
+    longest: Возвращает самую длинную строку
+    shortest: Возвращает самую короткую строку
+    toLower: Преобразует все символы в нижний регистр
+    toUpper: Преобразует все символы в верхний регистр
+    trim: Удаляет пробелы в начале и в конце строки
+    trimLeft: Удаляет символ из начала строки
+    trimRight: Удаляет символ с конца строки
+example-description: Ниже приведены несколько примеров различных вариантов использования
+  выражений полей.
+examples: Примеры
+field: Выражения полей
 formatCategories:
   dateTime:
-    A: Returns the full national weekday name
-    B: Returns the full national month name
-    C: Returns year / 100 as a decimal number; single digits are preceded by a zero
-    D: Equivalent to %m/%d/%y
-    F: Equivalent to %Y-%m-%d
-    H: Returns the hour (24-hour clock) as a decimal number (00-23)
-    I: Returns the hour (12-hour clock) as a decimal number (01-12)
-    M: Returns the minute as a decimal number (00-59)
-    R: Equivalent to %H:%M
-    S-middle: Returns the millisecond as a decimal number (000-999)
-    S-second: Returns the second as a decimal number (00-60)
-    T: Equivalent to %H:%M:%S
-    U: Returns the week number of the year (Sunday as the first day of the week) as a decimal number (00-53)
-    V: Returns the week number of the year (Monday as the first day of the week) as a decimal number (01-53)
-    W: Returns the week number of the year (Monday as the first day of the week) as a decimal number (00-53)
-    X: Returns the national representation of the time
-    "Y": Returns the year with century as a decimal number
-    Z: Returns the time zone name
-    a: Returns the abbreviated national weekday name
-    b: Returns the abbreviated national month name
-    c: Returns the national representation of time and date
-    d: Returns the day of the month as a decimal number (01-31)
-    e: Returns the day of the month as a decimal number (1-31)
-    j: Returns the day of the year as a decimal number (001-366)
-    k: Returns the hour (24-hour clock) as a decimal number (0-23)
-    l: Returns the hour (12-hour clock) as a decimal number (1-12)
-    label: Date and Time formatting
-    m: Returns the month as a decimal number (01-12)
-    "n": |-
-      Returns a newline (
-      )
-    p: Returns the national representation of either "ante meridiem" (a.m.)  or "post meridiem" (p.m.)
-    percent: Returns a %
-    r: Equivalent to %I:%M:%S %p
-    t: Returns a tab
-    u: Returns the weekday (Monday as the first day of the week) as a decimal number (1-7)
-    v: Equivalent to %e-%b-%Y
-    w: Returns the weekday (Sunday as the first day of the week) as a decimal number (0-6)
-    x: Returns the national representation of the date
-    "y": Returns the year without century as a decimal number (00-99)
-    z: Returns the time zone offset from UTC
+    A: Возвращает полное название национального дня недели
+    B: Возвращает полное название национального месяца
+    C: Возвращает год/100 в виде десятичного числа; перед одиночными цифрами ставится
+      ноль
+    D: Эквивалентно %m/%d/%y
+    F: Эквивалентно %Y-%m-%d
+    H: Возвращает час (24-часовой формат) в виде десятичного числа (00–23).
+    I: Возвращает час (12-часовой формат) в виде десятичного числа (01–12).
+    M: Возвращает минуты в виде десятичного числа (00-59)
+    R: Эквивалент %H:%M
+    S-middle: Возвращает миллисекунды в виде десятичного числа (000–999).
+    S-second: Возвращает секунды в виде десятичного числа (00-60)
+    T: Эквивалентно %H:%M:%S
+    U: Возвращает номер недели года (воскресенье как первый день недели) в виде десятичного
+      числа (00-53)
+    V: Возвращает номер недели года (понедельник как первый день недели) в виде десятичного
+      числа (01-53)
+    W: Возвращает номер недели года (понедельник как первый день недели) в виде десятичного
+      числа (00-53)
+    X: Возвращает национальное представление времени
+    Y: Возвращает год с веком в виде десятичного числа
+    Z: Возвращает название часового пояса
+    a: Возвращает сокращенное название национального дня недели.
+    b: Возвращает сокращенное название национального месяца.
+    c: Возвращает национальное представление времени и даты
+    d: Возвращает день месяца в виде десятичного числа (01-31)
+    e: Возвращает день месяца в виде десятичного числа (1-31)
+    j: Возвращает день года в виде десятичного числа (001–366).
+    k: Возвращает час (24-часовой формат) в виде десятичного числа (0–23).
+    l: Возвращает час (12-часовой формат) в виде десятичного числа (1–12).
+    label: Форматирование даты и времени
+    m: Возвращает месяц в виде десятичного числа (01-12)
+    n: 'Возвращает новую строку (
+
+      )'
+    p: Возвращает национальное представление "до полудня" (утра) или "после полудня"
+      (после полудня)
+    percent: Возвращает %
+    r: Эквивалентно %I:%M:%S %p
+    t: Возвращает вкладку
+    u: Возвращает день недели (понедельник как первый день недели) в виде десятичного
+      числа (1-7)
+    v: Эквивалент %e-%b-%Y
+    w: Возвращает день недели (воскресенье как первый день недели) в виде десятичного
+      числа (0-6)
+    x: Возвращает национальное представление даты
+    y: Возвращает год без века в виде десятичного числа (00-99)
+    z: Возвращает смещение часового пояса от UTC.
   string:
-    E: Returns the floating point number in scientific notation; upper-case E
-    O: Returns the number in base 8 with 0o prefix
-    X: Returns the number in base 16; upper-case A-F
-    b: Returns the number in base 2 (in the binary format)
-    binary: Returns the floating point number in scientific notation with binary exponent
-    d: Returns the number in base 10
-    e: Returns the floating point number in scientific notation; lower-case e
-    f: Returns the floating point number with a decimal point
-    label: String formatting
-    o: Returns the number in base 8
-    t: Returns the boolean value as true/false
-    v: Returns the raw value
-    x: Returns the number in base 16; lower-case a-f
+    E: Возвращает число с плавающей запятой в экспоненциальном представлении; заглавная
+      Е
+    O: Возвращает число в базе 8 с префиксом 0o
+    X: Возвращает число в базе 16; заглавные буквы A-F
+    b: Возвращает число по основанию 2 (в двоичном формате)
+    binary: Возвращает число с плавающей запятой в экспоненциальном представлении
+      с двоичным показателем
+    d: Возвращает число в базе 10
+    e: Возвращает число с плавающей запятой в экспоненциальном представлении; строчная
+      буква е
+    f: Возвращает число с плавающей запятой с десятичной точкой
+    label: Форматирование строки
+    o: Возвращает число в базе 8
+    t: Возвращает логическое значение как true/false
+    v: Возвращает необработанное значение
+    x: Возвращает число в базе 16; строчные a-f
 formatting-parameters:
-  description: Here is a complete list of available formatting options
-  label: Formatting parameters
+  description: Вот полный список доступных параметров форматирования
+  label: Параметры форматирования
 helper-functions:
-  description: We provide a set of helper functions that extend the capabilites of field expressions
-  label: Helper functions
-  note: 'NOTE: Only the "General" functions can be used on all types of fields. The other functions are limited to their respective field type.'
-instructions: 'To write the expression you can use the following operators:'
+  description: Мы предоставляем набор вспомогательных функций, расширяющих возможности
+    полевых выражений.
+  label: Вспомогательные функции
+  note: ПРИМЕЧАНИЕ. Для всех типов полей можно использовать только «Общие» функции.
+    Другие функции ограничены соответствующим типом поля.
+instructions: 'Для записи выражения можно использовать следующие операторы:'
 operators:
-  all-new-values: (all new values)
-  comparators: 'Comparators: '
-  control-order: 'Control order of evaluation: '
-  field-name: field-name
-  location: 'Depending on where the field expression is used it has access to different variables:'
-  logical: 'Logical: '
-  modifiers: 'Modifiers: '
-  more: 'More: '
-  new: new
-  new-value: (new-value)
-  new-value-with-comma: '(new-value), '
-  old: old
-  old-value: oldValue
-  old-value-brackets: '(old value), '
-  record: '(record), '
-  sanitizer: Sanitizer
-  sanitizers: 'Sanitizers: '
-  validator: Validator
-  validators: 'Validators: '
-  value: value
-  value-expression: Value expression
-  value-expressions: 'Value expressions: '
-  values: values
-write: Writing field expressions is like writing an equation. Instead of only using constants, you can pass in the field name, and it will be evaluated as the field value for that record.
+  all-new-values: (все новые значения)
+  comparators: 'Компараторы:'
+  control-order: 'Контрольный порядок оценки:'
+  field-name: имя поля
+  location: 'В зависимости от того, где используется выражение поля, оно имеет доступ
+    к разным переменным:'
+  logical: 'Логично:'
+  modifiers: 'Модификаторы:'
+  more: 'Более:'
+  new: новый
+  new-value: (новое значение)
+  new-value-with-comma: (новое значение),
+  old: старый
+  old-value: старое значение
+  old-value-brackets: (старое значение),
+  record: (записывать),
+  sanitizer: дезинфицирующее средство
+  sanitizers: 'Дезинфицирующие средства:'
+  validator: Валидатор
+  validators: 'Валидаторы:'
+  value: ценить
+  value-expression: Выражение значения
+  value-expressions: 'Выражения значений:'
+  values: ценности
+write: Написание выражений поля похоже на написание уравнения. Вместо того, чтобы
+  использовать только константы, вы можете передать имя поля, и оно будет оцениваться
+  как значение поля для этой записи.

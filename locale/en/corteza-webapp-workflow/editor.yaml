@@ -1,32 +1,39 @@
-
-'auto-initialize-empty-variable': Variables that can't be loaded will be auto initialized as empty
-back: Back
-'click-to-save': Click here to save
-deferred: Deferred
-delete: Delete
-deleted: Deleted
-'detected-changes': "Changes detected "
-'detected-issues': Issues detected
-disabled: Disabled
-help: Help
-handle: (Handle)
-id: "ID:"
-'id-parenthesis': " (ID)"
-'initial-scope': Initial scope
-'input-ids-or-handles': The initial scope gets injected into the workflow at execution. To load available variables, input the related IDs/Handles below
-issues: Issues
-'load-and-configure': Load and Configure
-'modify-initial-scope-if-no-variables-are-loaded': If you do not wish to load any variables, click "Configure" to modify the initial scope before running workflow
-'open-webapp-on-prompt-use' : "WARNING: If prompts are used in the workflow, make sure that the related webapp is also opened. Otherwise workflow will timeout"
-reset: Reset
-'run-as': "Run as:"
-'run-workflow': Run Workflow
-'required-namespace': Namespace required
-'required-namespace-and-module': Namespace and Module required
-save: Save
-spinning: Spinning
-'test-in-progress': "Testing in progress. If your workflow includes Prompt or Delay steps, it may be waiting for them to complete"
-'unsupported-browser': Browser is not supported!
-undelete: Undelete
-'workflow-configuration': Workflow Configuration
-'editor': Editor
+auto-initialize-empty-variable: Переменные, которые не могут быть загружены, будут
+  автоматически инициализированы как пустые.
+back: Назад
+click-to-save: Нажмите здесь, чтобы сохранить
+deferred: Отложено
+delete: Удалить
+deleted: Удалено
+detected-changes: Обнаружены изменения
+detected-issues: Обнаружены проблемы
+disabled: Неполноценный
+editor: редактор
+handle: (Ручка)
+help: Помощь
+id: 'ИДЕНТИФИКАТОР:'
+id-parenthesis: (ИДЕНТИФИКАТОР)
+initial-scope: Начальный объем
+input-ids-or-handles: Исходная область вводится в рабочий процесс при выполнении.
+  Чтобы загрузить доступные переменные, введите соответствующие идентификаторы/дескрипторы
+  ниже.
+issues: Проблемы
+load-and-configure: Загрузите и настройте
+modify-initial-scope-if-no-variables-are-loaded: Если вы не хотите загружать какие-либо
+  переменные, нажмите «Настроить», чтобы изменить начальную область перед запуском
+  рабочего процесса.
+open-webapp-on-prompt-use: ПРЕДУПРЕЖДЕНИЕ. Если в рабочем процессе используются подсказки,
+  убедитесь, что соответствующее веб-приложение также открыто. В противном случае
+  рабочий процесс прервется.
+required-namespace: Требуется пространство имен
+required-namespace-and-module: Требуется пространство имен и модуль
+reset: Перезагрузить
+run-as: 'Беги как:'
+run-workflow: Запустить рабочий процесс
+save: Сохранять
+spinning: Спиннинг
+test-in-progress: Выполняется тестирование. Если ваш рабочий процесс включает этапы
+  с подсказкой или задержкой, он может ожидать их завершения.
+undelete: Восстановить
+unsupported-browser: Браузер не поддерживается!
+workflow-configuration: Конфигурация рабочего процесса

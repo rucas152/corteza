@@ -1,14 +1,15 @@
 errors:
-  invalidID: invalid ID
-  notAllowedToCreate: not allowed to create auth clients
-  notAllowedToDelete: not allowed to delete this auth client
-  notAllowedToRead: not allowed to read this auth client
-  notAllowedToSearch: not allowed to search or list auth clients
-  notAllowedToUndelete: not allowed to undelete this auth client
-  notAllowedToUpdate: not allowed to update this auth client
-  notFound: auth client not found
-  unableToChangeDefaultClientHandle: unable to change the handle of the default auth client
-  unableToDeleteDefaultClient: unable to delete the default auth client
-  unableToDisableDefaultClient: unable to disable the default auth client
-  unknownGrantType: unknown grant type
-  unknownScope: unknown scope
+  invalidID: Неверный ID
+  notAllowedToCreate: не разрешено создавать клиентов авторизации
+  notAllowedToDelete: не разрешено удалять этот клиент авторизации
+  notAllowedToRead: не разрешено читать этот клиент аутентификации
+  notAllowedToSearch: не разрешено искать или перечислять клиентов аутентификации
+  notAllowedToUndelete: не разрешено восстанавливать этот клиент аутентификации
+  notAllowedToUpdate: не разрешено обновлять этот клиент аутентификации
+  notFound: авторизационный клиент не найден
+  unableToChangeDefaultClientHandle: невозможно изменить дескриптор клиента аутентификации
+    по умолчанию
+  unableToDeleteDefaultClient: не удалось удалить клиент аутентификации по умолчанию
+  unableToDisableDefaultClient: невозможно отключить клиент аутентификации по умолчанию
+  unknownGrantType: неизвестный тип гранта
+  unknownScope: неизвестная область

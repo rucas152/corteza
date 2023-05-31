@@ -1,81 +1,76 @@
 comments:
-  enter: Enter comment...
-  label: Comments
+  enter: Введите комментарий...
+  label: Комментарии
   sort:
     first:
-      newest: Newest first
-      oldest: Oldest first
-  submit: Submit
+      newest: Новички вперед
+      oldest: Сначала старые
+  submit: Представлять на рассмотрение
   unknown:
-    date: Unknown date
-    user: Unknown user
-
-kind:
-  correct: Correction Request
-  delete: Deletion Request
-  export: Export Request
-
-status:
-  canceled: Canceled
-  pending: Pending
-  rejected: Rejected
-  approved: Approved
-
-list:
-  title: Privacy Requests
-  export: Export
-  columns:
-    kind: Type
-    requestedAt: Requested at
-    requestedBy: Requested by
-    status: Status
-  request:
-    approve: Approve Requests
-    cancel: Cancel Request
-    reject: Reject Requests
-
+    date: Неизвестная дата
+    user: Неизвестный пользователь
 edit:
   correct:
-    private-fields: Private Fields
-    no-data-available: No data available
-    submit: Submit Correction Request
     connection:
-      label: Connection
-      placeholder: Select a Connection
+      label: Связь
+      placeholder: Выберите соединение
+    no-data-available: Данные недоступны
+    private-fields: Частные поля
+    submit: Отправить запрос на исправление
   delete:
-    private-fields: Private Fields
-    no-data-available: No data available
-    submit: Delete Selected Data
     connection:
-      label: Connection
-      placeholder: Select a Connection
+      label: Связь
+      placeholder: Выберите соединение
+    no-data-available: Данные недоступны
+    private-fields: Частные поля
+    submit: Удалить выбранные данные
   export:
-    submit: Export Selected Data
     data-type:
-      label: Data Type to export
-      profile-information: Profile Information
-      application-data: Application Data
+      application-data: Данные Приложения
+      label: Тип данных для экспорта
+      profile-information: информация профиля
     date-range:
-      label: Date Range
-      all: All of my data
+      all: Все мои данные
+      label: Диапазон дат
     file-format:
-      label: File Format
-      json: JSON
       csv: CSV
-
+      json: JSON
+      label: Формат файла
+    submit: Экспорт выбранных данных
+kind:
+  correct: Запрос на исправление
+  delete: Запрос на удаление
+  export: Запрос на экспорт
+list:
+  columns:
+    kind: Тип
+    requestedAt: Запрошено в
+    requestedBy: Запрошенный
+    status: Положение дел
+  export: Экспорт
+  request:
+    approve: Утвердить запросы
+    cancel: Отменить запрос
+    reject: Отклонить запросы
+  title: Запросы конфиденциальности
+status:
+  approved: Одобренный
+  canceled: Отменено
+  pending: В ожидании
+  rejected: Отклоненный
 view:
-  approve: Approve request
-  cancel: Cancel request
-  reject: Reject request
+  approve: Одобрить запрос
+  cancel: Отменить запрос
   export:
     data-type:
-      label: Data Type to export
-      profile-information: Profile Information
-      application-data: Application Data
+      application-data: Данные Приложения
+      label: Тип данных для экспорта
+      profile-information: информация профиля
     date-range:
-      label: Date Range
-      all: All of my data
+      all: Все мои данные
+      label: Диапазон дат
     file-format:
-      label: File Format
-      json: JSON
       csv: CSV
+      json: JSON
+      label: Формат файла
+  reject: Отклонить запрос

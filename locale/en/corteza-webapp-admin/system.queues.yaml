@@ -1,46 +1,51 @@
 editor:
   info:
-    consumer: Consumer
-    createdAt: Created at
-    delete: Delete
-    deletedAt: Deleted at
-    dispatch_events: Dispatch events
-    dispatch_events_desc: Dispatch events notifies the eventbus of queue message changes (new, processed, ...)
-    name: Queue name *
-    invalid-handle-characters: Should be at least 2 characters long. Can contain only letters, numbers, dashes, underscores and dots. Must end with letter or number
-    poll_delay: Polling changes delay
-    poll_delay_empty: 'Poll delay will not be used; to enable, use duration format (ie: 1h / 1m15s / 1h90s)'
-    poll_delay_set: Poll delay will be used; if empty, it will not be used.
-    title: Basic information
-    undelete: Undelete
-    updatedAt: Updated at
-  new: New
+    consumer: Потребитель
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    dispatch_events: Отправка событий
+    dispatch_events_desc: Отправка событий уведомляет шину событий об изменениях сообщений
+      в очереди (новые, обработанные, ...)
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    name: Имя очереди *
+    poll_delay: Задержка изменений опроса
+    poll_delay_empty: 'Задержка опроса не будет использоваться; чтобы включить, используйте
+      формат продолжительности (например: 1 час / 1 мин 15 сек / 1 час 90 сек)'
+    poll_delay_set: Будет использоваться задержка опроса; если пустой, он не будет
+      использоваться.
+    title: Основная информация
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
   title:
-    edit: Edit queue
-    new: Add a queue
+    edit: Изменить очередь
+    new: Добавить очередь
 list:
   columns:
-    actions: Actions
-    consumer: Consumer
-    createdAt: Created At
-    state: State
-    queue: Queue
-  export: Export
-  rows:
-    filters:
-      deleted: Deleted
+    actions: Действия
+    consumer: Потребитель
+    createdAt: Создан в
+    queue: Очередь
+    state: Состояние
+  export: Экспорт
   filterForm:
     deleted:
-      label: deleted queues
+      label: удаленные очереди
     excluded:
-      label: Without
+      label: Без
     exclusive:
-      label: Only
+      label: Только
     handle:
-      label: Filter queues list
-      placeholder: Filter queues by name
+      label: Список очередей фильтров
+      placeholder: Фильтровать очереди по имени
     inclusive:
-      label: Including
-  loading: Loading messaging queues
-  new: New
-  title: Messaging queues
+      label: Включая
+  loading: Загрузка очередей сообщений
+  new: Новый
+  rows:
+    filters:
+      deleted: Удалено
+  title: Очереди сообщений
