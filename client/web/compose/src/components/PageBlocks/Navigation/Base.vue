@@ -88,6 +88,11 @@
                 >
                   {{ navItem.options.item.label }}
                 </b-link>
+
+                <hr
+                  class="my-1"
+                >
+
                 <div
                   v-for="(dropdown, dIndex) in getSubPages(navItem.options.item.pageID)"
                   :key="`dropdown-${dIndex}`"
