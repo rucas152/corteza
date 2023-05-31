@@ -85,6 +85,7 @@
       v-if="report && canRead && showReport"
       :blocks.sync="reportBlocks"
       editable
+      @item-updated="onBlockUpdated"
     >
       <template
         slot-scope="{ block, index }"
@@ -145,6 +146,7 @@
             :block="block"
             :scenario="currentSelectedScenario"
             :report-i-d="reportID"
+            @item-updated="onBlockUpdated"
           />
         </div>
       </template>
@@ -416,7 +418,7 @@ export default {
       showReport: true,
 
       report: undefined,
-      
+
       unsavedBlocks: new Set(),
 
       dataframes: [],
@@ -885,7 +887,6 @@ export default {
 
     // Display elements
     openDisplayElementSelector (index) {
-      // console.log('display elements')
       this.blocks.currentIndex = index
       this.displayElements.showSelector = true
     },
@@ -950,6 +951,10 @@ export default {
     // Trigger browser dialog on page leave to prevent unsaved changes
     checkUnsavedBlocks (next) {
       next(!this.unsavedBlocks.size || window.confirm(this.$t('builder:unsaved-changes')))
+    },
+
+    onBlockUpdated (index) {
+      this.unsavedBlocks.add(index)
     },
   },
 }

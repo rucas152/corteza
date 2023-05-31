@@ -1175,8 +1175,8 @@ export default {
     },
 
     checkUnsavedComposePage (next) {
-      let layoutsStateChange = isEqual(this.layouts, this.initialLayoutsState);
-      let pageStateChange = isEqual(this.page, this.initialPageState)
+      const layoutsStateChange = isEqual(this.layouts, this.initialLayoutsState)
+      const pageStateChange = isEqual(this.page, this.initialPageState)
 
       next(!(layoutsStateChange && pageStateChange) ? window.confirm(this.$t('unsavedChanges')) : true)
     },

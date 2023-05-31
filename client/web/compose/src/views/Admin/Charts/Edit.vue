@@ -311,7 +311,7 @@
   </div>
 </template>
 <script>
-import { isEqual } from 'lodash'
+import { isEqual, debounce } from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import EditorToolbar from 'corteza-webapp-compose/src/components/Admin/EditorToolbar'
 import { compose, NoID, shared } from '@cortezaproject/corteza-js'
@@ -324,7 +324,7 @@ import Reports from 'corteza-webapp-compose/src/components/Chart/Report'
 import { chartConstructor } from 'corteza-webapp-compose/src/lib/charts'
 import VueSelect from 'vue-select'
 import { evaluatePrefilter } from 'corteza-webapp-compose/src/lib/record-filter'
-import { debounce } from 'lodash'
+
 const { CInputCheckbox } = components
 const { colorschemes } = shared
 
