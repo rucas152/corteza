@@ -316,82 +316,82 @@ jobs:
 # This is where it all comes together
 
 
-  release:
-    name: "Corteza (${{ matrix.os }})"
-    runs-on: ubuntu-20.04
-    needs: [ server-release, client-web-aio-release ]
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [ "linux" ]
-    env:
-      ENDPOINT: https://releases.cortezaproject.org/files
-      RELEASE_SFTP_KEY: ${{ secrets.RELEASE_SFTP_KEY }}
-      RELEASE_SFTP_URI: ${{ secrets.RELEASE_SFTP_URI }}
-    steps:
-      - run: echo "BUILD_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-      - uses: actions/checkout@v3
-      - name: "Download"
-        run: |
-          curl --silent --location "${{ env.RELEASE_BASE_URL }}/corteza-server-${{ env.BUILD_VERSION }}-${{ matrix.os }}-amd64.tar.gz" | \
-            tar -xzmok -C .
-          mv corteza-server dist
-          rm -rf dist/webapp
-          mkdir dist/webapp
-          curl --silent --location "${{ env.RELEASE_BASE_URL }}/corteza-webapp-${{ env.BUILD_VERSION }}.tar.gz" | \
-            tar -xzmok -C dist/webapp
-      - name: "Pack"
-        run: |
-          tar -C dist -czf corteza-${{ env.BUILD_VERSION }}-linux-amd64.tar.gz $(dir dist)
-      - name: "Upload"
-        run: |
-          echo ${{ env.RELEASE_SFTP_KEY }} | base64 -d > .upload-rsa
-          chmod 0400 .upload-rsa
-          echo "put corteza-${{ env.BUILD_VERSION }}-linux-amd64.tar.gz" | \
-            sftp -q -o "StrictHostKeyChecking no" -i .upload-rsa ${{ env.RELEASE_SFTP_URI }}
-          rm -f .upload-rsa
-        if: ${{ !env.ACT }}
+#   release:
+#     name: "Corteza (${{ matrix.os }})"
+#     runs-on: ubuntu-20.04
+#     needs: [ server-release, client-web-aio-release ]
+#     strategy:
+#       fail-fast: true
+#       matrix:
+#         os: [ "linux" ]
+#     env:
+#       ENDPOINT: https://releases.cortezaproject.org/files
+#       RELEASE_SFTP_KEY: ${{ secrets.RELEASE_SFTP_KEY }}
+#       RELEASE_SFTP_URI: ${{ secrets.RELEASE_SFTP_URI }}
+#     steps:
+#       - run: echo "BUILD_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+#       - uses: actions/checkout@v3
+#       - name: "Download"
+#         run: |
+#           curl --silent --location "${{ env.RELEASE_BASE_URL }}/corteza-server-${{ env.BUILD_VERSION }}-${{ matrix.os }}-amd64.tar.gz" | \
+#             tar -xzmok -C .
+#           mv corteza-server dist
+#           rm -rf dist/webapp
+#           mkdir dist/webapp
+#           curl --silent --location "${{ env.RELEASE_BASE_URL }}/corteza-webapp-${{ env.BUILD_VERSION }}.tar.gz" | \
+#             tar -xzmok -C dist/webapp
+#       - name: "Pack"
+#         run: |
+#           tar -C dist -czf corteza-${{ env.BUILD_VERSION }}-linux-amd64.tar.gz $(dir dist)
+#       - name: "Upload"
+#         run: |
+#           echo ${{ env.RELEASE_SFTP_KEY }} | base64 -d > .upload-rsa
+#           chmod 0400 .upload-rsa
+#           echo "put corteza-${{ env.BUILD_VERSION }}-linux-amd64.tar.gz" | \
+#             sftp -q -o "StrictHostKeyChecking no" -i .upload-rsa ${{ env.RELEASE_SFTP_URI }}
+#           rm -f .upload-rsa
+#         if: ${{ !env.ACT }}
 
 ########################################################################################################################
 ########################################################################################################################
 # Discovery
 
-  extra-server-discovery-test:
-    name: "Discovery Server test"
-    runs-on: ubuntu-20.04
-    steps:
-      - name: "Placeholder"
-        run: echo "@todo add tests"
+#   extra-server-discovery-test:
+#     name: "Discovery Server test"
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - name: "Placeholder"
+#         run: echo "@todo add tests"
 
-  extra-server-discovery-release:
-    name: "Discovery Server release ${{ matrix.os }}"
-    strategy:
-      fail-fast: true
-      matrix:
-        include:
-          - { runsOn: "ubuntu-20.04", os: "linux" }
-          - { runsOn: "macos-latest",  os: "darwin" }
-    runs-on: ${{ matrix.runsOn }}
-    needs: [ extra-server-discovery-test ]
-    env:
-      BUILD_OS: ${{ matrix.os }}
-      BUILD_VERSION: ${{ format(github.ref, 'refs/tags/', '') }}
-      RELEASE_SFTP_KEY: ${{ secrets.RELEASE_SFTP_KEY }}
-      RELEASE_SFTP_URI: ${{ secrets.RELEASE_SFTP_URI }}
-    steps:
-      - run: echo "BUILD_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
-        with: { go-version: "${{ env.GO_VERSION }}" }
-      - name: "Copy essentials"
-        run: cp *.md DCO LICENSE extra/server-discovery/
-      - name: "Build & release"
-        working-directory: extra/server-discovery/
-        run: make release-clean release
-      - name: "Upload"
-        working-directory: extra/server-discovery/
-        run: make upload
-        if: ${{ !env.ACT }}
+#   extra-server-discovery-release:
+#     name: "Discovery Server release ${{ matrix.os }}"
+#     strategy:
+#       fail-fast: true
+#       matrix:
+#         include:
+#           - { runsOn: "ubuntu-20.04", os: "linux" }
+#           - { runsOn: "macos-latest",  os: "darwin" }
+#     runs-on: ${{ matrix.runsOn }}
+#     needs: [ extra-server-discovery-test ]
+#     env:
+#       BUILD_OS: ${{ matrix.os }}
+#       BUILD_VERSION: ${{ format(github.ref, 'refs/tags/', '') }}
+#       RELEASE_SFTP_KEY: ${{ secrets.RELEASE_SFTP_KEY }}
+#       RELEASE_SFTP_URI: ${{ secrets.RELEASE_SFTP_URI }}
+#     steps:
+#       - run: echo "BUILD_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-go@v3
+#         with: { go-version: "${{ env.GO_VERSION }}" }
+#       - name: "Copy essentials"
+#         run: cp *.md DCO LICENSE extra/server-discovery/
+#       - name: "Build & release"
+#         working-directory: extra/server-discovery/
+#         run: make release-clean release
+#       - name: "Upload"
+#         working-directory: extra/server-discovery/
+#         run: make upload
+#         if: ${{ !env.ACT }}
 
 
 ########################################################################################################################
@@ -401,18 +401,18 @@ jobs:
     name: "Docker image ${{ matrix.image }}"
 
     runs-on: ubuntu-20.04
-    needs:
-      - server-release
-      - client-web-aio-release
-      - extra-server-discovery-release
+#     needs:
+#       - server-release
+#       - client-web-aio-release
+#       - extra-server-discovery-release
     strategy:
       fail-fast: true
       matrix:
         include:
-          - { context: "extra/server-discovery",     image: "cortezaproject/corteza-server-discovery" }
-          - { context: "client/web",                 image: "cortezaproject/corteza-webapp" }
-          - { context: "server",                     image: "cortezaproject/corteza-server" }
-          - { context: ".",                          image: "cortezaproject/corteza" }
+#           - { context: "extra/server-discovery",     image: "cortezaproject/corteza-server-discovery" }
+#           - { context: "client/web",                 image: "cortezaproject/corteza-webapp" }
+#           - { context: "server",                     image: "cortezaproject/corteza-server" }
+          - { context: ".",                          image: "karpovz/corteza" }
 
     steps:
       - uses: actions/checkout@v3
@@ -459,36 +459,36 @@ jobs:
           docker push \
             ${{ matrix.image }}:${{ env.DOCKER_IMAGE_ALIAS }}
 
-  notify:
-    name: "Send matrix release notification"
-    runs-on: ubuntu-20.04
-    needs: [ docker-images, release ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: "Parse version tag"
-        id: version
-        run: |
-          TAG=${GITHUB_REF#refs/tags/}
-          echo "DOCKER_IMAGE_TAG=${TAG}" >> $GITHUB_ENV
+#   notify:
+#     name: "Send matrix release notification"
+#     runs-on: ubuntu-20.04
+#     needs: [ docker-images, release ]
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: "Parse version tag"
+#         id: version
+#         run: |
+#           TAG=${GITHUB_REF#refs/tags/}
+#           echo "DOCKER_IMAGE_TAG=${TAG}" >> $GITHUB_ENV
 
-      - name: "Send message via Matrix on successful release"
-        if: ${{ !env.ACT }}
-        id: matrix-chat-release-successful
-        uses: fadenb/matrix-chat-message@v0.0.6
-        with:
-          homeserver: ${{ secrets.MATRIX_HOME_SERVER }}
-          token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
-          channel: ${{ secrets.MATRIX_ROOM_ID }}
-          message: |
-            # Corteza **${{ env.DOCKER_IMAGE_TAG }}** has been successfully released 🎉🎉
+#       - name: "Send message via Matrix on successful release"
+#         if: ${{ !env.ACT }}
+#         id: matrix-chat-release-successful
+#         uses: fadenb/matrix-chat-message@v0.0.6
+#         with:
+#           homeserver: ${{ secrets.MATRIX_HOME_SERVER }}
+#           token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
+#           channel: ${{ secrets.MATRIX_ROOM_ID }}
+#           message: |
+#             # Corteza **${{ env.DOCKER_IMAGE_TAG }}** has been successfully released 🎉🎉
 
-      - name: "Send message via Matrix on failed release"
-        if: ${{ !env.ACT && failure() }}
-        id: matrix-chat-release-failed
-        uses: fadenb/matrix-chat-message@v0.0.6
-        with:
-          homeserver: ${{ secrets.MATRIX_HOME_SERVER }}
-          token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
-          channel: ${{ secrets.MATRIX_ROOM_ID }}
-          message: |
-            # Corteza **${{ env.DOCKER_IMAGE_TAG }}** release has failed
+#       - name: "Send message via Matrix on failed release"
+#         if: ${{ !env.ACT && failure() }}
+#         id: matrix-chat-release-failed
+#         uses: fadenb/matrix-chat-message@v0.0.6
+#         with:
+#           homeserver: ${{ secrets.MATRIX_HOME_SERVER }}
+#           token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
+#           channel: ${{ secrets.MATRIX_ROOM_ID }}
+#           message: |
+#             # Corteza **${{ env.DOCKER_IMAGE_TAG }}** release has failed
