@@ -30,6 +30,7 @@
     </c-content-header>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -50,7 +51,7 @@
       clickable
       sticky-header
       hide-search
-      class="custom-resource-list-height"
+      class="custom-resource-list-height auth-list"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -64,6 +65,75 @@
           :exclusive-label="$t('filterForm.exclusive.label')"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: a }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-permissions-button
+              v-if="a.authClientID && canGrant"
+              :title="a.meta.name || a.handle || a.authClientID"
+              :target="a.meta.name || a.handle || a.authClientID"
+              :resource="`corteza::system:auth-client/${a.authClientID}`"
+              button-variant="link text-decoration-none text-dark regular-font rounded-0"
+              class="text-dark d-print-none border-0"
+            >
+              <font-awesome-icon :icon="['fas', 'lock']" />
+              {{ $t('permissions') }}
+            </c-permissions-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-if="!a.deletedAt && !a.isDefault && a.canDeleteAuthClient"
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(a)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('delete') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item
+            v-if="a.deletedAt"
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(a)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('undelete') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-container>
@@ -125,6 +195,10 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+          label: '',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -151,6 +225,45 @@ export default {
     items () {
       return this.procListResults(this.$SystemAPI.authClientList(this.encodeListParams()))
     },
+
+    handleDelete (authclient) {
+      this.incLoader()
+      const { deletedAt = '' } = authclient
+      const method = deletedAt ? 'authClientUndelete' : 'authClientDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { authClientID } = authclient
+
+      this.$SystemAPI[method]({ clientID: authClientID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:authclient.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:authclient.${event}.error`)))
+        .finally(() => this.decLoader())
+    },
+
   },
 }
 </script>
+
+<style lang="scss">
+.auth-list {
+  td:nth-of-type(5) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(5) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

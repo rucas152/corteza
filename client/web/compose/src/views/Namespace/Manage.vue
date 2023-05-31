@@ -91,50 +91,50 @@
       </template>
 
       <template #actions="{ item: n }">
-        <b-dropdown
-          v-if="n.canGrant"
-          variant="outline-light"
-          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
-          no-caret
-          dropleft
-          lazy
-          menu-class="m-0"
-        >
-          <template #button-content>
-            <font-awesome-icon
-              :icon="['fas', 'ellipsis-v']"
-            />
-          </template>
-
-          <b-dropdown-item>
-            <c-permissions-button
-              :title="n.name || n.slug || n.namespaceID"
-              :target="n.name || n.slug || n.namespaceID"
-              :resource="`corteza::compose:namespace/${n.namespaceID}`"
-              :tooltip="$t('permissions:resources.compose.namespace.tooltip')"
-              :button-label="$t('permissions:ui.label')"
-              button-variant="link dropdown-item text-decoration-none text-dark regular-font rounded-0"
-              class="text-dark d-print-none border-0"
-            />
-          </b-dropdown-item>
-
-          <b-dropdown-item>
-            <c-input-confirm
-              borderless
-              variant="link"
-              size="md"
-              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
-              class="w-100"
-              @confirmed="handleDelete(n)"
-            >
+        <div>
+          <b-dropdown
+            variant="outline-light"
+            toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+            no-caret
+            dropleft
+            lazy
+            menu-class="m-0"
+          >
+            <template #button-content>
               <font-awesome-icon
-                :icon="['far', 'trash-alt']"
-                class="text-danger"
+                :icon="['fas', 'ellipsis-v']"
               />
-              {{ $t('delete') }}
-            </c-input-confirm>
-          </b-dropdown-item>
-        </b-dropdown>
+            </template>
+            <b-dropdown-item>
+              <c-permissions-button
+                v-if="n.canGrant"
+                :title="n.name || n.slug || n.namespaceID"
+                :target="n.name || n.slug || n.namespaceID"
+                :resource="`corteza::compose:namespace/${n.namespaceID}`"
+                :tooltip="$t('permissions:resources.compose.namespace.tooltip')"
+                :button-label="$t('permissions:ui.label')"
+                button-variant="link dropdown-item text-decoration-none text-dark regular-font rounded-0"
+                class="text-dark d-print-none border-0"
+              />
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <c-input-confirm
+                borderless
+                variant="link"
+                size="md"
+                button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+                class="w-100"
+                @confirmed="handleDelete(n)"
+              >
+                <font-awesome-icon
+                  :icon="['far', 'trash-alt']"
+                  class="text-danger"
+                />
+                {{ $t('delete') }}
+              </c-input-confirm>
+            </b-dropdown-item>
+          </b-dropdown>
+        </div>
       </template>
     </c-resource-list>
   </b-container>

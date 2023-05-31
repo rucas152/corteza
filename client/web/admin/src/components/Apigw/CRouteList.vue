@@ -61,13 +61,14 @@
           v-if="canGrant"
           data-test-id="button-permissions"
           resource="corteza::system:apigw-route/*"
-          button-variant="light"
-          class="ml-1"
+          button-variant="link text-decoration-none text-dark regular-font rounded-0"
+          class="text-dark d-print-none border-0"
         >
           <font-awesome-icon :icon="['fas', 'lock']" />
           {{ $t('permissions') }}
         </c-permissions-button>
 
+        <!-- v-if false? Please take a look at this-->
         <b-dropdown
           v-if="false"
           variant="link"
@@ -101,7 +102,6 @@
           dropleft
           lazy
           menu-class="m-0"
-          class="position-static"
         >
           <template #button-content>
             <font-awesome-icon
@@ -111,12 +111,12 @@
 
           <b-dropdown-item>
             <c-permissions-button
-              v-if="getRouteInfo(r) && canGrant"
-              :title="getRouteInfo(r).endpoint || getRouteInfo(r).routeID"
-              :target="getRouteInfo(r).endpoint || getRouteInfo(r).routeID"
-              :resource="`corteza::system:apigw-route/${getRouteInfo(r).routeID}`"
-              button-variant="link dropdown-item text-decoration-none text-dark regular-font rounded-0"
-              class="text-dark d-print-none border-0"
+              v-if="r.routeID && canGrant"
+              :title="r.endpoint || r.routeID"
+              :target="r.endpoint || r.routeID"
+              :resource="`corteza::system:apigw-route/${r.routeID}`"
+              button-variant="link"
+              class="d-print-none border-0 text-decoration-none text-dark regular-font rounded-0"
             >
               <font-awesome-icon :icon="['fas', 'lock']" />
 
@@ -124,14 +124,12 @@
             </c-permissions-button>
           </b-dropdown-item>
 
-          <b-dropdown-item
-            v-if="!getRouteInfo(r).alreadyDeleted"
-          >
+          <b-dropdown-item>
             <c-input-confirm
               borderless
               variant="link"
               size="md"
-              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
               class="w-100"
               @confirmed="handleDelete(r)"
             >
@@ -139,26 +137,14 @@
                 :icon="['far', 'trash-alt']"
                 class="text-danger"
               />
-              {{ $t('delete') }}
-            </c-input-confirm>
-          </b-dropdown-item>
-
-          <b-dropdown-item
-            v-else
-          >
-            <c-input-confirm
-              borderless
-              variant="link"
-              size="md"
-              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
-              class="w-100"
-              @confirmed="handleDelete(r)"
-            >
-              <font-awesome-icon
-                :icon="['far', 'trash-alt']"
-                class="text-danger"
-              />
-              {{ $t('undelete') }}
+              <span
+                v-if="!r.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
             </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
@@ -223,8 +209,6 @@ export default {
         },
         {
           key: 'actions',
-          label: '',
-          tdClass: 'text-right text-nowrap',
         },
       ].map(c => ({
         ...c,
@@ -260,32 +244,20 @@ export default {
 
     handleDelete (route) {
       this.incLoader()
+      const { deletedAt = '' } = route
+      const method = deletedAt ? 'apigwRouteUndelete' : 'apigwRouteDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { routeID } = route
 
-      if (route.deletedAt) {
-        const { routeID } = this.getRouteInfo(route)
-        this.$SystemAPI
-          .apigwRouteUndelete({ routeID })
-          .then(() => {
-            this.toastSuccess(this.$t('notification:gateway.undelete.success'))
-            this.$refs.resourceList.refresh()
-          })
-          .catch(this.toastErrorHandler(this.$t('notification:gateway.undelete.error')))
-          .finally(() => {
-            this.decLoader()
-          })
-      } else {
-        const { routeID } = this.getRouteInfo(route)
-        this.$SystemAPI
-          .apigwRouteDelete({ routeID })
-          .then(() => {
-            this.toastSuccess(this.$t('notification:gateway.delete.success'))
-            this.$refs.resourceList.refresh()
-          })
-          .catch(this.toastErrorHandler(this.$t('notification:gateway.delete.error')))
-          .finally(() => {
-            this.decLoader()
-          })
-      }
+      this.$SystemAPI[method]({ routeID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:gateway.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:gateway.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
     },
   },
 }
@@ -295,7 +267,6 @@ export default {
 .route-list {
   td:nth-of-type(5) {
     padding-top: 8px;
-    position: sticky;
     right: 0;
     opacity: 0;
     transition: opacity 0.25s;

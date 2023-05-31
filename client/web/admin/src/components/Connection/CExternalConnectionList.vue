@@ -13,6 +13,7 @@
       </h3>
     </template>
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -32,7 +33,7 @@
       }"
       clickable
       hide-search
-      class="h-100"
+      class="h-100 connection-list"
       @row-clicked="handleRowClicked"
     >
       <template #header>
@@ -53,6 +54,47 @@
           class="mt-2"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: c }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="dropdown-item text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(c)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              <span
+                v-if="!c.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-card>
@@ -117,6 +159,11 @@ export default {
           sortable: false,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+          label: '',
+          class: 'text-right',
+        },
       ].map(c => ({
         // Generate column label translation key
         label: c.label || this.$t(`columns.${c.key}`),
@@ -126,9 +173,50 @@ export default {
   },
 
   methods: {
+    getConnInfo (connection) {
+      return { connectionID: connection[this.primaryKey], alreadyDeleted: !!connection.deletedAt }
+    },
+
     items () {
       return this.procListResults(this.$SystemAPI.dalConnectionList(this.encodeListParams()))
+    },
+
+    handleDelete (connection) {
+      this.incLoader()
+      const { deletedAt } = connection
+      const deleting = !deletedAt
+      const op = deleting ? 'delete' : 'undelete'
+      const fn = deleting ? 'dalConnectionDelete' : 'dalConnectionUndelete'
+
+      return this.$SystemAPI[fn](connection)
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:connection.${op}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:connection.${op}.error`)))
     },
   },
 }
 </script>
+
+<style lang="scss">
+.connection-list {
+  td:nth-of-type(5) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(5) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

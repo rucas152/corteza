@@ -51,6 +51,7 @@
     </c-content-header>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -70,7 +71,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height"
+      class="custom-resource-list-height role-list"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -94,6 +95,88 @@
           :exclusive-label="$t('filterForm.exclusive.label')"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: r }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-permissions-button
+              v-if="r.roleID && canGrant"
+              :title="r.name || r.handle || r.roleID"
+              :target="r.name || r.handle || r.roleID"
+              :resource="`corteza::system:role/${r.roleID}`"
+              button-variant="link text-decoration-none text-dark regular-font rounded-0"
+              class="text-dark d-print-none border-0"
+            >
+              <font-awesome-icon :icon="['fas', 'lock']" />
+              {{ $t('permissions') }}
+            </c-permissions-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleArchive(r)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'file-archive']"
+                class="text-dark"
+              />
+              <span
+                v-if="!r.archivedAt"
+                class="p-1"
+              >{{ $t('archive') }}</span>
+
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('unarchive') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(r)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+
+              <span
+                v-if="!r.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-container>
@@ -153,6 +236,9 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -190,6 +276,64 @@ export default {
     rowClass (item) {
       return { 'text-secondary': item && (!!item.deletedAt || !!item.archivedAt) }
     },
+
+    handleArchive (role) {
+      this.incLoader()
+      const { archivedAt = '' } = role
+      const method = archivedAt ? 'roleUnarchive' : 'roleArchive'
+      const event = archivedAt ? 'unarchive' : 'archive'
+      const { roleID } = role
+
+      this.$SystemAPI[method]({ roleID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:role.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:role.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
+
+    handleDelete (role) {
+      this.incLoader()
+      const { deletedAt = '' } = role
+      const method = deletedAt ? 'roleUndelete' : 'roleDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { roleID } = role
+
+      this.$SystemAPI[method]({ roleID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:role.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:role.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
   },
 }
 </script>
+
+<style lang="scss">
+.role-list {
+  td:nth-of-type(4) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(4) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

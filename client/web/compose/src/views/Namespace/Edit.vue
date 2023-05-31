@@ -320,12 +320,14 @@ import { compose, NoID } from '@cortezaproject/corteza-js'
 import { url, handle } from '@cortezaproject/corteza-vue'
 import EditorToolbar from 'corteza-webapp-compose/src/components/Admin/EditorToolbar'
 import NamespaceTranslator from 'corteza-webapp-compose/src/components/Namespaces/NamespaceTranslator'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   i18nOptions: {
     namespaces: 'namespace',
   },
+
+  name: 'EditNamespace',
 
   components: {
     EditorToolbar,
@@ -433,6 +435,14 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      updateNamespace: 'namespace/update',
+      createNamespace: 'namespace/create',
+      findNamespace: 'namespace/findByID',
+      cloneNamespace: 'namespace/clone',
+      deleteNamespace: 'namespace/delete',
+    }),
+
     async fetchNamespace () {
       this.processing = true
 
@@ -442,7 +452,7 @@ export default {
       this.isApplication = false
 
       if (namespaceID) {
-        await this.$store.dispatch('namespace/findByID', { namespaceID })
+        await this.findNamespace({ namespaceID })
           .then(ns => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
@@ -531,7 +541,7 @@ export default {
 
       if (this.isEdit) {
         try {
-          await this.$store.dispatch('namespace/update', { ...payload, namespaceID }).then((ns) => {
+          await this.updateNamespace({ ...payload, namespaceID }).then((ns) => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
 
@@ -544,7 +554,7 @@ export default {
         }
       } else if (this.isClone) {
         try {
-          await this.$store.dispatch('namespace/clone', { namespaceID, name, slug, enabled, meta }).then((ns) => {
+          await this.cloneNamespace({ namespaceID, name, slug, enabled, meta }).then((ns) => {
             this.namespace = new compose.Namespace(ns)
           })
         } catch (e) {
@@ -554,7 +564,7 @@ export default {
         }
       } else {
         try {
-          await this.$store.dispatch('namespace/create', payload).then((ns) => {
+          await this.createNamespace(payload).then((ns) => {
             this.namespaceEnabled = ns.enabled
             this.namespace = new compose.Namespace(ns)
 
@@ -592,7 +602,7 @@ export default {
       const { namespaceID } = this.namespace
       const { applicationID } = this.application || {}
 
-      this.$store.dispatch('namespace/delete', { namespaceID })
+      this.deleteNamespace({ namespaceID })
         .catch(this.toastErrorHandler(this.$t('notification:namespace.deleteFailed')))
         .then(() => {
           if (applicationID) {

@@ -8,6 +8,7 @@
     </portal>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -93,10 +94,15 @@
           >
             <b-button
               variant="link"
-              class="mr-2 text-decoration-none"
+              class="text-decoration-none"
               :to="{ name: 'report.edit', params: { reportID: r.reportID } }"
             >
-              {{ $t('report.edit') }}
+              <font-awesome-icon
+                :icon="['fa', 'pen']"
+                class="text-dark"
+              />
+
+              <span class="p-1">{{ $t('report.edit') }}</span>
             </b-button>
           </b-dropdown-item>
 
@@ -112,6 +118,23 @@
               :button-label="$t('permissions:ui.label')"
               button-variant="link text-decoration-none text-dark regular-font rounded-0"
             />
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(r)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              {{ $t('report.delete') }}
+            </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
       </template>
@@ -217,6 +240,15 @@ export default {
 
     reportList () {
       return this.procListResults(this.$SystemAPI.reportList(this.encodeListParams()))
+    },
+
+    handleDelete (report) {
+      return this.$SystemAPI.reportDelete(report)
+        .then(() => {
+          this.toastSuccess(this.$t('notification:report.delete'))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t('notification:report.deleteFailed')))
     },
   },
 }

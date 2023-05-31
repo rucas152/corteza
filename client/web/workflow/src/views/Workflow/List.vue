@@ -8,12 +8,14 @@
     </portal>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
       :pagination="pagination"
       :fields="tableFields"
       :items="workflowList"
+      :row-class="genericRowClass"
       :translations="{
         searchPlaceholder: $t('general:searchPlaceholder'),
         notFound: $t('general:resourceList.notFound'),
@@ -162,6 +164,32 @@
               class="text-dark d-print-none border-0"
             />
           </b-dropdown-item>
+
+          <b-dropdown-item
+            v-if="w.canDeleteWorkflow"
+          >
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(w)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              <span
+                v-if="!w.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
         </b-dropdown>
       </template>
     </c-resource-list>
@@ -177,6 +205,10 @@ import { components } from '@cortezaproject/corteza-vue'
 const { CResourceList } = components
 
 export default {
+  i18nOptions: {
+    namespaces: 'list',
+  },
+
   name: 'WorkflowList',
 
   components: {
@@ -321,6 +353,19 @@ export default {
 
     handleRowClicked (workflow) {
       this.$router.push({ name: 'workflow.edit', params: { workflowID: workflow.workflowID } })
+    },
+
+    handleDelete (workflow) {
+      const { deletedAt = '' } = workflow
+      const method = deletedAt ? 'workflowUndelete' : 'workflowDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { workflowID } = workflow
+      this.$AutomationAPI[method]({ workflowID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:${event}.failed`)))
     },
   },
 }

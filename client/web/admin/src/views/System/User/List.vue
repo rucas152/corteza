@@ -59,6 +59,7 @@
     </c-content-header>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -78,7 +79,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height"
+      class="custom-resource-list-height user-list"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -101,6 +102,105 @@
           :exclusive-label="$t('filterForm.exclusive.label')"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: u }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-permissions-button
+              v-if="canGrant"
+              :title="u.name || u.handle || u.email || u.userID"
+              :target="u.name || u.handle || u.email || u.userID"
+              :resource="`corteza::system:user/${u.userID}`"
+              button-variant="link text-decoration-none text-dark regular-font rounded-0"
+              class="text-dark d-print-none border-0"
+            >
+              <font-awesome-icon :icon="['fas', 'lock']" />
+              {{ $t('permissions') }}
+            </c-permissions-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleSuspension(u)"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'user-slash']"
+                class="text-dark"
+              />
+              <span
+                v-if="!u.suspendedAt"
+                class="p-1"
+              >{{ $t('suspend') }}</span>
+
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('unsuspend') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(u)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+
+              <span
+                v-if="!u.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleSessionRevoking(u)"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'ban']"
+                class="text-danger"
+              />
+              {{ $t('revokeActiveSession') }}
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-container>
@@ -171,6 +271,9 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -224,6 +327,81 @@ export default {
     rowClass (item) {
       return { 'text-secondary': item && (!!item.deletedAt || !!item.suspendedAt) }
     },
+
+    handleSuspension (user) {
+      this.incLoader()
+
+      const { suspendedAt = '' } = user
+      const method = suspendedAt ? 'userUnsuspend' : 'userSuspend'
+      const event = suspendedAt ? 'unsuspend' : 'suspend'
+      const { userID } = user
+
+      this.$SystemAPI[method]({ userID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:user.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:user.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
+
+    handleSessionRevoking (user) {
+      this.incLoader()
+
+      const { userID } = user
+
+      this.$SystemAPI.userSessionsRemove({ userID })
+        .then(() => {
+          this.toastSuccess(this.$t('notification:user.sessionsRevoke.success'))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t('notification:user.sessionsRevoke.error')))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
+
+    handleDelete (user) {
+      this.incLoader()
+      const { deletedAt = '' } = user
+      const method = deletedAt ? 'userUndelete' : 'userDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { userID } = user
+
+      this.$SystemAPI[method]({ userID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:user.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:user.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
   },
 }
 </script>
+
+<style lang="scss">
+.user-list {
+  td:nth-of-type(5) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(5) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

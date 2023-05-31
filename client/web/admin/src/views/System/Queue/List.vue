@@ -33,6 +33,7 @@
     </c-content-header>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -52,7 +53,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height"
+      class="custom-resource-list-height queue-list"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -66,6 +67,47 @@
           :exclusive-label="$t('filterForm.exclusive.label')"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: q }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(q)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+
+              <span v-if="!q.deletedAt">
+                {{ $t('delete') }}
+              </span>
+
+              <span v-else>
+                {{ $t('undelete') }}
+              </span>
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-container>
@@ -125,6 +167,11 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+          label: '',
+          class: 'text-right',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -147,6 +194,46 @@ export default {
     items () {
       return this.procListResults(this.$SystemAPI.queuesList(this.encodeListParams()))
     },
+
+    handleDelete (queue) {
+      this.incLoader()
+      const { deletedAt = '' } = queue
+      const method = deletedAt ? 'queuesUndelete' : 'queuesDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { queueID } = queue
+
+      this.$SystemAPI[method]({ queueID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:queue.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:queue.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
   },
 }
 </script>
+
+<style lang="scss">
+.queue-list {
+  td:nth-of-type(4) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(4) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>

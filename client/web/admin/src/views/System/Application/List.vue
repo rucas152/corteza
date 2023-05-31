@@ -42,6 +42,7 @@
     </c-content-header>
 
     <c-resource-list
+      ref="resourceList"
       :primary-key="primaryKey"
       :filter="filter"
       :sorting="sorting"
@@ -61,7 +62,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height"
+      class="custom-resource-list-height application-list"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -75,6 +76,61 @@
           :exclusive-label="$t('filterForm.exclusive.label')"
           @change="filterList"
         />
+      </template>
+
+      <template #actions="{ item: a }">
+        <b-dropdown
+          variant="outline-light"
+          toggle-class="d-flex align-items-center justify-content-center text-primary border-0 py-2"
+          no-caret
+          dropleft
+          lazy
+          menu-class="m-0"
+        >
+          <template #button-content>
+            <font-awesome-icon
+              :icon="['fas', 'ellipsis-v']"
+            />
+          </template>
+
+          <b-dropdown-item>
+            <c-permissions-button
+              v-if="a.applicationID && canGrant"
+              :title="a.name || a.applicationID"
+              :target="a.name || a.applicationID"
+              :resource="`corteza::system:application/${a.applicationID}`"
+              button-variant="link text-decoration-none text-dark regular-font rounded-0"
+              class="text-dark d-print-none border-0"
+            >
+              <font-awesome-icon :icon="['fas', 'lock']" />
+              {{ $t('permissions') }}
+            </c-permissions-button>
+          </b-dropdown-item>
+
+          <b-dropdown-item>
+            <c-input-confirm
+              borderless
+              variant="link"
+              size="md"
+              button-class="text-decoration-none text-dark regular-font rounded-0"
+              class="w-100"
+              @confirmed="handleDelete(a)"
+            >
+              <font-awesome-icon
+                :icon="['far', 'trash-alt']"
+                class="text-danger"
+              />
+              <span
+                v-if="!a.deletedAt"
+                class="p-1"
+              >{{ $t('delete') }}</span>
+              <span
+                v-else
+                class="p-1"
+              >{{ $t('undelete') }}</span>
+            </c-input-confirm>
+          </b-dropdown-item>
+        </b-dropdown>
       </template>
     </c-resource-list>
   </b-container>
@@ -136,6 +192,11 @@ export default {
           sortable: true,
           formatter: (v) => moment(v).fromNow(),
         },
+        {
+          key: 'actions',
+          label: '',
+          class: 'text-right ',
+        },
       ].map(c => ({
         ...c,
         // Generate column label translation key
@@ -162,6 +223,50 @@ export default {
     items () {
       return this.procListResults(this.$SystemAPI.applicationList(this.encodeListParams()))
     },
+
+    getAppInfo (item) {
+      return { applicationID: item[this.primaryKey], name: item.name }
+    },
+
+    handleDelete (application) {
+      this.incLoader()
+      const { deletedAt = '' } = application
+      const method = deletedAt ? 'applicationUndelete' : 'applicationDelete'
+      const event = deletedAt ? 'undelete' : 'delete'
+      const { applicationID } = application
+
+      this.$SystemAPI[method]({ applicationID })
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:application.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:application.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
+    },
   },
 }
 </script>
+
+<style lang="scss">
+.application-list {
+  td:nth-of-type(5) {
+    padding-top: 8px;
+    position: sticky;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+    width: 1%;
+
+    .regular-font {
+      font-family: $font-regular !important;
+    }
+  }
+
+  tr:hover td:nth-of-type(5) {
+    opacity: 1;
+    background-color: $gray-200;
+  }
+}
+</style>
