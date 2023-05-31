@@ -32,7 +32,7 @@
         prevPagination: $t('admin:general.pagination.prev'),
         nextPagination: $t('admin:general.pagination.next'),
       }"
-      class="h-100 route-list"
+      class="h-100"
       clickable
       @search="filterList"
       @row-clicked="handleRowClicked"
@@ -68,19 +68,6 @@
           {{ $t('permissions') }}
         </c-permissions-button>
 
-        <!-- v-if false? Please take a look at this-->
-        <b-dropdown
-          v-if="false"
-          variant="link"
-          right
-          menu-class="shadow-sm"
-          :text="$t('export')"
-        >
-          <b-dropdown-item-button variant="link">
-            {{ $t('yaml') }}
-          </b-dropdown-item-button>
-        </b-dropdown>
-
         <c-resource-list-status-filter
           v-model="filter.deleted"
           data-test-id="filter-deleted-routes"
@@ -109,9 +96,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="r.routeID && canGrant"
+          >
             <c-permissions-button
-              v-if="r.routeID && canGrant"
               :title="r.endpoint || r.routeID"
               :target="r.endpoint || r.routeID"
               :resource="`corteza::system:apigw-route/${r.routeID}`"
@@ -124,7 +112,9 @@
             </c-permissions-button>
           </b-dropdown-item>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="r.canDeleteApigwRoute"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -209,6 +199,7 @@ export default {
         },
         {
           key: 'actions',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -243,43 +234,12 @@ export default {
     },
 
     handleDelete (route) {
-      this.incLoader()
-      const { deletedAt = '' } = route
-      const method = deletedAt ? 'apigwRouteUndelete' : 'apigwRouteDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { routeID } = route
-
-      this.$SystemAPI[method]({ routeID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:gateway.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:gateway.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: route,
+        resourceName: 'apigwRoute',
+        locale: 'gateway',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.route-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

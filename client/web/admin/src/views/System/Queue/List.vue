@@ -53,7 +53,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height queue-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -84,7 +84,9 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="q.canDeleteQueue"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -170,7 +172,7 @@ export default {
         {
           key: 'actions',
           label: '',
-          class: 'text-right',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -196,44 +198,12 @@ export default {
     },
 
     handleDelete (queue) {
-      this.incLoader()
-      const { deletedAt = '' } = queue
-      const method = deletedAt ? 'queuesUndelete' : 'queuesDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { queueID } = queue
-
-      this.$SystemAPI[method]({ queueID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:queue.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:queue.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: queue,
+        resourceName: 'queues',
+        locale: 'queue',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.queue-list {
-  td:nth-of-type(4) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(4) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

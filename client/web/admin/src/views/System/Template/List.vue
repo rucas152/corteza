@@ -231,21 +231,10 @@ export default {
     },
 
     handleDelete (template) {
-      this.incLoader()
-      const { deletedAt = '' } = template
-      const method = deletedAt ? 'templateUndelete' : 'templateDelete'
-      const event = deletedAt ? 'undeleted' : 'deleted'
-      const { templateID } = template
-
-      this.$SystemAPI[method]({ templateID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:template.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:template.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: template,
+        resourceName: 'template',
+      })
     },
   },
 }

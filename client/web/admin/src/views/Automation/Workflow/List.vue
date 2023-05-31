@@ -61,7 +61,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height workflow-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -92,9 +92,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="w.workflowID && canGrant"
+          >
             <c-permissions-button
-              v-if="w.workflowID && canGrant"
               :title="w.meta.name || w.handle || w.workflowID"
               :target="w.meta.name || w.handle || w.workflowID"
               :resource="`corteza::automation:workflow/${w.workflowID}`"
@@ -106,7 +107,9 @@
             </c-permissions-button>
           </b-dropdown-item>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="w.canDeleteWorkflow"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -195,7 +198,7 @@ export default {
         },
         {
           key: 'actions',
-          tdClass: 'text-right',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -225,44 +228,12 @@ export default {
     },
 
     handleDelete (workflow) {
-      this.incLoader()
-      const { deletedAt = '' } = workflow
-      const method = deletedAt ? 'workflowUndelete' : 'workflowDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { workflowID } = workflow
-
-      this.$AutomationAPI[method]({ workflowID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:workflow.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:workflow.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: workflow,
+        resourceName: 'workflow',
+        api: 'automation',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.workflow-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

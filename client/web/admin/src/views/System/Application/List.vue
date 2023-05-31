@@ -62,7 +62,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height application-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -93,9 +93,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="a.applicationID && canGrant"
+          >
             <c-permissions-button
-              v-if="a.applicationID && canGrant"
               :title="a.name || a.applicationID"
               :target="a.name || a.applicationID"
               :resource="`corteza::system:application/${a.applicationID}`"
@@ -107,7 +108,9 @@
             </c-permissions-button>
           </b-dropdown-item>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="a.canDeleteApplication"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -195,7 +198,7 @@ export default {
         {
           key: 'actions',
           label: '',
-          class: 'text-right ',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -229,44 +232,11 @@ export default {
     },
 
     handleDelete (application) {
-      this.incLoader()
-      const { deletedAt = '' } = application
-      const method = deletedAt ? 'applicationUndelete' : 'applicationDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { applicationID } = application
-
-      this.$SystemAPI[method]({ applicationID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:application.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:application.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: application,
+        resourceName: 'application',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.application-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

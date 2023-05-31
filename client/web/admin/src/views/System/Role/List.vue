@@ -71,7 +71,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height role-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -112,9 +112,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="r.roleID && canGrant"
+          >
             <c-permissions-button
-              v-if="r.roleID && canGrant"
               :title="r.name || r.handle || r.roleID"
               :target="r.name || r.handle || r.roleID"
               :resource="`corteza::system:role/${r.roleID}`"
@@ -135,10 +136,6 @@
               class="w-100"
               @confirmed="handleArchive(r)"
             >
-              <font-awesome-icon
-                :icon="['far', 'file-archive']"
-                class="text-dark"
-              />
               <span
                 v-if="!r.archivedAt"
                 class="p-1"
@@ -151,7 +148,9 @@
             </c-input-confirm>
           </b-dropdown-item>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="r.canDeleteRole"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -238,6 +237,7 @@ export default {
         },
         {
           key: 'actions',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -296,44 +296,11 @@ export default {
     },
 
     handleDelete (role) {
-      this.incLoader()
-      const { deletedAt = '' } = role
-      const method = deletedAt ? 'roleUndelete' : 'roleDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { roleID } = role
-
-      this.$SystemAPI[method]({ roleID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:role.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:role.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: role,
+        resourceName: 'role',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.role-list {
-  td:nth-of-type(4) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(4) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

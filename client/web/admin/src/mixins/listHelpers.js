@@ -200,7 +200,25 @@ export default {
 
     handleRowClicked (item) {
       this.$router.push({ name: this.editRoute, params: { [this.primaryKey]: item[this.primaryKey] } })
-      console.log({ item })
+    },
+
+    handleListDelete ({ resource, resourceName, locale, api = 'system' }) {
+      this.incLoader()
+      const { deletedAt = '' } = resource
+      const method = deletedAt ? `${resourceName}Undelete` : `${resourceName}Delete`
+      const event = deletedAt ? 'undelete' : 'delete'
+      const toastLocale = locale || resourceName
+      const API = api === 'system' ? this.$SystemAPI : this.$AutomationAPI
+
+      API[method](resource)
+        .then(() => {
+          this.toastSuccess(this.$t(`notification:${toastLocale}.${event}.success`))
+          this.$refs.resourceList.refresh()
+        })
+        .catch(this.toastErrorHandler(this.$t(`notification:${toastLocale}.${event}.error`)))
+        .finally(() => {
+          this.decLoader()
+        })
     },
   },
 }

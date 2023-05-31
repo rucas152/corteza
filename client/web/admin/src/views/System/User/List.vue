@@ -79,7 +79,7 @@
       }"
       clickable
       sticky-header
-      class="custom-resource-list-height user-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -119,9 +119,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="canGrant"
+          >
             <c-permissions-button
-              v-if="canGrant"
               :title="u.name || u.handle || u.email || u.userID"
               :target="u.name || u.handle || u.email || u.userID"
               :resource="`corteza::system:user/${u.userID}`"
@@ -133,7 +134,9 @@
             </c-permissions-button>
           </b-dropdown-item>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="u.canDeleteUser"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -142,10 +145,6 @@
               class="w-100"
               @confirmed="handleSuspension(u)"
             >
-              <font-awesome-icon
-                :icon="['fas', 'user-slash']"
-                class="text-dark"
-              />
               <span
                 v-if="!u.suspendedAt"
                 class="p-1"
@@ -273,6 +272,7 @@ export default {
         },
         {
           key: 'actions',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -364,44 +364,11 @@ export default {
     },
 
     handleDelete (user) {
-      this.incLoader()
-      const { deletedAt = '' } = user
-      const method = deletedAt ? 'userUndelete' : 'userDelete'
-      const event = deletedAt ? 'undelete' : 'delete'
-      const { userID } = user
-
-      this.$SystemAPI[method]({ userID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:user.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:user.${event}.error`)))
-        .finally(() => {
-          this.decLoader()
-        })
+      this.handleListDelete({
+        resource: user,
+        resourceName: 'user',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.user-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

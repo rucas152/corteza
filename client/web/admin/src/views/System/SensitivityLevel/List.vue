@@ -40,7 +40,7 @@
       clickable
       sticky-header
       hide-search
-      class="custom-resource-list-height sensitivityLevel-list"
+      class="custom-resource-list-height"
       @row-clicked="handleRowClicked"
     >
       <template #header>
@@ -85,12 +85,16 @@
               <span
                 v-if="!s.deletedAt"
                 class="p-1"
-              >{{ $t('delete') }}</span>
+              >
+                {{ $t('delete') }}
+              </span>
 
               <span
                 v-else
                 class="p-1"
-              >{{ $t('undelete') }}</span>
+              >
+                {{ $t('undelete') }}
+              </span>
             </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
@@ -152,6 +156,7 @@ export default {
         },
         {
           key: 'actions',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -177,42 +182,12 @@ export default {
     },
 
     handleDelete (sensitivityLevel) {
-      this.incLoader()
-      const { deletedAt = '' } = sensitivityLevel
-      const method = deletedAt ? 'dalSensitivityLevelUndelete' : 'dalSensitivityLevelDelete'
-      const event = deletedAt ? 'undeleted' : 'deleted'
-      const { sensitivityLevelID } = sensitivityLevel
-
-      this.$SystemAPI[method]({ sensitivityLevelID })
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:sensitivityLevel.${event}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:sensitivityLevel.${event}.error`)))
-        .finally(() => this.decLoader())
+      this.handleListDelete({
+        resource: sensitivityLevel,
+        resourceName: 'dalSensitivityLevel',
+        locale: 'sensitivityLevel',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.sensitivityLevel-list {
-  td:nth-of-type(4) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(4) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

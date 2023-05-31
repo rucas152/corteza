@@ -33,7 +33,7 @@
       }"
       clickable
       hide-search
-      class="h-100 connection-list"
+      class="h-100"
       @row-clicked="handleRowClicked"
     >
       <template #header>
@@ -71,7 +71,9 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="c.canDeleteConnection"
+          >
             <c-input-confirm
               borderless
               variant="link"
@@ -87,11 +89,14 @@
               <span
                 v-if="!c.deletedAt"
                 class="p-1"
-              >{{ $t('delete') }}</span>
+              >{{ $t('delete') }}
+              </span>
+
               <span
                 v-else
                 class="p-1"
-              >{{ $t('undelete') }}</span>
+              >{{ $t('undelete') }}
+              </span>
             </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
@@ -161,8 +166,7 @@ export default {
         },
         {
           key: 'actions',
-          label: '',
-          class: 'text-right',
+          class: 'actions',
         },
       ].map(c => ({
         // Generate column label translation key
@@ -173,50 +177,18 @@ export default {
   },
 
   methods: {
-    getConnInfo (connection) {
-      return { connectionID: connection[this.primaryKey], alreadyDeleted: !!connection.deletedAt }
-    },
 
     items () {
       return this.procListResults(this.$SystemAPI.dalConnectionList(this.encodeListParams()))
     },
 
     handleDelete (connection) {
-      this.incLoader()
-      const { deletedAt } = connection
-      const deleting = !deletedAt
-      const op = deleting ? 'delete' : 'undelete'
-      const fn = deleting ? 'dalConnectionDelete' : 'dalConnectionUndelete'
-
-      return this.$SystemAPI[fn](connection)
-        .then(() => {
-          this.toastSuccess(this.$t(`notification:connection.${op}.success`))
-          this.$refs.resourceList.refresh()
-        })
-        .catch(this.toastErrorHandler(this.$t(`notification:connection.${op}.error`)))
+      this.handleListDelete({
+        resource: connection,
+        resourceName: 'dalConnection',
+        locale: 'connection',
+      })
     },
   },
 }
 </script>
-
-<style lang="scss">
-.connection-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>

@@ -51,7 +51,7 @@
       clickable
       sticky-header
       hide-search
-      class="custom-resource-list-height auth-list"
+      class="custom-resource-list-height"
       @search="filterList"
       @row-clicked="handleRowClicked"
     >
@@ -82,9 +82,10 @@
             />
           </template>
 
-          <b-dropdown-item>
+          <b-dropdown-item
+            v-if="a.authClientID && canGrant"
+          >
             <c-permissions-button
-              v-if="a.authClientID && canGrant"
               :title="a.meta.name || a.handle || a.authClientID"
               :target="a.meta.name || a.handle || a.authClientID"
               :resource="`corteza::system:auth-client/${a.authClientID}`"
@@ -97,7 +98,7 @@
           </b-dropdown-item>
 
           <b-dropdown-item
-            v-if="!a.deletedAt && !a.isDefault && a.canDeleteAuthClient"
+            v-if="!a.isDefault && a.canDeleteAuthClient"
           >
             <c-input-confirm
               borderless
@@ -111,26 +112,19 @@
                 :icon="['far', 'trash-alt']"
                 class="text-danger"
               />
-              {{ $t('delete') }}
-            </c-input-confirm>
-          </b-dropdown-item>
+              <span
+                v-if="!a.deletedAt"
+                class="p-1"
+              >
+                {{ $t('delete') }}
+              </span>
 
-          <b-dropdown-item
-            v-if="a.deletedAt"
-          >
-            <c-input-confirm
-              borderless
-              variant="link"
-              size="md"
-              button-class="text-decoration-none text-dark regular-font rounded-0"
-              class="w-100"
-              @confirmed="handleDelete(a)"
-            >
-              <font-awesome-icon
-                :icon="['far', 'trash-alt']"
-                class="text-danger"
-              />
-              {{ $t('undelete') }}
+              <span
+                v-else
+                class="p-1"
+              >
+                {{ $t('undelete') }}
+              </span>
             </c-input-confirm>
           </b-dropdown-item>
         </b-dropdown>
@@ -197,7 +191,7 @@ export default {
         },
         {
           key: 'actions',
-          label: '',
+          class: 'actions',
         },
       ].map(c => ({
         ...c,
@@ -245,25 +239,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.auth-list {
-  td:nth-of-type(5) {
-    padding-top: 8px;
-    position: sticky;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-    width: 1%;
-
-    .regular-font {
-      font-family: $font-regular !important;
-    }
-  }
-
-  tr:hover td:nth-of-type(5) {
-    opacity: 1;
-    background-color: $gray-200;
-  }
-}
-</style>
