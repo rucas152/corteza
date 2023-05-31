@@ -1,0 +1,16 @@
+errors:
+  cloneMultiple: не разрешено клонировать несколько пространств имен одновременно
+  handleNotUnique: дескриптор не уникальный
+  importMissingNamespace: источник импорта не содержит определения пространства имен
+  invalidHandle: неверный дескриптор
+  invalidID: Неверный ID
+  notAllowedToCreate: не разрешено создавать пространства имен
+  notAllowedToDelete: не разрешено удалять это пространство имен
+  notAllowedToRead: не разрешено читать это пространство имен
+  notAllowedToSearch: не разрешено искать или перечислять пространства имен
+  notAllowedToUndelete: не разрешено восстанавливать это пространство имен
+  notAllowedToUpdate: не разрешено обновлять это пространство имен
+  notFound: пространство имен не существует
+  staleData: устаревшие данные
+  unsupportedExportFormat: неподдерживаемый формат экспорта
+  unsupportedImportFormat: неподдерживаемый формат импорта

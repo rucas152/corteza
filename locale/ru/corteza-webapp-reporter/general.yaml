@@ -1,0 +1,32 @@
+label:
+  add: Добавлять
+  and: И
+  ascending: Восходящий
+  back: Назад
+  clear: Прозрачный
+  default: По умолчанию
+  delete: Удалить
+  descending: По убыванию
+  loading: Загрузка
+  name: Имя
+  none: Никто
+  now: Сейчас
+  ok: Хорошо
+  openLinkInNewTab: Открыть ссылку в новой вкладке
+  or: Или
+  report:
+    plural: Отчеты
+    single: Отчет
+  save: Сохранять
+  saveAndClose: Сохрани и закрой
+  today: Сегодня
+  urlPlaceholder: https://example.tld
+resourceList:
+  noItems: Нет элементов для отображения
+  notFound: Не найдено
+  pagination:
+    next: Следующий
+    prev: Предыдущий
+    showing: '{{from}} - {{to}} из {{count}} {{data}}'
+    single: Один {{данные}}
+    single_plural: '{{число}} {{данные}}'

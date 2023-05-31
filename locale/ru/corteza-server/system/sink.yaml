@@ -1,0 +1,17 @@
+errors:
+  badSinkParamEncoding: неверная кодировка параметров стока
+  contentLengthExceedsMaxAllowedSize: длина содержимого превышает максимальный размер
+  failedToCreateEvent: не удалось создать событие приемника из запроса
+  failedToProcess: не удалось обработать запрос
+  failedToRespond: не ответил на запрос
+  failedToSign: 'не удалось подписать параметры запроса: {err}'
+  invalidContentType: недопустимый заголовок типа контента
+  invalidHttpMethod: неверный HTTP-метод
+  invalidPath: неверный путь
+  invalidSignature: недействительная подпись
+  invalidSignatureParam: недопустимый параметр подписи приемника
+  invalidSinkRequestUrlParams: неверные параметры URL-адреса запроса приемника
+  misplacedSignature: подпись неуместна
+  missingSignature: отсутствует параметр подписи приемника
+  processingError: ошибка процесса запроса приемника
+  signatureExpired: срок действия подписи истек

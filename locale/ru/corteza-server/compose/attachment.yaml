@@ -1,0 +1,29 @@
+errors:
+  failedToExtractMimeType: не удалось извлечь MIME-тип
+  failedToProcessImage: не удалось обработать изображение
+  failedToStoreFile: не удалось извлечь файл хранилища
+  invalidID: Неверный ID
+  invalidModuleField: недопустимое поле модуля
+  invalidModuleID: неверный идентификатор модуля
+  invalidNamespaceID: неверный идентификатор пространства имен
+  invalidPageID: неверный идентификатор страницы
+  invalidRecordID: неверный идентификатор записи
+  moduleNotFound: модуль не найден
+  namespaceNotFound: пространство имен не найдено
+  notAllowedToCreate: не разрешено создавать вложения
+  notAllowedToCreateEmptyAttachment: не разрешено создавать пустые вложения
+  notAllowedToCreateRecords: не разрешено создавать записи
+  notAllowedToListAttachments: не разрешено перечислять вложения
+  notAllowedToRead: не разрешено читать этот модуль
+  notAllowedToReadNamespace: не разрешено читать это пространство имен
+  notAllowedToReadPage: не разрешено читать эту страницу
+  notAllowedToReadRecord: не разрешено читать эту запись
+  notAllowedToSearch: не разрешено искать или перечислять модули
+  notAllowedToUpdateNamespace: не разрешено обновлять это пространство имен
+  notAllowedToUpdatePage: не разрешено обновлять эту страницу
+  notAllowedToUpdateRecord: не разрешено обновлять эту запись
+  notAllowedToUploadThisType: не разрешено загружать этот тип файла
+  notFound: вложение не найдено
+  pageNotFound: Страница не найдена
+  recordNotFound: запись не найдена
+  tooLarge: загруженный файл слишком большой

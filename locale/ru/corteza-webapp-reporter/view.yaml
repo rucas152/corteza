@@ -1,0 +1,7 @@
+pick-scenario: Выберите сценарий
+report:
+  builder: Построитель отчетов
+  view: Просмотр отчета
+tooltip:
+  edit:
+    report: Изменить отчет

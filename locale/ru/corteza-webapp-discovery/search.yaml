@@ -1,0 +1,18 @@
+card:
+  button-text: Показать больше
+  email: Электронная почта
+  fields: Поля
+  handle: Ручка
+  module: Модуль
+  namespace: Пространство имен
+  record: Записывать
+  type: Тип
+  user: Пользователь
+discovering: Открытие
+input-placeholder: Введите текст для поиска
+no-results: Без результатов
+notification:
+  search-error: Возникла проблема с получением результатов поиска
+range: Показаны {{фактические}} из {{все}} результатов
+tooltip:
+  map: Переключить карту

@@ -1,0 +1,12 @@
+errors:
+  asyncRouteTooManyAfterFilters: для этого асинхронного маршрута не разрешены фильтры
+    after
+  asyncRouteTooManyProcessers: процессор уже существует для этого асинхронного маршрута
+  invalidID: Неверный ID
+  invalidRoute: неверный маршрут
+  notAllowedToCreate: не разрешено создавать фильтр
+  notAllowedToDelete: не разрешено удалять этот фильтр
+  notAllowedToRead: не разрешено читать этот фильтр
+  notAllowedToUndelete: не разрешено восстановить этот фильтр
+  notAllowedToUpdate: не разрешено обновлять этот фильтр
+  notFound: фильтр не найден

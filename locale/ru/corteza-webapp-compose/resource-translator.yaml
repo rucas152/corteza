@@ -1,0 +1,27 @@
+resources:
+  chart:
+    title: Диаграмма "{{ дескриптор }}"
+  module:
+    field:
+      title: Поле модуля "{{имя}}"
+      tooltip: Полевые переводы
+    title: Модуль "{{ дескриптор }}"
+    tooltip: Переводы модулей
+  namespace:
+    title: Пространство имен "{{ дескриптор }}"
+    tooltip: Переводы пространства имен
+  page:
+    block:
+      title: 'Блок страницы #{{ blockID }}'
+      tooltip: Блокировать переводы
+    layout:
+      title: Макет страницы "{{ дескриптор }}"
+    title: Страница "{{ дескриптор }}"
+    tooltip: Переводы страниц
+  page-layout:
+    title: Макет страницы "{{ дескриптор }}"
+    tooltip: Перевод макета страницы
+translator:
+  add-language: Добавить язык
+  missing-translation: Отсутствует перевод
+  save-changes: Сохранять

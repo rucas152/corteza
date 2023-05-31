@@ -1,0 +1,28 @@
+label:
+  pageBuilder: Конструктор страниц
+  welcome: Добро пожаловать!
+message:
+  noPages: Кажется, в этом пространстве имен еще нет видимых страниц
+  notifyAdministrator: Сообщите системному администратору
+  startBuilding: Выполните следующие действия, чтобы начать сборку
+navigation:
+  noPageTitle: Нет заголовка страницы
+notification:
+  module:
+    createFailed: Не удалось создать модуль
+    saveFailed: Не удалось сохранить этот модуль
+step:
+  chart:
+    create: Сделать диаграмму
+    view: Ваши графики
+  module:
+    create: Создать модуль
+    view: Ваши модули
+  optional: Этот шаг необязателен!
+  page:
+    create: Страница сборки
+    view: Ваши страницы
+tooltip:
+  page-configuration:
+    edit: Отредактировать страницу
+    list: Переводы страниц

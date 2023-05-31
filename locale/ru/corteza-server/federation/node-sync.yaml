@@ -1,0 +1,3 @@
+errors:
+  nodeNotFound: узел не существует
+  notFound: node_sync не существует

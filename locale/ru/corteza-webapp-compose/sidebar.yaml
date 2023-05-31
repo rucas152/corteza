@@ -1,0 +1,12 @@
+adminPanel: Панель администратора
+chart: Графики
+editNamespace: Изменить пространство имен
+manageNamespaces: Управление пространствами имен
+module: Модули
+noPages: Нет страниц
+page: Страницы
+pickNamespace: Выберите пространство имен
+publicPages: Публичные страницы
+searchPlaceholder:
+  admin: Искать ресурсы...
+  public: Страницы поиска...

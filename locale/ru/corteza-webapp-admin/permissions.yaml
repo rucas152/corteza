@@ -1,0 +1,528 @@
+resources:
+  automation:
+    component:
+      label: Компонент автоматизации
+      operations:
+        grant:
+          title: Предоставление разрешений на автоматизацию
+        resource-translations.manage:
+          title: Управление переводами ресурсов
+        sessions.search:
+          title: Сеансы поиска
+        triggers.search:
+          title: Триггеры поиска
+        workflow.create:
+          title: Создать новый рабочий процесс
+        workflows.search:
+          title: Рабочие процессы поиска
+    workflow:
+      all: все рабочие процессы
+      label: Рабочие процессы
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить этот рабочий процесс
+          title: Удалить любой рабочий процесс
+        execute:
+          description: 'По умолчанию: запретить'
+          specific: Выполните этот рабочий процесс
+          title: Выполнение любого рабочего процесса
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Прочитайте этот рабочий процесс
+          title: Читать любой рабочий процесс
+        sessions.manage:
+          description: 'По умолчанию: запретить'
+          specific: Управление сеансами для этого рабочего процесса
+          title: Управление всеми сеансами
+        triggers.manage:
+          description: 'По умолчанию: запретить'
+          specific: Управление триггерами для этого рабочего процесса
+          title: Управление всеми триггерами
+        undelete:
+          description: 'По умолчанию: запретить'
+          specific: Восстановить этот рабочий процесс
+          title: Восстановить любой рабочий процесс
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновите этот рабочий процесс
+          title: Обновите любой рабочий процесс
+      specific: рабочий процесс "{{цель}}"
+  compose:
+    chart:
+      label: Графики
+      operations:
+        delete:
+          title: Удалить любую диаграмму
+        read:
+          title: Читать любой график
+        update:
+          title: Обновите любую диаграмму
+    component:
+      label: Составной компонент
+      operations:
+        grant:
+          title: Предоставление разрешений на создание компонента
+        namespace.create:
+          title: Создание пространств имен
+        namespaces.search:
+          title: Список и поиск пространств имен
+        resource-translations.manage:
+          title: Управление переводами ресурсов
+        settings.manage:
+          title: Управление всеми настройками
+        settings.read:
+          title: Доступ ко всем настройкам
+    module:
+      label: Модули
+      operations:
+        delete:
+          title: Удалить любой модуль
+        owned-record.create:
+          title: Управление владельцем при создании записи любого модуля
+        read:
+          title: Читать любой модуль
+        record.create:
+          title: Создать запись под любым модулем
+        records.search:
+          title: Список и поиск записей в любом модуле
+        update:
+          title: Обновите любой модуль
+    module-field:
+      label: Поля модуля
+      operations:
+        record.value.read:
+          title: Читать любое поле модуля
+        record.value.update:
+          title: Обновите любое поле модуля
+    namespace:
+      label: Пространства имен
+      operations:
+        chart.create:
+          title: Создавайте диаграммы в любом пространстве имен
+        charts.search:
+          title: Список и поиск диаграмм в любом пространстве имен
+        delete:
+          title: Удалить любое пространство имен
+        manage:
+          title: Управление любым пространством имен
+        module.create:
+          title: Создавайте модули в любом пространстве имен
+        modules.search:
+          title: Список и поиск модулей в любом пространстве имен
+        page.create:
+          title: Создавайте страницы под любым пространством имен
+        pages.search:
+          title: Список и поиск страниц в любом пространстве имен
+        read:
+          title: Доступ к любому пространству имен
+        update:
+          title: Обновите любое пространство имен
+    page:
+      label: Страницы
+      operations:
+        delete:
+          title: Удалить любую страницу
+        page-layout.create:
+          title: Создавайте макеты страниц под любой страницей
+        page-layouts.search:
+          title: Список и поиск макетов страниц на любой странице
+        read:
+          title: Читать любую страницу
+        update:
+          title: Обновите любую страницу
+    page-layout:
+      label: Макеты страниц
+      operations:
+        delete:
+          title: Удалить любой макет страницы
+        read:
+          title: Читать любой макет страницы
+        update:
+          title: Обновите любой макет страницы
+    record:
+      label: Рекорды
+      operations:
+        delete:
+          title: Удалить любую запись
+        owner.manage:
+          title: Управление владением любой записью
+        read:
+          title: Прочитать любую запись
+        revisions.search:
+          title: Доступ к версиям любой записи
+        undelete:
+          title: Восстановить любую запись
+        update:
+          title: Обновите любую запись
+  federation:
+    component:
+      label: Компонент Федерации
+      operations:
+        grant:
+          title: Предоставление разрешений на компонент федерации
+        node.create:
+          title: Создать узлы
+        nodes.search:
+          title: Список или создание узлов
+        pair:
+          title: Пара узлов
+        settings.manage:
+          title: Управление всеми настройками
+        settings.read:
+          title: Доступ ко всем настройкам
+    exposed-module:
+      label: Модули
+      operations:
+        manage:
+          title: Управление любым модулем
+    node:
+      label: Узлы
+      operations:
+        manage:
+          title: Управляйте любым узлом
+        module.create:
+          title: Создание модулей
+    shared-module:
+      label: Модули
+      operations:
+        map:
+          title: Сопоставьте любой модуль
+  system:
+    apigw-route:
+      all: все маршруты
+      label: Маршруты шлюза
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любой маршрут
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любой маршрут
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любой маршрут
+      specific: маршрут "{{цель}}"
+    application:
+      all: все приложения
+      label: Приложения
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любое приложение
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любое приложение
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любое приложение
+      specific: приложение "{{цель}}"
+    auth-client:
+      all: все клиенты авторизации
+      label: Клиенты аутентификации
+      operations:
+        authorize:
+          description: 'Пользователь может авторизовать (использовать) этот клиент.
+            По умолчанию: запретить'
+          specific: Авторизовать клиент "{{target}}
+          title: Авторизовать любого клиента
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить клиент "{{target}}
+          title: Удалить любого клиента
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать клиента "{{target}}
+          title: Читать любой клиент
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить клиент "{{target}}
+          title: Обновите любой клиент
+      specific: клиент аутентификации "{{target}}"
+    component:
+      label: Системный компонент
+      operations:
+        action-log.read:
+          title: Доступ к журналу действий
+        apigw-filter.create:
+          title: Создать новый фильтр
+        apigw-filters.search:
+          title: Фильтры списка и поиска
+        apigw-route.create:
+          title: Создать новый маршрут
+        apigw-routes.search:
+          title: Список и поиск маршрутов
+        application.create:
+          title: Создать новое приложение
+        application.flag.global:
+          title: Можно закрепить приложение для всех
+        application.flag.self:
+          title: Может закрепить приложение для себя
+        applications.search:
+          title: Список и поиск приложений
+        auth-client.create:
+          title: Создать новый клиент авторизации
+        auth-clients.search:
+          title: Список и поиск клиентов аутентификации
+        dal-connection.create:
+          title: Создание связей
+        dal-connections.search:
+          title: Поиск соединений
+        dal-sensitivity-level.manage:
+          title: Управление уровнем чувствительности подключения
+        data-privacy-request.create:
+          title: Создание запросов конфиденциальности данных
+        data-privacy-requests.search:
+          title: Поиск запросов конфиденциальности данных
+        grant:
+          title: Предоставить разрешение на системный компонент
+        queue.create:
+          title: Создать новую очередь сообщений
+        queues.search:
+          title: Список и поиск очередей сообщений
+        reminder.assign:
+          title: Разрешить назначение напоминаний
+        report.create:
+          title: Создать новый отчет
+        reports.search:
+          title: Список и отчеты о поиске
+        resource-translations.manage:
+          title: Управление переводами ресурсов
+        role.create:
+          title: Создать новую роль
+        roles.search:
+          title: Список и поиск ролей
+        settings.manage:
+          title: Управление всеми настройками
+        settings.read:
+          title: Доступ ко всем настройкам
+        template.create:
+          title: Создать новый шаблон
+        templates.search:
+          title: Шаблоны списков и поиска
+        user.create:
+          title: Создать нового пользователя
+        users.search:
+          title: Список и поиск пользователей
+    dal-connection:
+      all: все соединения
+      label: Соединения
+      operations:
+        dal-config:
+          manage:
+            title: Управляйте любыми соединениями
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить соединение "{{target}}
+          title: Удалить любое соединение
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Чтение соединения "{{target}}
+          title: Читать любое соединение
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить соединение "{{target}}
+          title: Обновите любое соединение
+      specific: соединение "{{цель}}"
+    data-privacy-request:
+      all: все запросы
+      label: Запросы конфиденциальности
+      operations:
+        approve:
+          description: 'По умолчанию: запретить'
+          specific: Одобрить {{цель}}
+          title: Одобрить любой запрос
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Прочитать любой запрос
+      specific: запрос "{{цель}}"
+    queue:
+      all: все очереди
+      label: хвосты
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любую очередь
+        members.manage:
+          description: 'По умолчанию: запретить'
+          specific: Управление участниками для {{target}}
+          title: Управление участниками любой очереди
+        queue.read:
+          description: 'По умолчанию: запретить'
+          specific: Читать сообщения от {{target}}
+          title: Читать сообщения из любой очереди
+        queue.write:
+          description: 'По умолчанию: запретить'
+          specific: Пишите сообщения {{target}}
+          title: Запись сообщений в любую очередь
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любую очередь
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любую очередь
+      specific: очередь "{{цель}}"
+    report:
+      all: все отчеты
+      label: Отчеты
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любой отчет
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любой отчет
+        run:
+          description: 'По умолчанию: запретить'
+          specific: Запустить {{цель}}
+          title: Запустите любой отчет
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любой отчет
+      specific: отчет "{{цель}}"
+    role:
+      all: все роли
+      label: Роли
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любую роль
+        members.manage:
+          description: 'По умолчанию: запретить'
+          specific: Управление участниками для {{target}}
+          title: Управление участниками для любой роли
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любую роль
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любую роль
+      specific: роль "{{цель}}"
+    template:
+      all: все шаблоны
+      label: Шаблоны
+      operations:
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любой шаблон
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любой шаблон
+        render:
+          description: 'По умолчанию: запретить'
+          specific: Рендер {{цель}}
+          title: Рендеринг любого шаблона
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любой шаблон
+      specific: шаблон "{{цель}}"
+    user:
+      all: все пользователи
+      label: Пользователи
+      operations:
+        credentials:
+          manage:
+            specific: Управление учетными данными {{target}}
+            title: Управляйте любым пользователем
+        delete:
+          description: 'По умолчанию: запретить'
+          specific: Удалить {{цель}}
+          title: Удалить любого пользователя
+        email.unmask:
+          description: 'По умолчанию: запретить'
+          specific: Показать данные электронной почты для {{target}}
+          title: Показать данные электронной почты для любого пользователя
+        impersonate:
+          description: 'По умолчанию: запретить'
+          specific: Выдать себя за этого пользователя {{target}}
+          title: Выдавать себя за любого пользователя
+        name.unmask:
+          description: 'По умолчанию: запретить'
+          specific: Показать сведения об имени для {{target}}
+          title: Показать детали имени для любого пользователя
+        read:
+          description: 'По умолчанию: запретить'
+          specific: Читать {{цель}}
+          title: Читать любого пользователя
+        suspend:
+          description: 'По умолчанию: запретить'
+          specific: Приостановить {{цель}}
+          title: Заблокировать любого пользователя
+        unsuspend:
+          description: 'По умолчанию: запретить'
+          specific: Разблокировать {{target}}
+          title: Разблокировать любого пользователя
+        update:
+          description: 'По умолчанию: запретить'
+          specific: Обновить {{цель}}
+          title: Обновите любого пользователя
+      specific: пользователь "{{цель}}"
+ui:
+  access:
+    allow: Позволять
+    deny: Отрицать
+    inherit: Наследовать
+  add:
+    edit:
+      description: Выберите роль, для которой вы хотите изменить разрешения.
+    evaluate:
+      description: Выберите комбинацию ролей или пользователя для оценки
+    label: Добавлять
+    role:
+      label: Роли
+      placeholder: Выберите роль(и)
+    save: Сохранить и закрыть
+    title: Оценить разрешения
+    user:
+      label: Пользователи
+      placeholder: Найдите или выберите пользователя
+  alt-click-to-deny: Используйте Alt-Click, чтобы установить явный запрет на операцию
+  cancel: Отмена
+  click-on-cell-to-allow: Нажмите на ячейку разрешения/роли, чтобы разрешить определенную
+    операцию.
+  clone:
+    clone: Клон
+    description: Это клонирует все разрешения текущей роли и применяет их к выбранному
+    label: Клонировать разрешения
+    pick-role: Выберите роль
+    title: Клонировать разрешения на
+  edit:
+    description: Выберите роль для установки разрешений
+    label: Роли пользователей
+    title: Изменить разрешения
+  edit-or-eval: Изменить или оценить разрешения
+  evaluate:
+    description: Оцените примененные разрешения
+    title: Оцененные разрешения
+  loading: Загрузка разрешений
+  save: Сохранить изменения
+  set-for: Установить разрешения для {{target}}
+  title:
+    automation: Разрешения автоматизации
+    compose: Создание разрешений
+    federation: Разрешения федерации
+    system: Системные разрешения
+  tooltip:
+    unknown-context:
+      role: Не удается оценить разрешение для контекстной роли на неконкретном ресурсе
+      user: Не удается оценить разрешение для пользователя с контекстной ролью на
+        неопределенный ресурс

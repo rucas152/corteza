@@ -1,0 +1,14 @@
+system:
+  ID: Идентификатор записи
+  createdAt: Создан в
+  createdBy: Сделано
+  deletedAt: Удалено в
+  deletedBy: Удалено
+  meta: Мета дата
+  moduleID: Идентификатор модуля
+  namespaceID: Идентификатор пространства имен
+  ownedBy: Принадлежит
+  recordID: Идентификатор записи
+  revision: Запись ревизии
+  updatedAt: Обновлено в
+  updatedBy: Обновлено

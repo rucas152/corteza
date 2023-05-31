@@ -1,0 +1,28 @@
+datasource:
+  describe-failed: Не удалось описать источник данных
+general:
+  error: Ошибка
+  success: Успех
+  warning: Предупреждение
+list:
+  load:
+    error: Не удалось загрузить список ресурсов
+module:
+  fetch-failed: Не удалось получить модули
+namespace:
+  fetch-failed: Не удалось получить пространства имен.
+report:
+  createFailed: Не удалось создать отчет
+  created: Отчет создан
+  datasources:
+    updateFailed: Не удалось обновить источники данных
+    updated: Источники данных обновлены
+  delete: Отчет удален
+  deleteFailed: Не удалось удалить отчет
+  fetchFailed: Не удалось получить отчет
+  listFetchFailed: Не удалось получить отчеты
+  notAllowed:
+    read: Не разрешено читать отчет
+  runFailed: Не удалось запустить отчет
+  updateFailed: Не удалось обновить отчет
+  updated: Отчет обновлен

@@ -1,0 +1,3 @@
+errors:
+  unauthorized: несанкционированный
+  unauthorizedScope: неавторизованный объем

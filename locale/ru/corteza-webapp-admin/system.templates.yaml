@@ -1,0 +1,81 @@
+editor:
+  content:
+    editor:
+      unsupported: Неподдерживаемый редактор
+    partial: Частичный шаблон
+    preview:
+      html: Предварительный просмотр HTML
+      pdf: Предварительный просмотр PDF
+      title: Предварительный просмотр
+    title: Содержимое шаблона
+    toolbox:
+      partials: Частицы
+      samples:
+        defaultHTML: HTML по умолчанию
+        label: Образцы
+      snippets:
+        funcCall: Вызов функции
+        interpolate: Интерполировать значение
+        iterator: Итерация по набору
+        label: Фрагменты
+      title: Ящик для инструментов
+  info:
+    contentType:
+      text_html: HTML
+      text_plain: Простой текст
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    handle: Ручка
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    meta:
+      description: Описание
+      short: Короткое имя *
+    partial: Частичный шаблон
+    partialDescription: Частичные шаблоны могут использоваться внутри других шаблонов,
+      таких как верхние и нижние колонтитулы. Частичные шаблоны не могут использоваться
+      сами по себе.
+    placeholder-handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+    title: Основная информация
+    type: Тип шаблона
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
+  permissions: Разрешения
+  title:
+    create: Создать шаблон
+    edit: Изменить шаблон
+list:
+  columns:
+    actions: ''
+    createdAt: Созданный
+    handle: Ручка
+    language: Язык
+    meta:
+      short: Короткое имя
+    state: Состояние
+  export: Экспорт
+  filterForm:
+    deleted:
+      label: удаленные шаблоны
+    excluded:
+      label: Без
+    exclusive:
+      label: Только
+    handle:
+      label: Список шаблонов фильтров
+      placeholder: Фильтровать шаблоны по дескриптору
+    inclusive:
+      label: Включая
+  loading: Загрузка шаблонов
+  new: Новый
+  numFound: '{{count}} шаблон найден'
+  numFound_plural: '{{count}} шаблонов найдено'
+  permissions: Разрешения
+  rows:
+    filters:
+      deleted: Удалено
+  title: Шаблоны
+  yaml: YAML

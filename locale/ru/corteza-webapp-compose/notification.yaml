@@ -1,0 +1,160 @@
+automation:
+  scriptFailed: Не удалось выполнить автоматизацию
+chart:
+  createFailed: Не удалось создать диаграмму
+  deleteFailed: Не удалось удалить эту диаграмму
+  deleted: Диаграмма удалена
+  invalidConfig:
+    missingDimensionsField: Поле размеров не определено
+    missingDimensionsModifier: Модификатор размеров не определен
+    missingDimensionsSteps: Шаги размеров не определены
+    missingMetricsAggregate: Совокупность показателей не определена
+    missingMetricsField: Поле показателей не определено
+    missingMetricsType: Тип диаграммы показателей не определен
+    missingModuleID: Модуль не определен
+    missingReports: Отчеты не определены
+  loadFailed: Не удалось загрузить график
+  optionsBuildFailed: Не удалось построить параметры диаграммы
+  saveFailed: Не удалось сохранить эту диаграмму.
+  saved: Диаграмма сохранена
+  unsupportedRenderer: Неподдерживаемый рендерер
+color:
+  RGBA:
+    invalid: Недопустимый цветовой формат RGBA.
+connection:
+  read-failed: Не удалось прочитать соединение
+evaluate:
+  failed: Не удалось оценить выражение
+field:
+  missingRequired: Отсутствует значение в обязательном поле
+  unknownFieldKind: 'Ошибка: Неизвестный тип поля "{{kind}}", компонент просмотра
+    не найден.'
+  unsupportedKind: Неподдерживаемый тип поля {{kind}}
+field-datetime:
+  valueNotFuture: Прошлое значение только в будущем поле
+  valueNotPast: Будущее значение только в прошлом поле
+field-geometry:
+  geolocationErrors:
+    errorOccurred: Произошла ошибка при получении местоположения пользователя
+    locationSearchFailed: Не удалось найти местоположение
+    notSupported: Геолокация не поддерживается этим браузером
+    permissionDenied: Пользователь отклонил запрос на геолокацию
+    positionUnavailable: Информация о местоположении недоступна
+    timeout: Время запроса на получение местоположения пользователя истекло
+    unknownError: Произошла неизвестная ошибка
+general:
+  composeAccessNotAllowed: Нет доступа к Compose
+  error: Ошибка
+  import:
+    failed: Не удалось импортировать
+    readingError: Ошибка чтения файла
+    successful: Импорт выполнен успешно
+    typeMissmatch: 'Ошибка импорта: попытка импортировать объект типа "{{type1}}"
+      в список объектов типа "{{type2}}"'
+  info: Уведомление
+  success: Успех
+  warning: Предупреждение
+list:
+  load:
+    error: Не удалось загрузить список ресурсов
+module:
+  columns:
+    saveFailed: Не удалось сохранить столбцы
+    saved: Столбцы сохранены
+  createFailed: Не удалось создать модуль
+  created: Модуль создан
+  deleteFailed: Не удалось удалить этот модуль
+  deleted: Модуль удален
+  recordPage:
+    createFailed: Не удалось создать страницу записи модуля
+  saveFailed: Не удалось сохранить этот модуль
+  saved: Модуль сохранен
+namespace:
+  application:
+    createFailed: Не удалось создать приложение пространства имен
+    fetchFailed: Не удалось получить приложение пространства имен
+    saveFailed: Не удалось сохранить приложение пространства имен
+  assetUploadFailed: Не удалось загрузить прикрепленные ресурсы
+  cloneFailed: Не удалось клонировать это пространство имен.
+  createFailed: Не удалось создать пространство имен
+  deleteFailed: Не удалось удалить это пространство имен.
+  deleted: Пространство имен удалено
+  disabled: Пространство имен отключено — перенаправление
+  importFailed: Не удалось импортировать пространство имен
+  imported: Импортированное пространство имен
+  saveFailed: Не удалось сохранить это пространство имен.
+  saved: Пространство имен сохранено
+page:
+  block:
+    calendar:
+      eventFetchFailed: Не удалось получить список событий
+  blockWaiting: Ожидается блок страницы
+  cloneFailed: Не удалось клонировать эту страницу
+  cloneSuccess: Блок был клонирован в низ страницы
+  copyFailed: Не удалось скопировать блок {{причина}}
+  copySuccess: Блок успешно скопирован
+  createFailed: Не удалось создать страницу
+  deleteFailed: Не удалось удалить эту страницу
+  duplicateFailed: Не удалось скопировать блок
+  iconFetchFailed: Не удалось получить список значков
+  invalidBlock: Недопустимый блок страницы
+  loadFailed: Не удалось загрузить дерево страниц
+  noPages: Страницы не найдены
+  page-layout:
+    clone:
+      failed: Не удалось клонировать макет
+      success: Макет клонирован и выбран
+    delete:
+      failed: Не удалось удалить макет
+      success: Макет удален
+    notFound:
+      edit: Нет макета страницы, создайте его, чтобы отредактировать
+      view: Макет страницы не найден, создайте его, чтобы просмотреть страницу
+    save:
+      failed: Не удалось сохранить макет
+      success: Макет сохранен
+  pasteSuccess: Блок вставлен внизу страницы
+  saveFailed: Не удалось сохранить эту страницу
+  saveFailedRequired: Не удалось сохранить эту страницу, должны присутствовать все
+    обязательные поля модуля
+  saved: Страница сохранена
+record:
+  bulkRecordUpdateSuccess: Выбранные записи успешно обновлены
+  createFailed: Не удалось создать запись
+  deleteBulkFailed: Не удалось удалить выбранные записи
+  deleteBulkRecordUpdateFailed: Не удалось обновить выбранные записи
+  deleteBulkSuccess: Успешно удалены выбранные записи
+  deleteFailed: Не удалось удалить запись
+  fieldConditions:
+    failed: Не удалось оценить условия поля блока записи
+  invalidOwnerVar: Нельзя использовать переменную ${ownerID} на страницах без записи
+  invalidRecordVar: Нельзя использовать переменную ${record...} на страницах без записей
+  listLoadFailed: Не удалось загрузить список записей
+  loadFailed: Не удалось загрузить запись
+  moduleMismatch: Несовместимый модуль, несоответствие модулей
+  moduleNotDefined: Модуль записи не определен
+  moduleOrPageNotSet: 'Ошибка блока RecordList: параметр модуля или страницы не установлен'
+  staleDataRefresh: Устаревшие данные записи, все несохраненные изменения будут потеряны.
+    Вы хотите обновить данные сейчас?
+  undeleteBulkFailed: Не удалось восстановить выбранные записи
+  undeleteBulkSuccess: Успешно восстановлены выбранные записи
+  undeleteFailed: Не удалось восстановить запись
+  unexpectedInput: Неожиданный ввод для свойства values, должен быть массивом с парами
+    объектов "имя-значение".
+  unexpectedValue: Неожиданное значение для модуля записи ({{type}})
+  updateFailed: Не удалось обновить запись
+  validationErrors: проверить сообщения об ошибках в форме
+  validationWarnings: Запись успешно сохранена, проверьте предупреждающие сообщения
+    в форме
+record-list:
+  corrupted-filter: Поврежденный фильтр
+  incorrect-filter-structure: Неверная структура фильтра {{filterID}}
+report:
+  fetchFailed: Не удалось получить отчет
+  listFetchFailed: Не удалось получить отчеты
+  runFailed: Не удалось запустить отчет
+sensitivity-level:
+  fetch-failed: Не удалось получить уровни чувствительности.
+translations:
+  saveFailed: Не удалось сохранить переводы
+  saved: Переводы сохранены

@@ -1,0 +1,59 @@
+editor:
+  info:
+    createdAt: Создан в
+    delete: Удалить
+    deletedAt: Удалено в
+    enabled: Включено
+    handle: Ручка
+    id: ИДЕНТИФИКАТОР
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    name: Имя *
+    openBuilder: Открытый конструктор
+    title: Основная информация
+    undelete: Восстановить
+    updatedAt: Обновлено в
+  new: Новый
+  permissions: Разрешения
+  title:
+    create: Создать рабочий процесс
+    edit: Изменить рабочий процесс
+  triggers:
+    and: и
+    columns:
+      constraints: Ограничения
+      eventType: Событие
+      resourceType: Ресурс
+    title: Триггеры
+list:
+  columns:
+    actions: ''
+    createdAt: Созданный
+    enabled: Включено
+    handle: Ручка
+    name: Имя
+    state: Состояние
+  export: Экспорт
+  filterForm:
+    deleted:
+      label: удаленные рабочие процессы
+    excluded:
+      label: Без
+    exclusive:
+      label: Только
+    inclusive:
+      label: Включая
+    query:
+      label: Список рабочих процессов фильтра
+      placeholder: Фильтрация рабочих процессов по имени
+  loading: Загрузка рабочих процессов
+  new: Новый
+  numFound: Найдено {{count}} рабочего процесса
+  numFound_plural: Найдено {{count}} рабочих процессов
+  permissions: Разрешения
+  rows:
+    filters:
+      deleted: Удалено
+  title: Рабочие процессы
+  yaml: YAML

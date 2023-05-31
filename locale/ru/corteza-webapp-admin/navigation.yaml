@@ -1,0 +1,40 @@
+automation:
+  group: Автоматизация
+  items:
+    permissions: Разрешения
+    scripts: Брокер скриптов
+    sessions: Сессии
+    workflows: Рабочие процессы
+compose:
+  group: Написать
+  items:
+    automation: Автоматизация
+    permissions: Разрешения
+    settings: Настройки
+dashboard: Панель приборов
+federation:
+  group: Федерация
+  items:
+    nodes: Узлы
+    permissions: Разрешения
+system:
+  group: Система
+  items:
+    actionlog: Журнал действий
+    apigw: Интеграционный шлюз
+    applications: Приложения
+    authclients: Клиенты аутентификации
+    connections: Соединения
+    email: Настройки электронной почты
+    permissions: Разрешения
+    queues: Очереди сообщений
+    roles: Роли
+    sensitivityLevel: Уровни чувствительности
+    settings: Настройки авторизации
+    stats: Статистика
+    templates: Шаблоны
+    users: Пользователи
+ui:
+  group: Пользовательский интерфейс
+  items:
+    settings: Настройки

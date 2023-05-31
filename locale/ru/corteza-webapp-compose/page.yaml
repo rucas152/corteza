@@ -1,0 +1,126 @@
+block:
+  general:
+    changeBlock: Изменить существующий блок
+    invalid-handle-characters: Должно быть не менее 2 символов. Может содержать только
+      буквы, цифры, тире, символы подчеркивания и точки. Должен заканчиваться буквой
+      или цифрой
+    label:
+      cancel: Отмена
+      noHandle: Нет ручки
+      pageBuilder: Конструктор страниц
+      saveAndClose: Сохрани и закрой
+    placeholder:
+      handle: ручка (a - z, 0 - 9, подчеркивание, тире)
+      sample: Образец
+    title: Добавить новый блок
+build:
+  addBlock: Блокировщик рекламы
+  selectBlockTitle: Выберите тип нового блока
+  unsavedChanges: Несохраненные изменения будут потеряны. Вы хотите покинуть страницу?
+changeBlock: Изменить существующий блок
+copyOf: Копия {{название}}
+createLabel: Создать страницу
+delete:
+  cascade: Удалить подстраницы
+  rebase: Обновить родительский элемент подстраниц
+edit:
+  create: Создать страницу
+  edit: Отредактировать страницу
+  otherOptions: Другие варианты
+  pageDescription: Описание страницы
+  visible: Видна ли страница
+icon:
+  configure: Настроить значок страницы
+  list: Загруженные иконки
+  noIcon: Нет значка
+  page: Значок страницы
+  upload: Значок загрузки
+import: 'Страницы импорта:'
+instructions: Перетащите страницы, чтобы настроить порядок и иерархию
+invalid: Неверная конфигурация
+label:
+  cancel: Отмена
+  delete: Удалить блок
+  description: Описание
+  handle: Ручка
+  pageBuilder: Конструктор страниц
+  permissions: Разрешения
+  saveAndClose: Сохрани и закрой
+loading: Загрузка
+moduleEdit: Редактировать модуль
+navigation:
+  page: Страницы
+  viewPage: Просмотр страницы
+newPlaceholder: Заголовок страницы
+noBlock: Блок еще не добавлен
+noPages: Нет страниц
+notVisible: Скрытый
+page-layout:
+  add: Добавить макет
+  condition:
+    label: Состояние
+    placeholder: Когда покажут макет
+  configure: Настроить макет - "{{title}}"
+  handle: Ручка
+  recordToolbar:
+    actions:
+      add: Добавить действие
+      buttonLabel: Этикетка
+      label: Действия
+      layout:
+        label: Перенаправить на макет
+        placeholder: Макет не выбран
+      placement:
+        center: Центр
+        end: Конец
+        label: Размещение
+        start: Начинать
+      variant: Вариант
+      visible: Видимый
+    buttons:
+      label: Кнопки
+      showBack: Показать кнопку «Назад»
+      showClone: Показать кнопку «Сохранить как копию»
+      showDelete: Показать кнопку «Удалить»
+      showEdit: Показать кнопку "Редактировать"
+      showNew: Показать кнопку «Добавить новый»
+      showSave: Показать кнопку "Сохранить"
+    label: Панель инструментов записи
+  roles:
+    label: Роли
+    placeholder: Выберите роли, которым будет показан макет
+  title: Заголовок *
+  tooltip:
+    builder: Открыть макет в конструкторе
+    configure: Настроить макет
+  visibility: Видимость
+pageMoveFailed: Не удалось переместить эту страницу
+public:
+  record:
+    create:
+      title: Создание записи для модуля "{{name}}"
+    edit:
+      title: Редактирование записи для модуля "{{name}}"
+    view:
+      title: Просмотр записи для модуля "{{name}}"
+reordered: Страница изменена
+showSubPages: Развернуть подстраницы на боковой панели
+title: Список страниц
+tooltip:
+  clone:
+    block: Клонировать блок
+  copy:
+    block: Копировать блок
+  delete:
+    block: Удалить блок
+  edit:
+    block: Редактировать блок
+    page: Отредактировать страницу
+  preview-link: Ссылка для предварительного просмотра
+  saveAsCopy: Невозможно дублировать страницу записи
+  unsavedChanges: Несохраненные изменения
+  view: Просмотр страницы
+url:
+  label: Или добавьте URL к значку
+view: Вид
+visible: Видимый

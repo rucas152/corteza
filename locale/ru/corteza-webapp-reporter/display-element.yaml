@@ -1,0 +1,133 @@
+chart:
+  configurator:
+    animation:
+      enabled: Анимация включена
+    begin-axis-at-zero: Всегда начинать масштаб оси с нуля
+    chart-title: Название диаграммы
+    color-scheme: Цветовая схема
+    data: Данные
+    data-columns: Столбцы данных
+    default: По умолчанию
+    default-value: Значение по умолчанию
+    general: Общий
+    label-column: Метка столбца
+    legend:
+      align:
+        center: Центр
+        label: Выровнять
+        left: Левый
+        right: Верно
+      hide: Скрыть легенду
+      name: Легенда
+      orientation:
+        horizontal: Горизонтальный
+        label: Ориентация
+        vertical: Вертикальный
+      position:
+        bottom: Нижний
+        default: Положение по умолчанию
+        description: Значения с
+        left: Левый
+        right: Верно
+        top: Вершина
+      scrollable: Прокручиваемый
+    logarithmic-scale: Логарифмическая шкала
+    none: Никто
+    offset:
+      bottom: Нижний
+      default: Смещение по умолчанию
+      left: Левый
+      name: Компенсировать
+      right: Верно
+      top: Вершина
+    place-axis-on-right-side: Разместите ось с правой стороны
+    position-description: Значения могут быть установлены в пикселях (20) или в процентах
+      (20%).
+    skip-missing-values: Пропустить отсутствующие значения
+    step-size: Размер шага
+    time:
+      label: Время
+      unit:
+        label: Единица времени
+        types:
+          date: Дата
+          month: Месяц
+          quarter: Четверть
+          week: Неделя
+          year: Год
+    tooltips:
+      name: Подсказки
+      show:
+        always: Всегда показывать ярлыки
+    type: Тип
+    types:
+      bar: Бар
+      doughnut: Пончик
+      funnel: Воронка
+      line: Линия
+      pie: В
+    value:
+      max: Максимальное значение
+      min: Мин. значение
+    x-axis:
+      label: Метка оси
+      labelRotation:
+        label: Повернуть метки
+      name: ось X
+      type: Тип оси
+    y-axis:
+      label: Метка оси
+      labelPosition:
+        bottom: Нижний
+        center: Центр
+        label: Позиция метки
+        top: Вершина
+      labelRotation:
+        label: Повернуть метки
+      name: Y-ось
+metric:
+  configurator:
+    color:
+      background: Фоновый цвет
+      picker: Выберите цвет
+      text: Цвет текста
+    format: Формат
+    label-column: Метка столбца
+    none: Никто
+    prefix: Префикс
+    suffix: Суффикс
+table:
+  configurator:
+    columns: Столбцы
+    dark: Темный
+    data: Данные
+    general: Общий
+    head-variant: Головной вариант
+    joined-datasource-handling: Объединенная обработка источников данных
+    light: Свет
+    none: Никто
+    table:
+      options:
+        bordered: окаймленный
+        borderless: без границ
+        dark: Темный
+        fixed: Зафиксированный
+        hover: Наведите курсор
+        label: Параметры таблицы
+        no-collapse: Отсутствие обрушения границы
+        responsive: Отзывчивый
+        small: Маленький
+        striped: В полоску
+      variant: Вариант таблицы
+      variants:
+        danger: Опасность
+        dark: Темный
+        info: Информация
+        light: Свет
+        primary: Начальный
+        secondary: Среднее
+        success: Успех
+        warning: Предупреждение
+  view:
+    next: Следующий
+    previous: Предыдущий

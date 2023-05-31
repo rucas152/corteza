@@ -1,0 +1,259 @@
+available-items: Доступные поля
+constraints:
+  caseSensitive: С учетом регистра
+  description: Использовать ограничения уникальных значений для этого поля
+  equal: Равный
+  fuzzyMatch: Нечеткое совпадение
+  ignoreCase: Игнорировать регистр
+  label: Ограничение уникального значения
+  multiValues: Значения нескольких полей
+  none: Никто
+  oneOf: Один из
+  soundsLike: Звучит как
+  totalFieldConstraintCount: Поле используется в {{total}} другом ограничении уникального
+    значения. См. вкладку «уникальные значения» в редакторе модулей.
+  valueModifiers: Модификаторы значений
+defaultFieldValue: Значение поля по умолчанию
+defaultValue: Значение по умолчанию
+kind:
+  bool:
+    checkedValueLabel: Значение при проверке
+    checkedValuePlaceholder: Проверяемое значение
+    label: Флажок (Да/Нет)
+    uncheckedValueLabel: Значение, когда флажок не установлен
+    uncheckedValuePlaceholder: Непроверенное значение
+  dateTime:
+    dateOnly: Только дата
+    futureValuesOnly: Только будущая стоимость
+    label: Дата и время
+    outputFormat: Выходной формат
+    outputFormatFootnote: См. {{0}} для параметров форматирования.
+    pastValuesOnly: Только прошлые значения
+    relativeOutput: 'Выходное относительное значение (например: 3 дня назад)'
+    timeOnly: Только время
+    warning:
+      futureValuesOnly: Будут сохранены только даты в будущем
+      pastValuesOnly: Будут сохранены только даты в прошлом
+  email:
+    label: Электронная почта
+    preventToLink: Не превращайте электронную почту в ссылку
+  file:
+    label: Файл
+    view:
+      background: Фоновый цвет
+      borderRadius: Радиус границы
+      clickToView: Нажмите, чтобы просмотреть файл
+      colorPicker: Выберите цвет
+      description: 'Добавьте единицу измерения после значения, чтобы установить его.
+        Например: 50px или 50%'
+      enableDownload: Включить загрузку
+      gallery: Галерея изображений
+      grid: Сетка
+      height: Высота
+      list: Список
+      margin: Допуск
+      maxHeight: максимальная высота
+      maxSizeLabel: Максимальный размер файла
+      maxWidth: Максимальная ширина
+      mimetypesFootnote: 'Типы MIME, разделенные знаком ",". Пример: "текст/обычный,текст/csv"'
+      mimetypesLabel: Список разрешенных типов файлов
+      modeFootnote: Как файлы представлены в блоках страниц записи
+      modeLabel: Режим просмотра
+      previewStyle: Стиль предварительного просмотра
+      px: пикс.
+      showName: Скрыть имя файла
+      single: Одно изображение
+      unitType: Тип устройства
+      width: Ширина
+  geometry:
+    clickToPlaceMarker: Щелкните, чтобы разместить/удалить маркер
+    geosearchInputPlaceholder: Введите адрес, место или почтовый индекс
+    hideCurrentLocationButton: Скрыть кнопку текущего местоположения
+    hideGeoSearch: Скрыть поиск местоположения
+    initialZoomAndPosition: Установить начальный масштаб карты и положение
+    label: Геометрия
+    latitude: Широта
+    longitude: Долгота
+    prefillWithCurrentLocation: Заполнить текущим местоположением
+    tooltip:
+      goToCurrentLocation: Перейти к текущему местоположению
+      openMap: Открыть карту
+      useCurrentLocation: Использовать текущее местоположение
+  number:
+    displayType:
+      label: Тип дисплея
+      number: Число
+      progress: Индикатор
+    exampleFormat: Формат
+    exampleInput: Вход
+    exampleResult: Результат
+    examplesLabel: Примеры форматов
+    formatLabel: Формат
+    formatPlaceholder: Формат
+    label: Число
+    liveExample: Живой пример
+    precisionLabel: Точность
+    precisionPlaceholder: Точность
+    prefixLabel: Префикс
+    prefixPlaceholder: Префикс
+    progress:
+      animated: Анимированный
+      maximumValue: Максимальное значение
+      minimumValue: Минимальное значение
+      show:
+        progress: Показать прогресс
+        relative: Показать родственника
+        value: Показать значение
+      showRelative: Показать родственника
+      thresholds:
+        description: Установите, какой вариант показывать, если значение равно или
+          превышает пороговое значение
+        label: Пороги
+      variants:
+        danger: Опасность
+        dark: Темный
+        default: Вариант по умолчанию
+        info: Информация
+        light: Свет
+        primary: Начальный
+        secondary: Среднее
+        success: Успех
+        warning: Предупреждение
+    suffixLabel: Суффикс
+    suffixPlaceholder: Суффикс
+  record:
+    currentUnnamedModule: (Текущий безымянный модуль)
+    fieldFromModuleField: Поле метки из связанного поля модуля
+    label: Записывать
+    moduleField: Поле модуля
+    moduleLabel: Имя модуля
+    modulePlaceholder: Выберите модуль
+    pickField: Выберите поле
+    prefilterFootnote: Поддерживается упрощенный синтаксис условия SQL (WHERE...).
+      Оцениваются такие переменные, как {{0}}, {{1}} и {{2}} (если они доступны).
+    prefilterLabel: Записи предварительной фильтрации
+    prefilterPlaceholder: поле1 = 1 И поле2 = 232
+    queryFieldsLabel: Поля запроса в поиске
+    suggestionPlaceholder: Начните вводить для поиска записей
+    variantField: Поле вариантов
+  select:
+    allow-duplicates: Разрешить дубликаты
+    label: Выбирать
+    optionAdd: Добавлять
+    optionLabelPlaceholder: Этикетка
+    optionNotSelected: Вариант не выбран
+    optionRemove: Удалять
+    optionType:
+      default: Один вход
+      each: Ввод для каждого значения
+      label: Тип ввода нескольких значений
+      multiple: Множественный выбор
+    optionValuePlaceholder: Ценить
+    optionsLabel: Варианты выбора
+    placeholder: Выберите вариант, нажав здесь
+  string:
+    label: Нить
+    multiLine: Многострочный
+    richText: Используйте редактор форматированного текста
+  url:
+    example: 'Пример URL: https://example.com'
+    label: URL-адрес
+    preventToLink: Не превращайте URL в ссылку
+    sshOnly: Разрешить URL-адрес только SSL (https)
+    trimHash: Обрезать '#' из URL-адреса
+    trimQuestionMark: Подрезать '?' из URL
+    trimToDomain: Обрезать URL только до домена
+  user:
+    label: Пользователь
+    na: Н/Д
+    presetWithCurrentUser: Предустановлен с текущим пользователем
+    roles:
+      label: Роли пользователей
+      placeholder: Фильтровать по ролям пользователей
+    suggestionPlaceholder: Начните вводить текст для поиска пользователей по электронной
+      почте или имени.
+label:
+  multi: Мульти значение
+  required: Необходимый
+no-items-found: ничего не найдено
+noPermission: Нет разрешения на чтение значения поля
+options:
+  description:
+    label:
+      default: Описание
+      edit: Изменить описание
+      view: Представление описания
+    placeholder:
+      default: Текст описания...
+      edit: Описание при редактировании поля записи...
+      view: Описание при просмотре поля записи...
+    same: Показать одно и то же описание при просмотре и редактировании
+  hint:
+    label:
+      default: Намекать
+      edit: Подсказка изменить
+      view: Вид подсказки
+    placeholder:
+      default: Текст подсказки...
+      edit: Подсказка при редактировании поля записи...
+      view: Подсказка при просмотре поля записи...
+    same: Показывать ту же подсказку при просмотре и редактировании
+  multiDelimiter:
+    comma: Через запятую
+    custom: Пользовательский разделитель
+    customLabel: Или используйте пользовательский разделитель
+    customPlaceholder: Введите пользовательский разделитель
+    label: Разделитель нескольких значений
+    newline: Каждое значение в новой строке
+privacy:
+  sensitivity-level:
+    label: Уровень чувствительности
+    placeholder: Выберите уровень чувствительности
+  usage-disclosure:
+    label: Раскрытие информации об использовании конфиденциальных полей (отображается
+      на консоли конфиденциальности данных)
+required-field: Это поле обязательно к заполнению
+sanitizers:
+  add: + Добавить
+  description: Обрезайте пробелы в тексте или выполняйте другие виды манипуляций со
+    значениями перед проверкой.
+  examples: Примеры
+  expression:
+    placeholder: обрезка (значение)
+  label: Очистка стоимости
+selected-items: Выбранные поля
+selector:
+  available: Доступные поля
+  search: Введите здесь для поиска среди полей модуля
+  selectAll: Выбрать все
+  selected: Выбранные поля
+  systemField: (системное поле)
+  unselectAll: Снять все
+system:
+  createdAt: Создан в
+  createdBy: Сделано
+  deletedAt: Удалено в
+  deletedBy: Удалено
+  id: Идентификатор записи
+  meta: Мета дата
+  moduleID: Идентификатор модуля
+  namespaceID: Идентификатор пространства имен
+  ownedBy: Принадлежит
+  recordID: Идентификатор записи
+  revision: Запись ревизии
+  updatedAt: Обновлено в
+  updatedBy: Обновлено
+validators:
+  description: Набор выражений и пар ошибок, которые проверяют достоверность входного
+    значения.
+  disableBuiltIn: Отключить встроенные валидаторы
+  error:
+    placeholder: Текст, отображаемый, когда выражение истинно
+  expression:
+    placeholder: значение == ""
+  label: Проверка значения
+valueExpr:
+  description: Вставьте формулу или выражение, которое вычисляет числовые значения
+    или объединяет текстовые значения и манипулирует ими.
+  label: Выражение значения поля
+  placeholder: ((этаж(numField1) + numField2) / 10) + 0,5

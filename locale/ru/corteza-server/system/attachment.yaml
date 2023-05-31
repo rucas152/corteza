@@ -1,0 +1,9 @@
+errors:
+  failedToExtractMimeType: не удалось извлечь MIME-тип
+  failedToProcessImage: не удалось обработать изображение
+  failedToStoreFile: не удалось извлечь файл хранилища
+  invalidID: Неверный ID
+  notAllowedToCreate: не разрешено создавать вложения
+  notAllowedToCreateEmptyAttachment: не разрешено создавать пустые вложения
+  notAllowedToListAttachments: не разрешено перечислять вложения
+  notFound: вложение не найдено

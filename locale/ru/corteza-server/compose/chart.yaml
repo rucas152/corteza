@@ -1,0 +1,17 @@
+errors:
+  handleNotUnique: дескриптор не уникальный
+  invalidHandle: неверный дескриптор
+  invalidID: Неверный ID
+  invalidNamespaceID: недействительный или отсутствующий идентификатор пространства
+    имен
+  moduleNotFound: модуль не существует
+  namespaceNotFound: пространство имен не существует
+  notAllowedToCreate: не разрешено создавать диаграммы
+  notAllowedToDelete: не разрешено удалять эту диаграмму
+  notAllowedToRead: не разрешено читать эту диаграмму
+  notAllowedToReadNamespace: не разрешено читать это пространство имен
+  notAllowedToSearch: не разрешено искать или перечислять диаграммы
+  notAllowedToUndelete: не разрешено восстанавливать эту диаграмму
+  notAllowedToUpdate: не разрешено обновлять эту диаграмму
+  notFound: графика не существует
+  staleData: устаревшие данные

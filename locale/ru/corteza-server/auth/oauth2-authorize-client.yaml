@@ -1,0 +1,18 @@
+alerts:
+  denied: не удается авторизовать {{client}}, нет разрешений
+template:
+  errors:
+    invalid-user: Невозможно продолжить работу с несанкционированной электронной почтой.
+      Посетите <a data-test-id="link-redirect-to-profile" href="{{link}}">свой профиль</a>
+      и устраните проблему.
+  form:
+    buttons:
+      allow: Позволять
+      deny: Отрицать
+    greeting-paragraph: Привет
+    question-for-client: хотел бы выполнять действия на этом сервере Corteza от вашего
+      имени.
+  links:
+    mistake: Если это ошибка, <a data-test-id="link-logout" href="{{link}}">выйдите
+      из системы</a>.
+  title: Разрешить

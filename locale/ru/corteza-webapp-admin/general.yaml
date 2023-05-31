@@ -1,0 +1,49 @@
+label:
+  application:
+    plural: Приложения
+    single: Приложение
+  auth_client:
+    plural: Клиенты аутентификации
+    single: Клиент авторизации
+  clear: Прозрачный
+  connection:
+    plural: Подключения к базе данных
+    single: Подключение к базе данных
+  delete: Удалить
+  fileTypeNotAllowed: Недопустимый тип файла
+  loadMore: Загрузи больше
+  loading: Загрузка
+  none: Никто
+  now: Сейчас
+  plus-add: + Добавить
+  queue:
+    plural: Очереди сообщений
+    single: Очередь сообщений
+  refresh: Обновить
+  requests: Запросы
+  role:
+    plural: Роли
+    single: Роль
+  route:
+    plural: Маршруты
+    single: Маршрут
+  routes: Маршруты
+  saveAndClose: Сохрани и закрой
+  sensitivity_level:
+    plural: Уровни чувствительности
+    single: Уровень чувствительности
+  session:
+    plural: Сессии
+    single: Сессия
+  submit: Представлять на рассмотрение
+  template:
+    plural: Шаблоны
+    single: Шаблон
+  today: Сегодня
+  undelete: Восстановить
+  user:
+    plural: Пользователи
+    single: Пользователь
+  workflow:
+    plural: Рабочие процессы
+    single: Рабочий процесс

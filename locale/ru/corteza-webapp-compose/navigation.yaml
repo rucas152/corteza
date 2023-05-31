@@ -1,0 +1,20 @@
+automation: Автоматизация
+chart: Графики
+configuration: Конфигурация
+editPage: Отредактировать страницу
+help:
+  documentation: Документация
+  feedback: Отправить отзыв
+  forum: Помощь
+  version: 'Версия:'
+module: Модули
+more: Более
+namespace: Пространства имен
+noPageTitle: Нет заголовка страницы
+page: Страницы
+userSettings:
+  changePassword: Изменить пароль
+  loggedInAs: Вы вошли как {{user}}
+  logout: Выйти
+  profile: Профиль
+viewPage: Просмотр страницы

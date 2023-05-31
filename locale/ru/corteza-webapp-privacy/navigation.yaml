@@ -1,0 +1,10 @@
+help:
+  documentation: Документация
+  feedback: Отправить отзыв
+  forum: Помощь
+  version: 'Версия:'
+userSettings:
+  changePassword: Изменить пароль
+  loggedInAs: Вы вошли как {{user}}
+  logout: Выйти
+  profile: Профиль

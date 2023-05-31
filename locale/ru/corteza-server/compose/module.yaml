@@ -1,0 +1,19 @@
+errors:
+  fieldNameReserved: имя поля зарезервировано
+  handleNotUnique: дескриптор не уникальный
+  invalidHandle: неверный дескриптор
+  invalidID: Неверный ID
+  invalidNamespaceID: недействительный или отсутствующий идентификатор пространства
+    имен
+  nameNotUnique: имя не уникальное
+  namespaceNotFound: пространство имен не существует
+  notAllowedToCreate: не разрешено создавать модули
+  notAllowedToDelete: не разрешено удалять этот модуль
+  notAllowedToListModules: не разрешено перечислять модули
+  notAllowedToRead: не разрешено читать этот модуль
+  notAllowedToReadNamespace: не разрешено читать это пространство имен
+  notAllowedToSearch: не разрешено искать или перечислять модули
+  notAllowedToUndelete: не разрешено восстанавливать этот модуль
+  notAllowedToUpdate: не разрешено обновлять этот модуль
+  notFound: модуль не существует
+  staleData: устаревшие данные

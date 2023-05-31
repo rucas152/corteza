@@ -1,0 +1,121 @@
+automation:
+  add: Добавить скрипт
+  edit:
+    asyncHelp: Не ждите результатов и игнорируйте ошибки. Несовместимо с критическим
+      флагом.
+    asyncLabel: Запустите этот скрипт асинхронно
+    codeTabLabel: Код
+    criticalHelp: Подождите, пока этот скрипт не будет выполнен. В случае ошибок прервать
+      выполнение других скриптов и до* триггера
+    criticalLabel: Критический сценарий
+    delete: Удалить скрипт
+    enabledHelp: Отключенные скрипты будут игнорироваться
+    enabledLabel: Включено
+    mailAutomationTriggers:
+      addMatcher: Добавить условие
+      addTrigger: Добавить триггер
+      delete: Удалить триггер
+      deleteTrigger: Удалить
+      enable: Включить триггер
+      matchAll: Должен соответствовать всем условиям
+      matcher:
+        fields:
+          bcc: BCC
+          cc: CC
+          from: От
+          placeholder: Поле заголовка письма
+          replyTo: Ответить на
+          subject: Предмет
+          to: К
+        match: Значение для соответствия
+        operators:
+          equal-ci: Полное совпадение
+          placeholder: Оператор
+          prefix-ci: Префикс совпадения
+          regex: регулярное выражение
+          suffix-ci: Суффикс совпадения
+          user: Существующий пользователь
+      tabLabel: Почтовые триггеры
+    nameLabel: Имя
+    namePlaceholder: Имя сценария автоматизации
+    runAsCurrentUser: Запуск от имени "{{ пользователь }}"
+    runAsHelp: Скрипт бегун
+    scheduledTriggers:
+      tabLabel: Запланированное
+    securityLabel: Безопасность
+    settingsTabLabel: Настройки
+    timeoutHelp: Сколько времени мы ждем, прежде чем прервать сценарий? Значение в
+      миллисекундах (1000 мс = 1 с). По умолчанию (при 0) оно равно 2 с с максимальным
+      значением 30 с. Проконсультируйтесь с вашим администратором о точных числах
+      и ограничениях.
+    timeoutLabel: Тайм-аут выполнения скрипта
+    timeoutPlaceholder: '1500'
+    title: Скрипт автоматизации
+    userPickerPlaceholder: Выберите пользователя
+  import: Сценарии автоматизации импорта
+  list:
+    column:
+      label:
+        async: Асинхронный
+        critical: Критический
+        enabled: Включено
+        runAs: Беги как
+        runInUA: В браузере
+    unnamed: (Безымянный сценарий)
+  manage: Управление сценариями автоматизации ({{count}})
+  manage-id-permissions: Управление разрешениями для этого скрипта
+  manage-wc-permissions: Управление разрешениями для всех скриптов
+  newLabel: Создать новый скрипт
+  newPlaceholder: Имя сценария
+  testing:
+    load: Нагрузка
+    parametersHeadline: 'Параметры и полезная нагрузка:'
+    resultsHeadline: 'Полученные результаты:'
+    testInBrowser: Тестировать в браузере
+    testInCorredor: Тест в Корредоре
+    warning: ''
+  title: Список скриптов автоматизации
+general:
+  label:
+    'no': Нет
+    selectOption: Пожалуйста, выберите вариант
+    submit: Представлять на рассмотрение
+    'yes': Да
+  loading: Загрузка
+  logout: Выйти
+  noAccess: У вас нет прав доступа к панели администратора
+  notFound: Не найдено
+  pagination:
+    next: Следующий
+    prev: Предыдущий
+    showing: '{{от}} - {{до}} из {{count}} {{данные}}'
+    single: Один {{данные}}
+    single_plural: '{{число}} {{данные}}'
+  resource-list:
+    no-items: Нет совпадений для вашего поиска
+navigation:
+  adminPanel: Панель администратора
+  automation: Автоматизация
+  chart: Графики
+  configuration: Конфигурация
+  help:
+    documentation: Документация
+    feedback: Отправить отзыв
+    forum: Помощь
+    version: 'Версия:'
+  module: Модули
+  more: Более
+  namespace: Пространства имен
+  noPageTitle: Нет заголовка страницы
+  page: Страницы
+  publicPages: Публичные страницы
+  userSettings:
+    changePassword: Изменить пароль
+    loggedInAs: Вы вошли как {{user}}
+    logout: Выйти
+    profile: Профиль
+picker:
+  member:
+    placeholder: Начните вводить для поиска пользователей
+  role:
+    placeholder: Начните вводить для поиска ролей

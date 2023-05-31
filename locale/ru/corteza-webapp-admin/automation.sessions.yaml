@@ -1,0 +1,54 @@
+editor:
+  info:
+    cancel: Отменить сеанс
+    completedAt: Завершено в
+    createdAt: Создан в
+    createdByUserID: Создано - ID
+    createdByUserName: Создано - Имя
+    delete: Удалить
+    deletedAt: Удалено в
+    error: Ошибка
+    eventType: Тип события
+    id: ИДЕНТИФИКАТОР
+    openWorkflow: Открытый рабочий процесс
+    resourceType: Тип ресурса
+    status: Положение дел
+    title: Основная информация
+    workflowID: Идентификатор рабочего процесса
+  title: Сессия
+list:
+  columns:
+    actions: ''
+    createdAt: Создан в
+    eventType: Тип события
+    sessionID: Идентификатор сессии
+    state: Состояние
+    status: Положение дел
+    workflowID: Идентификатор рабочего процесса
+  filterForm:
+    all:
+      label: Все
+    completed:
+      label: Завершенный
+    excluded:
+      label: Без
+    exclusive:
+      label: Только
+    failed:
+      label: Неуспешный
+    inProgress:
+      label: завершенные сеансы
+    inclusive:
+      label: Включая
+    prompted:
+      label: Подсказка
+    sessions:
+      label: сессии
+    started:
+      label: Начал
+    suspended:
+      label: Приостановленный
+  loading: Загрузка сессий
+  numFound: '{{count}} сеанс найден'
+  numFound_plural: '{{count}} сеансов найдено'
+  title: Сессии

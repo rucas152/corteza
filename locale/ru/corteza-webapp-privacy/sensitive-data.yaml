@@ -1,0 +1,11 @@
+list:
+  columns:
+    connection: Связь
+    location: Расположение
+    module: Модуль
+    namespace: Пространство имен
+    ownership: Владение
+  module:
+    disable: Отключить модули
+    enable: Включить модули
+  title: Чувствительные модули
